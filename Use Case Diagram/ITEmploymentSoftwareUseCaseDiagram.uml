@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="__sn-INnIEeytsKDKoDw7Dg" name="RootElement">
+  <packagedElement xmi:type="uml:Package" xmi:id="_Xyz7ANnJEeytsKDKoDw7Dg" name="IT Management System">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_9oMWUNnKEeytsKDKoDw7Dg" name="Login Account">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_8y-owNnOEeytsKDKoDw7Dg" name="ExtensionPoint1"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_-gJ8QNnOEeytsKDKoDw7Dg" name="ExtensionPoint2"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_dc43ANnLEeytsKDKoDw7Dg" name="Add/Update Applicant Profile">
+      <include xmi:type="uml:Include" xmi:id="__vA8ENnOEeytsKDKoDw7Dg" addition="_9oMWUNnKEeytsKDKoDw7Dg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_vL85wNnLEeytsKDKoDw7Dg" name="Add Programming Skillset"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_x8Na4NnLEeytsKDKoDw7Dg" name="Add Industrial Skillset"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_5k1ZINnLEeytsKDKoDw7Dg" name="«extend»" client="_vL85wNnLEeytsKDKoDw7Dg" supplier="_dc43ANnLEeytsKDKoDw7Dg"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_WKvCkNnMEeytsKDKoDw7Dg" name="«extend»" client="_x8Na4NnLEeytsKDKoDw7Dg" supplier="_dc43ANnLEeytsKDKoDw7Dg"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_A9y40NnOEeytsKDKoDw7Dg" name="Generate list of Applicants">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_9EUa8NnPEeytsKDKoDw7Dg" name="ExtensionPoint1"/>
+      <include xmi:type="uml:Include" xmi:id="_BLZagNnPEeytsKDKoDw7Dg" addition="_9oMWUNnKEeytsKDKoDw7Dg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_t_8SQNnOEeytsKDKoDw7Dg" name="Save Applicant Details">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_JJAxUNnPEeytsKDKoDw7Dg" name=""/>
+      <include xmi:type="uml:Include" xmi:id="_xSfysNnPEeytsKDKoDw7Dg" addition="_9oMWUNnKEeytsKDKoDw7Dg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_7Cno8NnPEeytsKDKoDw7Dg" name="Filter based on profile">
+      <extend xmi:type="uml:Extend" xmi:id="_9ETz4NnPEeytsKDKoDw7Dg" extendedCase="_A9y40NnOEeytsKDKoDw7Dg" extensionLocation="_9EUa8NnPEeytsKDKoDw7Dg"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_ew6VkNnJEeytsKDKoDw7Dg" name="Employee"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_w8O2gNnJEeytsKDKoDw7Dg" name="HR Staff">
+    <generalization xmi:type="uml:Generalization" xmi:id="_LmOz8NnKEeytsKDKoDw7Dg" general="_ew6VkNnJEeytsKDKoDw7Dg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_y1dpANnJEeytsKDKoDw7Dg" name="Manager">
+    <generalization xmi:type="uml:Generalization" xmi:id="_Mpzw0NnKEeytsKDKoDw7Dg" general="_ew6VkNnJEeytsKDKoDw7Dg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_4MEZ8NnMEeytsKDKoDw7Dg" memberEnd="_4MpowNnMEeytsKDKoDw7Dg _4Mrd8NnMEeytsKDKoDw7Dg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4MGPINnMEeytsKDKoDw7Dg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4MGPIdnMEeytsKDKoDw7Dg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_4MpowNnMEeytsKDKoDw7Dg" name="login account" type="_9oMWUNnKEeytsKDKoDw7Dg" association="_4MEZ8NnMEeytsKDKoDw7Dg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_4Mrd8NnMEeytsKDKoDw7Dg" name="hr staff" type="_w8O2gNnJEeytsKDKoDw7Dg" association="_4MEZ8NnMEeytsKDKoDw7Dg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Txj50NnOEeytsKDKoDw7Dg" memberEnd="_Txkg4tnOEeytsKDKoDw7Dg _Txkg49nOEeytsKDKoDw7Dg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Txkg4NnOEeytsKDKoDw7Dg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Txkg4dnOEeytsKDKoDw7Dg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Txkg4tnOEeytsKDKoDw7Dg" name="add/update applicant profile" type="_dc43ANnLEeytsKDKoDw7Dg" association="_Txj50NnOEeytsKDKoDw7Dg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Txkg49nOEeytsKDKoDw7Dg" name="hr staff" type="_w8O2gNnJEeytsKDKoDw7Dg" association="_Txj50NnOEeytsKDKoDw7Dg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_dY0vANnOEeytsKDKoDw7Dg" memberEnd="_dY1WEtnOEeytsKDKoDw7Dg _dY1WE9nOEeytsKDKoDw7Dg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dY1WENnOEeytsKDKoDw7Dg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dY1WEdnOEeytsKDKoDw7Dg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_dY1WEtnOEeytsKDKoDw7Dg" name="generate list of applicants based on profile" type="_A9y40NnOEeytsKDKoDw7Dg" association="_dY0vANnOEeytsKDKoDw7Dg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_dY1WE9nOEeytsKDKoDw7Dg" name="hr staff" type="_w8O2gNnJEeytsKDKoDw7Dg" association="_dY0vANnOEeytsKDKoDw7Dg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_wwMzYNnOEeytsKDKoDw7Dg" memberEnd="_wwNactnOEeytsKDKoDw7Dg _wwOBgNnOEeytsKDKoDw7Dg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wwNacNnOEeytsKDKoDw7Dg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wwNacdnOEeytsKDKoDw7Dg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_wwNactnOEeytsKDKoDw7Dg" name="save applicant details" type="_t_8SQNnOEeytsKDKoDw7Dg" association="_wwMzYNnOEeytsKDKoDw7Dg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_wwOBgNnOEeytsKDKoDw7Dg" name="hr staff" type="_w8O2gNnJEeytsKDKoDw7Dg" association="_wwMzYNnOEeytsKDKoDw7Dg"/>
+  </packagedElement>
+</uml:Model>
