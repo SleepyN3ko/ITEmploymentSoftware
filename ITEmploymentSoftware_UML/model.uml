@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:java="http://www.eclipse.org/papyrus/JAVA/1" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Model xmi:id="_KOOIkNsREeyJNr3O3A6hmw" name="Corporate">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_aC6ecNsTEeyJNr3O3A6hmw">
+      <importedPackage xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_xKvVoNsTEeyJNr3O3A6hmw">
+      <importedPackage xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_g4f2MNsTEeyJNr3O3A6hmw" name="Data">
+      <packagedElement xmi:type="uml:Class" xmi:id="_pV8joNsTEeyJNr3O3A6hmw" name="Login">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_lvTswNsWEeyJNr3O3A6hmw" name="Username" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_mBNVENsWEeyJNr3O3A6hmw" name="Password" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_2n-dkNsXEeyJNr3O3A6hmw" name="showLoginInfo"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_wUjXsNsXEeyJNr3O3A6hmw" name="Shortlist Applicants">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_VoaPwNsYEeyJNr3O3A6hmw" name="showWindow"/>
+      </packagedElement>
+      <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_rYl7YNsUEeyJNr3O3A6hmw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rYl7YdsUEeyJNr3O3A6hmw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/JAVA/1#/"/>
+        </eAnnotations>
+        <appliedProfile xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
+      </profileApplication>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_pyTTANsUEeyJNr3O3A6hmw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pyTTAdsUEeyJNr3O3A6hmw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/JAVA/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
+    </profileApplication>
+  </uml:Model>
+  <java:JavaClass xmi:id="_sp5yQNsUEeyJNr3O3A6hmw" base_Classifier="_pV8joNsTEeyJNr3O3A6hmw"/>
+  <java:JavaProperty xmi:id="_oY2h4NsWEeyJNr3O3A6hmw" base_Property="_lvTswNsWEeyJNr3O3A6hmw"/>
+  <java:JavaProperty xmi:id="_ApZUoNsXEeyJNr3O3A6hmw" base_Property="_mBNVENsWEeyJNr3O3A6hmw"/>
+  <java:JavaMethod xmi:id="_81S7cNsXEeyJNr3O3A6hmw" base_Operation="_2n-dkNsXEeyJNr3O3A6hmw"/>
+  <java:JavaMethod xmi:id="_X6rNUNsYEeyJNr3O3A6hmw" base_Operation="_VoaPwNsYEeyJNr3O3A6hmw"/>
+  <java:JavaClass xmi:id="_Y3NHANsYEeyJNr3O3A6hmw" base_Classifier="_wUjXsNsXEeyJNr3O3A6hmw"/>
+</xmi:XMI>
