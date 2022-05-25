@@ -7,6 +7,9 @@
     <packageImport xmi:type="uml:PackageImport" xmi:id="_xKvVoNsTEeyJNr3O3A6hmw">
       <importedPackage xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
     </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_ow_3ENwREeyM8LsxEwFO0Q">
+      <importedPackage xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
+    </packageImport>
     <packagedElement xmi:type="uml:Package" xmi:id="_g4f2MNsTEeyJNr3O3A6hmw" name="Data">
       <packagedElement xmi:type="uml:Class" xmi:id="_pV8joNsTEeyJNr3O3A6hmw" name="Login">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_lvTswNsWEeyJNr3O3A6hmw" name="Username" visibility="private">
@@ -15,10 +18,63 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_mBNVENsWEeyJNr3O3A6hmw" name="Password" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_PTmgw9w_EeyTUa-q5svWvA" name="list of applicants" type="_dwgvsNwSEeyM8LsxEwFO0Q" association="_PTmgwNw_EeyTUa-q5svWvA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_UfnSo9w_EeyTUa-q5svWvA" name="shortlist applicants" type="_wUjXsNsXEeyJNr3O3A6hmw" association="_UfnSoNw_EeyTUa-q5svWvA"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_2n-dkNsXEeyJNr3O3A6hmw" name="showLoginInfo"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_wUjXsNsXEeyJNr3O3A6hmw" name="Shortlist Applicants">
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_VoaPwNsYEeyJNr3O3A6hmw" name="showWindow"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_GpKv8NwuEeyyltJWFVDR0w" name="accepted job offer" visibility="private" type="_ywrbANwLEeyM8LsxEwFO0Q" aggregation="shared" association="_GpA-8NwuEeyyltJWFVDR0w">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_znreMNw8EeyTUa-q5svWvA" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_znuhgNw8EeyTUa-q5svWvA" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_11Ctotw8EeyTUa-q5svWvA" name="pending job offer" visibility="private" type="_VWGE8NwOEeyM8LsxEwFO0Q" aggregation="shared" association="_11A4cNw8EeyTUa-q5svWvA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5-pnUNw8EeyTUa-q5svWvA" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5-rcgNw8EeyTUa-q5svWvA" value="*"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_GJWVUNwLEeyM8LsxEwFO0Q" name="viewApplicants"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_qdhw4Nw-EeyTUa-q5svWvA" name="viewApplicantDetails"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ywrbANwLEeyM8LsxEwFO0Q" name="Accepted Job Offer">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_u_3mYNwMEeyM8LsxEwFO0Q" name="viewApplicantDetails"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_hbTUgNwUEeyM8LsxEwFO0Q" name="viewSummary"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_VWGE8NwOEeyM8LsxEwFO0Q" name="Pending Job Offer">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_hs_wMNwOEeyM8LsxEwFO0Q" name="waitingList"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tax-QNwUEeyM8LsxEwFO0Q" name="viewApplicantDetails"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_voDV0NwOEeyM8LsxEwFO0Q" name="Profile">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_0RVYoNwPEeyM8LsxEwFO0Q" name="RealName" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_0gFmUNwPEeyM8LsxEwFO0Q" name="Gender" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_aWiOENwQEeyM8LsxEwFO0Q" name="Qualification" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_aqcBgNwQEeyM8LsxEwFO0Q" name="WorkExperience" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_a6Ni4NwQEeyM8LsxEwFO0Q" name="Achievements" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_bKpyoNwQEeyM8LsxEwFO0Q" name="TechnicalSkills" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_bbWhENwQEeyM8LsxEwFO0Q" name="GenericSkills" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_45chUNwREeyM8LsxEwFO0Q" name="updateProfile"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_jFZ7UNwTEeyM8LsxEwFO0Q" name="saveProfile"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_dwgvsNwSEeyM8LsxEwFO0Q" name="List of Applicants">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_0VwaQtw-EeyTUa-q5svWvA" name="profile" visibility="private" type="_voDV0NwOEeyM8LsxEwFO0Q" aggregation="shared" association="_0VvzMNw-EeyTUa-q5svWvA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__QAhUNw-EeyTUa-q5svWvA" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__QCWgNw-EeyTUa-q5svWvA" value="*"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_OM4NQNwTEeyM8LsxEwFO0Q" name="generateList"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_XzFSgNwTEeyM8LsxEwFO0Q" name="showProfile"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_73fm0NwREeyM8LsxEwFO0Q" name="addNewProfile"/>
       </packagedElement>
       <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_rYl7YNsUEeyJNr3O3A6hmw">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rYl7YdsUEeyJNr3O3A6hmw" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -26,6 +82,39 @@
         </eAnnotations>
         <appliedProfile xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
       </profileApplication>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_GpA-8NwuEeyyltJWFVDR0w" visibility="public" memberEnd="_GpKv8NwuEeyyltJWFVDR0w _GpKv8dwuEeyyltJWFVDR0w">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GpFQYNwuEeyyltJWFVDR0w" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GpFQYdwuEeyyltJWFVDR0w" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_GpKv8dwuEeyyltJWFVDR0w" name="shortlist applicants" type="_wUjXsNsXEeyJNr3O3A6hmw" association="_GpA-8NwuEeyyltJWFVDR0w">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xbghkNw8EeyTUa-q5svWvA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xblaENw8EeyTUa-q5svWvA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_11A4cNw8EeyTUa-q5svWvA" memberEnd="_11Ctotw8EeyTUa-q5svWvA _11DUsNw8EeyTUa-q5svWvA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_11CtoNw8EeyTUa-q5svWvA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_11Ctodw8EeyTUa-q5svWvA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_11DUsNw8EeyTUa-q5svWvA" name="shortlist applicants" type="_wUjXsNsXEeyJNr3O3A6hmw" association="_11A4cNw8EeyTUa-q5svWvA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_0VvzMNw-EeyTUa-q5svWvA" memberEnd="_0VwaQtw-EeyTUa-q5svWvA _0VwaQ9w-EeyTUa-q5svWvA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0VwaQNw-EeyTUa-q5svWvA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0VwaQdw-EeyTUa-q5svWvA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_0VwaQ9w-EeyTUa-q5svWvA" name="list of applicants" type="_dwgvsNwSEeyM8LsxEwFO0Q" association="_0VvzMNw-EeyTUa-q5svWvA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_PTmgwNw_EeyTUa-q5svWvA" memberEnd="_PTmgw9w_EeyTUa-q5svWvA _PToV8Nw_EeyTUa-q5svWvA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_PTmgwdw_EeyTUa-q5svWvA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_PTmgwtw_EeyTUa-q5svWvA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_PToV8Nw_EeyTUa-q5svWvA" name="login" type="_pV8joNsTEeyJNr3O3A6hmw" association="_PTmgwNw_EeyTUa-q5svWvA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_UfnSoNw_EeyTUa-q5svWvA" memberEnd="_UfnSo9w_EeyTUa-q5svWvA _UfpH0Nw_EeyTUa-q5svWvA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UfnSodw_EeyTUa-q5svWvA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UfnSotw_EeyTUa-q5svWvA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_UfpH0Nw_EeyTUa-q5svWvA" name="login" type="_pV8joNsTEeyJNr3O3A6hmw" association="_UfnSoNw_EeyTUa-q5svWvA"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_pyTTANsUEeyJNr3O3A6hmw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pyTTAdsUEeyJNr3O3A6hmw" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -38,6 +127,26 @@
   <java:JavaProperty xmi:id="_oY2h4NsWEeyJNr3O3A6hmw" base_Property="_lvTswNsWEeyJNr3O3A6hmw"/>
   <java:JavaProperty xmi:id="_ApZUoNsXEeyJNr3O3A6hmw" base_Property="_mBNVENsWEeyJNr3O3A6hmw"/>
   <java:JavaMethod xmi:id="_81S7cNsXEeyJNr3O3A6hmw" base_Operation="_2n-dkNsXEeyJNr3O3A6hmw"/>
-  <java:JavaMethod xmi:id="_X6rNUNsYEeyJNr3O3A6hmw" base_Operation="_VoaPwNsYEeyJNr3O3A6hmw"/>
   <java:JavaClass xmi:id="_Y3NHANsYEeyJNr3O3A6hmw" base_Classifier="_wUjXsNsXEeyJNr3O3A6hmw"/>
+  <java:JavaMethod xmi:id="_SrtpsNwLEeyM8LsxEwFO0Q" base_Operation="_GJWVUNwLEeyM8LsxEwFO0Q"/>
+  <java:JavaClass xmi:id="_zN_MoNwMEeyM8LsxEwFO0Q" base_Classifier="_ywrbANwLEeyM8LsxEwFO0Q"/>
+  <java:JavaMethod xmi:id="_6sF88NwMEeyM8LsxEwFO0Q" base_Operation="_u_3mYNwMEeyM8LsxEwFO0Q"/>
+  <java:JavaClass xmi:id="_Z7wBcNwOEeyM8LsxEwFO0Q" base_Classifier="_VWGE8NwOEeyM8LsxEwFO0Q"/>
+  <java:JavaMethod xmi:id="_lmMPUNwOEeyM8LsxEwFO0Q" base_Operation="_hs_wMNwOEeyM8LsxEwFO0Q"/>
+  <java:JavaClass xmi:id="_03LtINwOEeyM8LsxEwFO0Q" base_Classifier="_voDV0NwOEeyM8LsxEwFO0Q"/>
+  <java:JavaProperty xmi:id="_If1c0NwREeyM8LsxEwFO0Q" base_Property="_0RVYoNwPEeyM8LsxEwFO0Q"/>
+  <java:JavaProperty xmi:id="_wiDYkNwREeyM8LsxEwFO0Q" base_Property="_0gFmUNwPEeyM8LsxEwFO0Q"/>
+  <java:JavaMethod xmi:id="_F2ePENwrEeyyltJWFVDR0w" base_Operation="_hbTUgNwUEeyM8LsxEwFO0Q"/>
+  <java:JavaProperty xmi:id="_M_5v4NwrEeyyltJWFVDR0w" base_Property="_aWiOENwQEeyM8LsxEwFO0Q"/>
+  <java:JavaProperty xmi:id="_PdelkNwrEeyyltJWFVDR0w" base_Property="_aqcBgNwQEeyM8LsxEwFO0Q"/>
+  <java:JavaProperty xmi:id="_UeAgMNwrEeyyltJWFVDR0w" base_Property="_a6Ni4NwQEeyM8LsxEwFO0Q"/>
+  <java:JavaProperty xmi:id="_VMv1gNwrEeyyltJWFVDR0w" base_Property="_bKpyoNwQEeyM8LsxEwFO0Q"/>
+  <java:JavaProperty xmi:id="_Y7v20NwrEeyyltJWFVDR0w" base_Property="_bbWhENwQEeyM8LsxEwFO0Q"/>
+  <java:JavaMethod xmi:id="_aP-e0NwrEeyyltJWFVDR0w" base_Operation="_45chUNwREeyM8LsxEwFO0Q"/>
+  <java:JavaMethod xmi:id="_awYdMNwrEeyyltJWFVDR0w" base_Operation="_73fm0NwREeyM8LsxEwFO0Q"/>
+  <java:JavaMethod xmi:id="_bTYckNwrEeyyltJWFVDR0w" base_Operation="_jFZ7UNwTEeyM8LsxEwFO0Q"/>
+  <java:JavaMethod xmi:id="_xJiloNwtEeyyltJWFVDR0w" base_Operation="_OM4NQNwTEeyM8LsxEwFO0Q"/>
+  <java:JavaMethod xmi:id="_x9HXoNwtEeyyltJWFVDR0w" base_Operation="_XzFSgNwTEeyM8LsxEwFO0Q"/>
+  <java:JavaMethod xmi:id="_ymcogNwtEeyyltJWFVDR0w" base_Operation="_tax-QNwUEeyM8LsxEwFO0Q"/>
+  <java:JavaMethod xmi:id="_uynh0Nw-EeyTUa-q5svWvA" base_Operation="_qdhw4Nw-EeyTUa-q5svWvA"/>
 </xmi:XMI>
