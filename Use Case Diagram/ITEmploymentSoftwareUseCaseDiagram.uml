@@ -8,37 +8,44 @@
     <packagedElement xmi:type="uml:UseCase" xmi:id="_dc43ANnLEeytsKDKoDw7Dg" name="Add Applicant Profile">
       <include xmi:type="uml:Include" xmi:id="_klB0gNsiEeykIKkDcBWTFg" addition="_9oMWUNnKEeytsKDKoDw7Dg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_A9y40NnOEeytsKDKoDw7Dg" name="Generate list of Applicants based on profile">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_A9y40NnOEeytsKDKoDw7Dg" name="Generate list of Applicants based on profile  ">
       <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_9EUa8NnPEeytsKDKoDw7Dg" name="ExtensionPoint1"/>
       <include xmi:type="uml:Include" xmi:id="_bv-oQNnWEeytsKDKoDw7Dg" addition="_9oMWUNnKEeytsKDKoDw7Dg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_t_8SQNnOEeytsKDKoDw7Dg" name="Save Applicant Details">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_t_8SQNnOEeytsKDKoDw7Dg" name="Save Applicant Details ">
       <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_JJAxUNnPEeytsKDKoDw7Dg" name=""/>
       <include xmi:type="uml:Include" xmi:id="_xSfysNnPEeytsKDKoDw7Dg" addition="_9oMWUNnKEeytsKDKoDw7Dg"/>
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_hYoIQNnVEeytsKDKoDw7Dg" name="Shortlist Applicants for interview">
       <include xmi:type="uml:Include" xmi:id="_a3jfENshEeykIKkDcBWTFg" addition="_9oMWUNnKEeytsKDKoDw7Dg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_rhTBYNnVEeytsKDKoDw7Dg" name="Generate a list of applicants who received a job offer">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_rhTBYNnVEeytsKDKoDw7Dg" name="Generate a list of applicants who received a job offer  ">
       <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_BS9hcNnXEeytsKDKoDw7Dg" name="ExtensionPoint1"/>
       <include xmi:type="uml:Include" xmi:id="_cUunsNshEeykIKkDcBWTFg" addition="_9oMWUNnKEeytsKDKoDw7Dg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_HqC_UNnXEeytsKDKoDw7Dg" name="Save applicants who are shortlisted and received job offer">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_HqC_UNnXEeytsKDKoDw7Dg" name="Save applicants who are shortlisted and received job offer  ">
       <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_eK9ngNnXEeytsKDKoDw7Dg" name="ExtensionPoint1"/>
       <include xmi:type="uml:Include" xmi:id="_h2tpkNshEeykIKkDcBWTFg" addition="_9oMWUNnKEeytsKDKoDw7Dg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_B9DK0NnYEeytsKDKoDw7Dg" name="View Summary of applicants">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_B9DK0NnYEeytsKDKoDw7Dg" name="View Applicants">
       <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_NVitENnYEeytsKDKoDw7Dg" name="ExtensionPoint1"/>
       <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_ywlLMNnYEeytsKDKoDw7Dg" name="ExtensionPoint2"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_zZjgQN55EeyDmYuSG5cTKw" name="ExtensionPoint3"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_TG0GwN57EeyDmYuSG5cTKw" name="ExtensionPoint4"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_UiFx8N57EeyDmYuSG5cTKw" name="ExtensionPoint5"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_YAz7kN57EeyDmYuSG5cTKw" name="ExtensionPoint6"/>
+      <include xmi:type="uml:Include" xmi:id="_fdg9sN57EeyDmYuSG5cTKw" addition="_9oMWUNnKEeytsKDKoDw7Dg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_I22UMNnYEeytsKDKoDw7Dg" name="Show who got shortlisted and received a job offer">
-      <extend xmi:type="uml:Extend" xmi:id="_NViGANnYEeytsKDKoDw7Dg" extendedCase="_B9DK0NnYEeytsKDKoDw7Dg" extensionLocation="_NVitENnYEeytsKDKoDw7Dg"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_I22UMNnYEeytsKDKoDw7Dg" name="Show the summary of who got shortlisted and received a job offer  ">
+      <extend xmi:type="uml:Extend" xmi:id="_TGzfsN57EeyDmYuSG5cTKw" extendedCase="_B9DK0NnYEeytsKDKoDw7Dg" extensionLocation="_TG0GwN57EeyDmYuSG5cTKw"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_LmHVcN57EeyDmYuSG5cTKw" name="ExtensionPoint1"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_VerXYNnYEeytsKDKoDw7Dg" name="View Details of applicants who received a job offer">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_VerXYNnYEeytsKDKoDw7Dg" name="Show the details of applicants who received a job offer">
+      <extend xmi:type="uml:Extend" xmi:id="_YAzUgN57EeyDmYuSG5cTKw" extendedCase="_B9DK0NnYEeytsKDKoDw7Dg" extensionLocation="_YAz7kN57EeyDmYuSG5cTKw"/>
       <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_eIcpkNnYEeytsKDKoDw7Dg" name="ExtensionPoint1"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_n8D4sNnYEeytsKDKoDw7Dg" name="Show total number of applicants who came for interview and received job offer">
-      <extend xmi:type="uml:Extend" xmi:id="_ywkkINnYEeytsKDKoDw7Dg" extendedCase="_B9DK0NnYEeytsKDKoDw7Dg" extensionLocation="_ywlLMNnYEeytsKDKoDw7Dg"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_n8D4sNnYEeytsKDKoDw7Dg" name="Show summary of  total number of applicants who came for interview and received job offer">
+      <extend xmi:type="uml:Extend" xmi:id="_UiFK4N57EeyDmYuSG5cTKw" extendedCase="_B9DK0NnYEeytsKDKoDw7Dg" extensionLocation="_UiFx8N57EeyDmYuSG5cTKw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_wwUiINshEeykIKkDcBWTFg" name="Update Applicant Profile">
       <include xmi:type="uml:Include" xmi:id="_enjJcNsiEeykIKkDcBWTFg" addition="_9oMWUNnKEeytsKDKoDw7Dg"/>
@@ -100,25 +107,18 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_O2msotnXEeytsKDKoDw7Dg" name="save applicants" type="_HqC_UNnXEeytsKDKoDw7Dg" association="_O2mFkNnXEeytsKDKoDw7Dg"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_O2mso9nXEeytsKDKoDw7Dg" name="manager" type="_y1dpANnJEeytsKDKoDw7Dg" association="_O2mFkNnXEeytsKDKoDw7Dg"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_H4wUQNnYEeytsKDKoDw7Dg" memberEnd="_H4w7UtnYEeytsKDKoDw7Dg _H4w7U9nYEeytsKDKoDw7Dg">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_H4w7UNnYEeytsKDKoDw7Dg" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_H4w7UdnYEeytsKDKoDw7Dg" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_H4w7UtnYEeytsKDKoDw7Dg" name="manager" type="_y1dpANnJEeytsKDKoDw7Dg" association="_H4wUQNnYEeytsKDKoDw7Dg"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_H4w7U9nYEeytsKDKoDw7Dg" name="view summary of applicants" type="_B9DK0NnYEeytsKDKoDw7Dg" association="_H4wUQNnYEeytsKDKoDw7Dg"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_fUbUgNnYEeytsKDKoDw7Dg" memberEnd="_fUbUg9nYEeytsKDKoDw7Dg _fUbUhNnYEeytsKDKoDw7Dg">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fUbUgdnYEeytsKDKoDw7Dg" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fUbUgtnYEeytsKDKoDw7Dg" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_fUbUg9nYEeytsKDKoDw7Dg" name="manager" type="_y1dpANnJEeytsKDKoDw7Dg" association="_fUbUgNnYEeytsKDKoDw7Dg"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_fUbUhNnYEeytsKDKoDw7Dg" name="view details of applicants" type="_VerXYNnYEeytsKDKoDw7Dg" association="_fUbUgNnYEeytsKDKoDw7Dg"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_5FHp4NshEeykIKkDcBWTFg" memberEnd="_5FIQ8dshEeykIKkDcBWTFg _5FIQ8tshEeykIKkDcBWTFg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_5FHp4dshEeykIKkDcBWTFg" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5FIQ8NshEeykIKkDcBWTFg" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_5FIQ8dshEeykIKkDcBWTFg" name="update applicant profile" type="_wwUiINshEeykIKkDcBWTFg" association="_5FHp4NshEeykIKkDcBWTFg"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_5FIQ8tshEeykIKkDcBWTFg" name="hr staff" type="_w8O2gNnJEeytsKDKoDw7Dg" association="_5FHp4NshEeykIKkDcBWTFg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_84zzgN56EeyDmYuSG5cTKw" memberEnd="_84-LkN56EeyDmYuSG5cTKw _84-Lkd56EeyDmYuSG5cTKw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_840akN56EeyDmYuSG5cTKw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_841BoN56EeyDmYuSG5cTKw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_84-LkN56EeyDmYuSG5cTKw" name="manager" type="_y1dpANnJEeytsKDKoDw7Dg" association="_84zzgN56EeyDmYuSG5cTKw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_84-Lkd56EeyDmYuSG5cTKw" name="view applicants" type="_B9DK0NnYEeytsKDKoDw7Dg" association="_84zzgN56EeyDmYuSG5cTKw"/>
   </packagedElement>
 </uml:Model>
