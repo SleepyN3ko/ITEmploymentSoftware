@@ -14,7 +14,7 @@ public class MainFrame extends JFrame{
 	public MainFrame()
 	{
 		this.setTitle("Login");
-		this.setSize(995, 601);
+		this.setSize(686, 546);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.card = new CardLayout();
