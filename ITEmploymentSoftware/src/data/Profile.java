@@ -1,21 +1,19 @@
 package data;
 
 public class Profile {
-
 	private String workExperience;
-
 	private String gender;
-
 	private String genericSkill;
-
 	private String technicalSkill;
-
 	private String name;
-
 	private String achievement;
-
 	private String qualification;
+	private int phoneNumber;
 
+	public Profile (){
+		
+	}
+	
 	public String getWorkExperience() {
 	 	 return workExperience; 
 	}
@@ -72,6 +70,17 @@ public class Profile {
 		 this.qualification = qualification; 
 	}
 
+	public int getphoneNumber(){
+		return phoneNumber;
+	}
+	
+	public void setphoneNumber(int phoneNumber) { 
+		 this.phoneNumber = phoneNumber; 
+	} 
+	
+
+	
+	
 	public void updateProfile() { 
 		// TODO Auto-generated method
 	 }

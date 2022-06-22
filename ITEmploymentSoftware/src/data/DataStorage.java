@@ -1,7 +1,6 @@
-package controller;
+package data;
 
-
-public class Controller {
+public class DataStorage {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
