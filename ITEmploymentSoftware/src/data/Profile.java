@@ -1,17 +1,26 @@
 package data;
 
 public class Profile {
+	
+	private String name;
+	private int phoneNumber;
+	private boolean gender;
 	private String workExperience;
-	private String gender;
 	private String genericSkill;
 	private String technicalSkill;
-	private String name;
 	private String achievement;
 	private String qualification;
-	private int phoneNumber;
+	
 
-	public Profile (){
-		
+	public Profile(String n, int ph, boolean g,String we, String gskill, String tskill, String a, String q){
+		this.name = n;
+		this.phoneNumber = ph;
+		this.gender = g;
+		this.workExperience = we;
+		this.genericSkill = gskill;
+		this.technicalSkill = tskill;
+		this.achievement = a;
+		this.qualification = q;
 	}
 	
 	public String getWorkExperience() {
@@ -22,11 +31,11 @@ public class Profile {
 		 this.workExperience = workExperience; 
 	}
 
-	public String getGender() {
+	public boolean getGender() {
 	 	 return gender; 
 	}
 
-	public void setGender(String gender) { 
+	public void setGender(boolean gender) { 
 		 this.gender = gender; 
 	}
 
