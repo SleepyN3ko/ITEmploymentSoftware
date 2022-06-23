@@ -13,6 +13,10 @@ public class Manager {
 	private String password;
 
 	private String username;
+	public Manager(String name, String password){
+		this.username = name;
+		this.password = password;
+	}
 
 	public List<ReceivedJobOffer> receivedjoboffer;
 

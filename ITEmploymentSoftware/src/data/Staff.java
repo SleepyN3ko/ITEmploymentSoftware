@@ -10,7 +10,11 @@ public class Staff {
 	public List<Applicant> applicant;
 
 	private String password;
-
+	public Staff(String name, String password){
+		this.username = name;
+		this.password = password;
+	}
+	
 	public String getUsername() {
 	 	 return username; 
 	}
