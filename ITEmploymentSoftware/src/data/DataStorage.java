@@ -20,20 +20,33 @@ public class DataStorage {
 			//read from staffAccounts.csv file storage
 			File file = new File("staffAccounts.csv");
 			Scanner sc = new Scanner(file);
+			int staffDataFlag = 0;
 			while (sc.hasNext()){
 				String[] currentStaffData = sc.next().split(",");
 				Staff currentStaff = new Staff(currentStaffData[0],currentStaffData[1]);
 				this.staffVector.add(currentStaff);
+				if (staffDataFlag == 0){
+					System.out.println("Staffs");
+					staffDataFlag = 1;
+				}
+				System.out.println("Username: " + currentStaffData[0] + "   Password: " + currentStaffData[1]);	
 			}
 			sc.close();
 			//read from managerAccounts.csv file storage
 			file = new File("managerAccounts.csv");
 			sc = new Scanner(file);
+			int managerDataFlag = 0;
 			while (sc.hasNext()){
 				String[] currentManagerData = sc.next().split(",");
 				Manager currentManager = new Manager(currentManagerData[0],currentManagerData[1]);
-				managerVector.add(currentManager);
+				this.managerVector.add(currentManager);
+				if (managerDataFlag == 0){
+					System.out.println("Manager");
+					managerDataFlag = 1;
+				}
+				System.out.println("Username: " + currentManagerData[0] + "   Password: " + currentManagerData[1]);	
 			}
+			
 			sc.close();
 			//read from profileAccounts file storage
 			//TODO Implement the reading of file after format is decided

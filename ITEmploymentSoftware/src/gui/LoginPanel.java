@@ -8,7 +8,11 @@ import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -91,6 +95,13 @@ public class LoginPanel extends JPanel{
 				main.showRegisterPanel();
 			}
 		});
+		registerButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_registerButton = new GridBagConstraints();
+		gbc_registerButton.gridwidth = 2;
+		gbc_registerButton.insets = new Insets(0, 0, 5, 5);
+		gbc_registerButton.gridx = 2;
+		gbc_registerButton.gridy = 5;
+		add(registerButton, gbc_registerButton);
 		
 		lblPosition = new JLabel("Position:");
 		lblPosition.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -100,6 +111,7 @@ public class LoginPanel extends JPanel{
 		gbc_lblPosition.gridy = 3;
 		add(lblPosition, gbc_lblPosition);
 		
+		ButtonGroup btnRoleGroup = new ButtonGroup();
 		rdbtnManager = new JRadioButton("Manager");
 		rdbtnManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_rdbtnManager = new GridBagConstraints();
@@ -107,16 +119,57 @@ public class LoginPanel extends JPanel{
 		gbc_rdbtnManager.gridx = 2;
 		gbc_rdbtnManager.gridy = 3;
 		add(rdbtnManager, gbc_rdbtnManager);
+		btnRoleGroup.add(rdbtnManager);
+		this.rdbtnManager.addActionListener(new RadioButtonListener());
 		
-		rdbtnStaff = new JRadioButton("Staff");
+		rdbtnStaff = new JRadioButton("HR Staff");
 		rdbtnStaff.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_rdbtnStaff = new GridBagConstraints();
 		gbc_rdbtnStaff.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnStaff.gridx = 3;
 		gbc_rdbtnStaff.gridy = 3;
 		add(rdbtnStaff, gbc_rdbtnStaff);
+		btnRoleGroup.add(rdbtnStaff);
+		this.rdbtnStaff.addActionListener(new RadioButtonListener());
+		
 		
 		this.loginButton = new JButton("Login");
+		loginButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String username = usernameField.getText();
+				String password = passwordField.getText();
+				System.out.println(RoleButton);
+				if (RoleButton == "")
+				{
+					JOptionPane.showMessageDialog(null, "Please select a role", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				else if (RoleButton == "Manager")
+				{
+					String errorMsg = main.getController().verifyManager(username, password,1);
+					if (errorMsg == ""){
+						main.showRegisterPanel();
+					}
+					else {
+						JOptionPane.showMessageDialog(null, errorMsg, "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				else if (RoleButton == "Staff")
+				{
+					String errorMsg = main.getController().verifyStaff(username, password,1);
+					if (errorMsg == ""){
+						main.showRegisterPanel();
+					}
+					else {
+						JOptionPane.showMessageDialog(null, errorMsg, "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			}
+		});
+				
+				
+				
+				
+				
 		loginButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_loginButton = new GridBagConstraints();
 		gbc_loginButton.gridwidth = 2;
@@ -124,12 +177,24 @@ public class LoginPanel extends JPanel{
 		gbc_loginButton.gridx = 2;
 		gbc_loginButton.gridy = 4;
 		add(loginButton, gbc_loginButton);
-		registerButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_registerButton = new GridBagConstraints();
-		gbc_registerButton.gridwidth = 2;
-		gbc_registerButton.insets = new Insets(0, 0, 5, 5);
-		gbc_registerButton.gridx = 2;
-		gbc_registerButton.gridy = 5;
-		add(registerButton, gbc_registerButton);
+		
+
+	}
+			
+	public String RoleButton = "";	
+	
+	private class RadioButtonListener implements ActionListener{
+		public void actionPerformed(ActionEvent f)
+		{
+			
+			if(f.getSource() ==  rdbtnManager)
+			{
+				RoleButton = "Manager";
+			}
+			else if (f.getSource() ==  rdbtnStaff)
+			{
+				RoleButton = "Staff";
+			}
+		}			
 	}
 }

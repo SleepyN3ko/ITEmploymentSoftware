@@ -108,7 +108,7 @@ public class RegisterPanel extends JPanel {
 				String username = usernameField.getText();
 				String password = passwordField.getText();
 				if (roleCombo.getSelectedIndex()==0){
-					String errorMsg = main.getController().verifyManager(username, password);
+					String errorMsg = main.getController().verifyManager(username, password,0);
 					if (errorMsg == ""){
 						main.getController().registerManager(username, password);
 						main.showLoginPanel();
@@ -118,7 +118,7 @@ public class RegisterPanel extends JPanel {
 					}
 				}
 				else if (roleCombo.getSelectedIndex()==1){
-					String errorMsg = main.getController().verifyStaff(username, password);
+					String errorMsg = main.getController().verifyStaff(username, password,0);
 					if (errorMsg == ""){
 						main.getController().registerStaff(username, password);
 						main.showLoginPanel();
