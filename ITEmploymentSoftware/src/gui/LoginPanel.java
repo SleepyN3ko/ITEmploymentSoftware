@@ -138,7 +138,6 @@ public class LoginPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				String username = usernameField.getText();
 				String password = passwordField.getText();
-				System.out.println(RoleButton);
 				if (RoleButton == "")
 				{
 					JOptionPane.showMessageDialog(null, "Please select a role", "Error", JOptionPane.ERROR_MESSAGE);
