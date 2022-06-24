@@ -14,6 +14,7 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import javax.swing.JRadioButton;
 
 public class LoginPanel extends JPanel{
 	private MainFrame main;
@@ -24,14 +25,17 @@ public class LoginPanel extends JPanel{
 	private JLabel panelTitle;
 	private JLabel usernameLabel;
 	private JLabel passwordLabel;
+	private JLabel lblPosition;
+	private JRadioButton rdbtnManager;
+	private JRadioButton rdbtnStaff;
 	
 	public LoginPanel(MainFrame main) {
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20,20};
-		gridBagLayout.rowHeights = new int[]{20, 20, 20, 20,20,20};
+		gridBagLayout.rowHeights = new int[]{20, 20, 20, 20,20, 0,20};
 		gridBagLayout.columnWeights = new double[]{1.0,1,1.0,1,1,1};
-		gridBagLayout.rowWeights = new double[]{1,1,1,1,1,1};
+		gridBagLayout.rowWeights = new double[]{1,1,1,1,1, 0.0,1};
 		setLayout(gridBagLayout);
 		
 		this.panelTitle = new JLabel("Login Page");
@@ -81,27 +85,51 @@ public class LoginPanel extends JPanel{
 		add(passwordField, gbc_passwordField);
 		passwordField.setColumns(10);
 		
-		this.loginButton = new JButton("Login");
-		loginButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_loginButton = new GridBagConstraints();
-		gbc_loginButton.gridwidth = 2;
-		gbc_loginButton.insets = new Insets(0, 0, 5, 5);
-		gbc_loginButton.gridx = 2;
-		gbc_loginButton.gridy = 3;
-		add(loginButton, gbc_loginButton);
-		
 		this.registerButton = new JButton("Register");
 		registerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.showRegisterPanel();
 			}
 		});
+		
+		lblPosition = new JLabel("Position:");
+		lblPosition.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_lblPosition = new GridBagConstraints();
+		gbc_lblPosition.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPosition.gridx = 1;
+		gbc_lblPosition.gridy = 3;
+		add(lblPosition, gbc_lblPosition);
+		
+		rdbtnManager = new JRadioButton("Manager");
+		rdbtnManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_rdbtnManager = new GridBagConstraints();
+		gbc_rdbtnManager.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnManager.gridx = 2;
+		gbc_rdbtnManager.gridy = 3;
+		add(rdbtnManager, gbc_rdbtnManager);
+		
+		rdbtnStaff = new JRadioButton("Staff");
+		rdbtnStaff.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_rdbtnStaff = new GridBagConstraints();
+		gbc_rdbtnStaff.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnStaff.gridx = 3;
+		gbc_rdbtnStaff.gridy = 3;
+		add(rdbtnStaff, gbc_rdbtnStaff);
+		
+		this.loginButton = new JButton("Login");
+		loginButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_loginButton = new GridBagConstraints();
+		gbc_loginButton.gridwidth = 2;
+		gbc_loginButton.insets = new Insets(0, 0, 5, 5);
+		gbc_loginButton.gridx = 2;
+		gbc_loginButton.gridy = 4;
+		add(loginButton, gbc_loginButton);
 		registerButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_registerButton = new GridBagConstraints();
 		gbc_registerButton.gridwidth = 2;
 		gbc_registerButton.insets = new Insets(0, 0, 5, 5);
 		gbc_registerButton.gridx = 2;
-		gbc_registerButton.gridy = 4;
+		gbc_registerButton.gridy = 5;
 		add(registerButton, gbc_registerButton);
 	}
 }

@@ -1,4 +1,5 @@
 package data;
+
 import java.util.Vector;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,6 +10,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.Scanner;
+
 public class DataStorage {
 	private Vector<Staff> staffVector = new Vector<Staff>();
 	private Vector<Manager> managerVector = new Vector<Manager>();

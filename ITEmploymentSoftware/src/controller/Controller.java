@@ -1,4 +1,5 @@
 package controller;
+
 import java.util.Vector;
 
 import data.DataStorage;
@@ -8,6 +9,7 @@ import data.Staff;
 
 public class Controller {
 	private DataStorage ds = new DataStorage();
+	
 	public String verifyStaff(String username, String password){
 		String errorMsg = "";
 		if (username.isEmpty() && password.isEmpty()){
