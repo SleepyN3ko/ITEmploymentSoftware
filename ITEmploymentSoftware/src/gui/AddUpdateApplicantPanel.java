@@ -121,7 +121,8 @@ public class AddUpdateApplicantPanel extends JPanel{
 		gbc_technicalSkillLabel.gridy = 2;
 		add(technicalSkillLabel, gbc_technicalSkillLabel);
 		
-		JComboBox technicalSkillCombo = new JComboBox();
+		String[] technicalSkills = {"Programming","Industrial"};
+		JComboBox technicalSkillCombo = new JComboBox(technicalSkills);
 		technicalSkillCombo.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_technicalSkillCombo = new GridBagConstraints();
 		gbc_technicalSkillCombo.insets = new Insets(0, 0, 5, 5);
@@ -139,7 +140,8 @@ public class AddUpdateApplicantPanel extends JPanel{
 		gbc_genderLabel.gridy = 3;
 		add(genderLabel, gbc_genderLabel);
 		
-		JComboBox genderCombo = new JComboBox();
+		String[] genders = {"Male","Female"};
+		JComboBox genderCombo = new JComboBox(genders);
 		genderCombo.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_genderCombo = new GridBagConstraints();
 		gbc_genderCombo.insets = new Insets(0, 0, 5, 5);
@@ -236,6 +238,8 @@ public class AddUpdateApplicantPanel extends JPanel{
 			genericSkillField.setText(currentApplicant.getGenericSkill());
 			qualificationsField.setText(currentApplicant.getQualification());
 			achievementsField.setText(currentApplicant.getAchievement());
+			genderCombo.setSelectedItem(currentApplicant.getGender());
+			technicalSkillCombo.setSelectedItem(currentApplicant.getTechnicalSkill());
 			this.panelTitle.setText("Update Applicant");
 			try {
 				ImageIcon profilePicture = this.main.getController().getImage(currentApplicant.getImage());
