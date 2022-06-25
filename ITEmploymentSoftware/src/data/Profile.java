@@ -4,7 +4,7 @@ public class Profile {
 	
 	private String name;
 	private int phoneNumber;
-	private boolean gender;
+	private String gender;
 	private String workExperience;
 	private String genericSkill;
 	private String technicalSkill;
@@ -12,7 +12,7 @@ public class Profile {
 	private String qualification;
 	
 
-	public Profile(String n, int ph, boolean g,String we, String gskill, String tskill, String a, String q){
+	public Profile(String n, int ph, String g,String we, String gskill, String tskill, String a, String q){
 		this.name = n;
 		this.phoneNumber = ph;
 		this.gender = g;
@@ -31,11 +31,11 @@ public class Profile {
 		 this.workExperience = workExperience; 
 	}
 
-	public boolean getGender() {
+	public String getGender() {
 	 	 return gender; 
 	}
 
-	public void setGender(boolean gender) { 
+	public void setGender(String gender) { 
 		 this.gender = gender; 
 	}
 
