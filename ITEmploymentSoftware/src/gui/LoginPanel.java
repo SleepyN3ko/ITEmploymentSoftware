@@ -156,7 +156,7 @@ public class LoginPanel extends JPanel{
 				{
 					String errorMsg = main.getController().verifyStaff(username, password,1);
 					if (errorMsg == ""){
-						main.showRegisterPanel();
+						main.showStaffPanel();
 					}
 					else {
 						JOptionPane.showMessageDialog(null, errorMsg, "Error", JOptionPane.ERROR_MESSAGE);
@@ -180,7 +180,7 @@ public class LoginPanel extends JPanel{
 
 	}
 			
-	public String RoleButton = "";	
+	private String RoleButton = "";	
 	
 	private class RadioButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent f)

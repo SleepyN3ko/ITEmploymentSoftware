@@ -1,10 +1,15 @@
 package controller;
 
+
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.List;
 import java.util.Vector;
 
-import data.DataStorage;
-import data.Manager;
-import data.Staff;
+import javax.swing.ImageIcon;
+
+import data.*;
 
 
 public class Controller {
@@ -119,6 +124,30 @@ public class Controller {
 			}
 		}
 		return failed;
+	}
+	public Object[][] getApplicants(){
+		//{p.getApplicantID(),p.getName(),p.getphoneNumber(),p.getGender(),p.getWorkExperience(),p.getGenericSkill(),p.getTechnicalSkill(),p.getAchievement(),p.getQualification(),p.getShortlistStatus(),p.getReceivedJobOffer()})
+		List<Applicant> applicantList= this.ds.getApplicants();
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getphoneNumber(),p.getGender(),p.getWorkExperience(),p.getGenericSkill(),p.getTechnicalSkill(),p.getAchievement(),p.getQualification(),p.getShortlistStatus(),p.getReceivedJobOffer()}).toArray(Object[][]::new);
+		return data;	
+	}
+	public boolean ApplicantExists(String ApplicantID){
+		return this.ds.ApplicantExists(ApplicantID);
+	}
+	public Applicant getApplicant(String ApplicantID){
+		return this.ds.getApplicants(ApplicantID);
+	}
+	public void addApplicant(Applicant currentApplicant){
+		this.ds.addApplicant(currentApplicant);
+	}
+	public BufferedImage getImage(String imagePath) throws IOException{
+		return this.ds.getImageFromStorage(imagePath);
+	}
+	public void saveImage(Image image, String imagePath) {
+		this.ds.saveImage(image,imagePath);
+	}
+	public void updateApplicant(Applicant currentApplicant) {
+		this.ds.updateApplicant(currentApplicant);
 	}
 }
 

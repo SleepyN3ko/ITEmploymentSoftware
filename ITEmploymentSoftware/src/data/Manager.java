@@ -8,7 +8,6 @@ public class Manager {
 
 	public List<Applicant> applicant;
 
-	public List<Shortlisted> shortlisted;
 
 	private String password;
 
@@ -18,7 +17,6 @@ public class Manager {
 		this.password = password;
 	}
 
-	public List<ReceivedJobOffer> receivedjoboffer;
 
 	public List<Applicant> getApplicant() {
 	 	 return applicant; 
@@ -28,13 +26,6 @@ public class Manager {
 		 this.applicant = applicant; 
 	}
 
-	public List<Shortlisted> getShortlisted() {
-	 	 return shortlisted; 
-	}
-
-	public void setShortlisted(List<Shortlisted> shortlisted) { 
-		 this.shortlisted = shortlisted; 
-	}
 
 	public String getPassword() {
 	 	 return password; 
@@ -52,14 +43,7 @@ public class Manager {
 		 this.username = username; 
 	}
 
-	public List<ReceivedJobOffer> getReceivedjoboffer() {
-	 	 return receivedjoboffer; 
-	}
-
-	public void setReceivedjoboffer(List<ReceivedJobOffer> receivedjoboffer) { 
-		 this.receivedjoboffer = receivedjoboffer; 
-	}
-
+	
 	public void login() { 
 		// TODO Auto-generated method
 	 } 

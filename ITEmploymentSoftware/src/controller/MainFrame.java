@@ -1,5 +1,5 @@
 package controller;
-
+import gui.*;
 import java.awt.CardLayout;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,7 +19,7 @@ public class MainFrame extends JFrame{
 	public MainFrame()
 	{
 		this.setTitle("Login");
-		this.setSize(800,800);
+		this.setSize(1600,800);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.card = new CardLayout();
@@ -42,8 +42,18 @@ public class MainFrame extends JFrame{
 		getContentPane().add(panel, "LoginPanel");
 		this.card.show(this.getContentPane(), "LoginPanel");
 	}
-	
-	
+	public void showStaffPanel()
+	{
+		StaffPanel panel = new StaffPanel(this);
+		getContentPane().add(panel,"StaffPanel");
+		this.card.show(this.getContentPane(), "StaffPanel");
+	}
+	public void showAddUpdateApplicantPanel(String ApplicantID){
+		AddUpdateApplicantPanel panel = new AddUpdateApplicantPanel(this,ApplicantID);
+		getContentPane().add(panel,"AddUpdateApplicantPanel");
+		this.card.show(this.getContentPane(), "AddUpdateApplicantPanel");
+		
+	}
 	public static void main(String[] args) {
 		MainFrame main = new MainFrame();
 	}
