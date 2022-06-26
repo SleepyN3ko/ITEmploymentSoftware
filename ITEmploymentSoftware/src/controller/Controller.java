@@ -1,6 +1,9 @@
 package controller;
 
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
 
@@ -134,8 +137,17 @@ public class Controller {
 	public Applicant getApplicant(String ApplicantID){
 		return this.ds.getApplicants(ApplicantID);
 	}
-	public ImageIcon getImage(String imagePath){
+	public void addApplicant(Applicant currentApplicant){
+		this.ds.addApplicant(currentApplicant);
+	}
+	public BufferedImage getImage(String imagePath) throws IOException{
 		return this.ds.getImageFromStorage(imagePath);
+	}
+	public void saveImage(Image image, String imagePath) {
+		this.ds.saveImage(image,imagePath);
+	}
+	public void updateApplicant(Applicant currentApplicant) {
+		this.ds.updateApplicant(currentApplicant);
 	}
 }
 

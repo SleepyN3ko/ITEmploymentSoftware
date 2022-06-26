@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.GridBagLayout;
+import java.awt.Image;
 
 import javax.swing.JPanel;
 
@@ -10,13 +11,21 @@ import data.Applicant;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Component;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
+import java.awt.Button;
 
 public class AddUpdateApplicantPanel extends JPanel{
 	private MainFrame main;
@@ -28,6 +37,9 @@ public class AddUpdateApplicantPanel extends JPanel{
 	private JTextField genericSkillField;
 	private JTextField qualificationsField;
 	private JTextField achievementsField;
+	private Image newImage;
+	private boolean imageUpdated;
+	protected JFileChooser fileChooser;
 	public AddUpdateApplicantPanel(MainFrame main,String ApplicantID){
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -40,7 +52,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 		panelTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_panelTitle = new GridBagConstraints();
 		gbc_panelTitle.gridwidth = 6;
-		gbc_panelTitle.insets = new Insets(0, 0, 5, 0);
+		gbc_panelTitle.insets = new Insets(0, 0, 5, 5);
 		gbc_panelTitle.gridx = 0;
 		gbc_panelTitle.gridy = 0;
 		add(panelTitle, gbc_panelTitle);
@@ -86,6 +98,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 		JLabel imageLabel = new JLabel("");
 		imageLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_imageLabel = new GridBagConstraints();
+		gbc_imageLabel.fill = GridBagConstraints.VERTICAL;
 		gbc_imageLabel.gridheight = 3;
 		gbc_imageLabel.gridwidth = 4;
 		gbc_imageLabel.insets = new Insets(0, 0, 5, 0);
@@ -207,10 +220,30 @@ public class AddUpdateApplicantPanel extends JPanel{
 		add(achievementsField, gbc_achievementsField);
 		achievementsField.setColumns(10);
 		
+		JFileChooser selectImageFile = new JFileChooser();
+        selectImageFile.setAcceptAllFileFilterUsed(false);
+		selectImageFile.addChoosableFileFilter(new FileNameExtensionFilter("Image","png","jpg","jpeg","bmp"));
 		JButton selectImageButton = new JButton("Select Image");
 		selectImageButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		selectImageButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int returnVal = selectImageFile.showOpenDialog(null);
+		        if (returnVal == JFileChooser.APPROVE_OPTION) {
+		            File file = selectImageFile.getSelectedFile();
+		            try {
+						newImage = ImageIO.read(file);
+						Image resizedPicture = newImage.getScaledInstance(200,200, Image.SCALE_SMOOTH);
+						imageLabel.setIcon(new ImageIcon(resizedPicture));
+						imageUpdated = true;
+					} catch (IOException e1) {
+						System.out.println("problem accessing file"+file.getAbsolutePath());
+	              		// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		        } 
+		        else {
+		            System.out.println("File access cancelled by user.");
+		        }
 			}
 		});
 		GridBagConstraints gbc_selectImageButton = new GridBagConstraints();
@@ -221,8 +254,52 @@ public class AddUpdateApplicantPanel extends JPanel{
 		add(selectImageButton, gbc_selectImageButton);
 		
 		JButton addUpdateButton = new JButton("");
+		addUpdateButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				currentApplicant.setName(nameField.getText());
+				currentApplicant.setphoneNumber(phoneNumberField.getText());
+				currentApplicant.setGender((String) genderCombo.getSelectedItem());
+				currentApplicant.setWorkExperience(workExperienceField.getText());
+				currentApplicant.setGenericSkill(genericSkillField.getText());
+				currentApplicant.setTechnicalSkill((String) technicalSkillCombo.getSelectedItem());
+				currentApplicant.setQualification(qualificationsField.getText());
+				currentApplicant.setAchievement(achievementsField.getText());
+				if (imageUpdated){
+					currentApplicant.setImage("./applicantImages/"+currentApplicant.getApplicantID()+".png");
+					main.getController().saveImage(newImage,"./applicantImages/"+currentApplicant.getApplicantID()+".png");
+				}
+				if (ApplicantID.equals("new")){
+					main.getController().addApplicant(currentApplicant);
+				}
+				else {
+					main.getController().updateApplicant(currentApplicant);
+				}
+				main.showStaffPanel();
+			}
+		});
 		addUpdateButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
+		GridBagConstraints gbc_addUpdateButton = new GridBagConstraints();
+		gbc_addUpdateButton.gridwidth = 3;
+		gbc_addUpdateButton.insets = new Insets(0, 0, 5, 5);
+		gbc_addUpdateButton.gridx = 1;
+		gbc_addUpdateButton.gridy = 5;
+		add(addUpdateButton, gbc_addUpdateButton);
+		
+		JButton backButton = new JButton("Back");
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showStaffPanel();
+			}
+		});
+		backButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_backButton = new GridBagConstraints();
+		gbc_backButton.gridwidth = 4;
+		gbc_backButton.insets = new Insets(0, 0, 5, 5);
+		gbc_backButton.gridx = 4;
+		gbc_backButton.gridy = 5;
+		add(backButton, gbc_backButton);
+		//read from file to update existing applicant and some different settings for new applicant
 		if (ApplicantID.equals("new")){
 			//new user
 			currentApplicant = new Applicant();
@@ -242,19 +319,25 @@ public class AddUpdateApplicantPanel extends JPanel{
 			technicalSkillCombo.setSelectedItem(currentApplicant.getTechnicalSkill());
 			this.panelTitle.setText("Update Applicant");
 			try {
-				ImageIcon profilePicture = this.main.getController().getImage(currentApplicant.getImage());
-				imageLabel.setIcon(profilePicture);
+				String imagePath = currentApplicant.getImage();
+				BufferedImage profilePicture = this.main.getController().getImage(imagePath);
+				//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
+				Image resizedPicture = profilePicture.getScaledInstance(200,200, Image.SCALE_SMOOTH);
+				imageLabel.setIcon(new ImageIcon(resizedPicture));
 			}
 			catch (Exception e){
-				System.out.println(e.getStackTrace());
+				try {
+					BufferedImage profilePicture;
+					profilePicture = this.main.getController().getImage("noImage.png");
+					//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
+					Image resizedPicture = profilePicture.getScaledInstance(200,200, Image.SCALE_SMOOTH);
+					imageLabel.setIcon(new ImageIcon(resizedPicture));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		}
-		GridBagConstraints gbc_addUpdateButton = new GridBagConstraints();
-		gbc_addUpdateButton.gridwidth = 4;
-		gbc_addUpdateButton.insets = new Insets(0, 0, 0, 5);
-		gbc_addUpdateButton.gridx = 1;
-		gbc_addUpdateButton.gridy = 5;
-		add(addUpdateButton, gbc_addUpdateButton);
 	}
 
 }

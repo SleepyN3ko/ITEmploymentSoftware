@@ -63,21 +63,21 @@ public class StaffPanel extends JPanel{
 		add(scrollPane, gbc_scrollPane);
 		
 		
-		table = new JTable();
+		this.table = new JTable();
 		
 		Object[][] rows = this.main.getController().getApplicants();
 		String[] columns = {
 				"ApplicantID", "Name", "Phone Number", "Gender", "Work Experience", "Generic Skill", "Technical Skill", "Achievement","Qualification","Short Listed","Job Offer"
 			};
-		table.setModel(new DefaultTableModel(rows,columns) {
+		this.table.setModel(new DefaultTableModel(rows,columns) {
 			@Override
 			public boolean isCellEditable(int row,int column){
 				return false;
 			}
 		});
-		table.setFillsViewportHeight(true);
-		table.setCellSelectionEnabled(true);
-		scrollPane.setViewportView(table);
+		this.table.setFillsViewportHeight(true);
+		this.table.setCellSelectionEnabled(true);
+		scrollPane.setViewportView(this.table);
 		
 		this.addApplicantButton = new JButton("Add New Applicant");
 		addApplicantButton.addActionListener(new ActionListener() {
@@ -93,6 +93,14 @@ public class StaffPanel extends JPanel{
 		add(addApplicantButton, gbc_addApplicantButton);
 		
 		this.updateApplicantButton = new JButton("Update Existing Applicant");
+		updateApplicantButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(table.getSelectedRow()==-1)){
+					String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
+					main.showAddUpdateApplicantPanel(selectedApplicantID);
+				}
+			}
+		});
 		updateApplicantButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_updateApplicantButton = new GridBagConstraints();
 		gbc_updateApplicantButton.insets = new Insets(0, 0, 0, 5);
@@ -103,6 +111,13 @@ public class StaffPanel extends JPanel{
 		this.selectApplicantButton = new JButton("Select Applicant For Interview");
 		selectApplicantButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (!(table.getSelectedRow()==-1)){
+					String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
+					Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);
+					selectedApplicant.setShortlistStatus(!selectedApplicant.getShortlistStatus());
+					main.getController().updateApplicant(selectedApplicant);
+					main.showStaffPanel();
+				}
 			}
 		});
 		selectApplicantButton.setFont(new Font("Tahoma", Font.PLAIN, 30));

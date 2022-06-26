@@ -2,8 +2,11 @@ package data;
 
 import java.util.Vector;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -100,12 +103,37 @@ public class DataStorage {
 			e.printStackTrace();
 		}
 	}
+	public void addApplicant(Applicant newApplicant){
+		this.applicantVector.add(newApplicant);
+		try {
+			BufferedWriter fw = new BufferedWriter(new FileWriter("applicantProfiles.csv",true));
+			/*String line = "";
+			line+=newApplicant.getApplicantID()+",";
+			line+=newApplicant.getName()+",";
+			line+=newApplicant.getphoneNumber()+",";
+			line+=newApplicant.getGender()+",";
+			line+=newApplicant.getWorkExperience()+",";
+			line+=newApplicant.getGenericSkill()+",";
+			line+=newApplicant.getTechnicalSkill()+",";
+			line+=newApplicant.getAchievement()+",";
+			line+=newApplicant.getQualification()+",";
+			line+=Boolean.toString(newApplicant.getShortlistStatus())+",";
+			line+=Boolean.toString(newApplicant.getReceivedJobOffer());*/
+			String line = newApplicant.applicantAsCSV();
+			fw.append(line);
+			fw.newLine();
+			fw.close();
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+	}
 	public Vector<Applicant> getApplicants() {
 		return this.applicantVector;
 	}
-	public ImageIcon getImageFromStorage(String imagePath) {
-		ImageIcon profilePicture = new ImageIcon(imagePath);
-		return profilePicture;
+	public BufferedImage getImageFromStorage(String imagePath) throws IOException {
+		File imageFile = new File(imagePath);
+		BufferedImage img = ImageIO.read(imageFile);
+		return img;
 	}
 	
 	public Applicant getApplicants(String applicantID) {
@@ -124,5 +152,33 @@ public class DataStorage {
 		}
 		return false;
 	}
+	public void saveImage(Image image, String imagePath) {
+		try {
+		    // retrieve image
+		    BufferedImage bi = (BufferedImage) image;
+		    File outputfile = new File(imagePath);
+		    ImageIO.write(bi, "png", outputfile);
+		} catch (IOException e) {
+		}
+	}
+	public void updateApplicant(Applicant currentApplicant) {
+		for (int index=0;index<applicantVector.size();index++){
+			if (applicantVector.get(index).getApplicantID().equals(currentApplicant.getApplicantID())){
+				applicantVector.set(index, currentApplicant);
+				break;
+			}
+		}
+		try {
+			BufferedWriter fw = new BufferedWriter(new FileWriter("applicantProfiles.csv",false));
+			for (int index=0;index<applicantVector.size();index++){
+				fw.append(applicantVector.get(index).applicantAsCSV());
+				fw.newLine();
+			}
+			fw.close();
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+	}
+	
 
 }

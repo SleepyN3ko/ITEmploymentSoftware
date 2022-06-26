@@ -38,7 +38,7 @@ public class Applicant {
 		this.qualification = dataFromCSV[8];
 		this.shortlisted = Boolean.parseBoolean(dataFromCSV[9]);
 		this.receivedJobOffer = Boolean.parseBoolean(dataFromCSV[10]);
-		//this.applicantImagePath = dataFromCSV[11];
+		this.applicantImagePath = dataFromCSV[11];
 	}
 	public String getApplicantID() {
 	 	 return applicantID; 
@@ -175,5 +175,22 @@ public class Applicant {
 	public void saveProfile(String n, int ph, String g,String we, String gskill, String tskill, String a, String q) { 
 		// TODO Auto-generated method
 	 }
+	public String applicantAsCSV(){
+
+		String line = "";
+		line+=this.getApplicantID()+",";
+		line+=this.getName()+",";
+		line+=this.getphoneNumber()+",";
+		line+=this.getGender()+",";
+		line+=this.getWorkExperience()+",";
+		line+=this.getGenericSkill()+",";
+		line+=this.getTechnicalSkill()+",";
+		line+=this.getAchievement()+",";
+		line+=this.getQualification()+",";
+		line+=Boolean.toString(this.getShortlistStatus())+",";
+		line+=Boolean.toString(this.getReceivedJobOffer())+",";
+		line+=this.getImage();
+		return line;
+	}
 
 }
