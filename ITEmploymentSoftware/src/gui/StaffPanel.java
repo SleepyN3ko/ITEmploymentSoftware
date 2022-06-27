@@ -13,8 +13,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
@@ -24,7 +27,7 @@ import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
+import customAdditionalClasses.ButtonColumn;
 public class StaffPanel extends JPanel{
 	private MainFrame main;
 	private JLabel welcomeLabel;
@@ -64,17 +67,32 @@ public class StaffPanel extends JPanel{
 		
 		
 		this.table = new JTable();
+		table.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		
 		Object[][] rows = this.main.getController().getApplicants();
 		String[] columns = {
-				"ApplicantID", "Name", "Phone Number", "Gender", "Work Experience", "Generic Skill", "Technical Skill", "Achievement","Qualification","Short Listed","Job Offer"
+				"ApplicantID", "Name","View Applicant"
 			};
 		this.table.setModel(new DefaultTableModel(rows,columns) {
 			@Override
 			public boolean isCellEditable(int row,int column){
+				if (column==2){
+					return true;
+				}
 				return false;
 			}
 		});
+		Action view = new AbstractAction()
+		{
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        int modelRow = Integer.valueOf(e.getActionCommand());
+		        String selectedApplicantID = rows[modelRow][0].toString();
+		        main.showAddUpdateApplicantPanel(selectedApplicantID);
+		    }
+		};
+		ButtonColumn viewColumn = new ButtonColumn(this.table,view,2);
+		viewColumn.setMnemonic(KeyEvent.VK_D);
 		this.table.setFillsViewportHeight(true);
 		this.table.setCellSelectionEnabled(true);
 		scrollPane.setViewportView(this.table);
