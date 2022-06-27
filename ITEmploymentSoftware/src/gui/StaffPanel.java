@@ -11,9 +11,13 @@ import javax.swing.JOptionPane;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Component;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Vector;
@@ -24,6 +28,10 @@ import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+
+
+
 
 public class StaffPanel extends JPanel{
 	private MainFrame main;
@@ -33,6 +41,9 @@ public class StaffPanel extends JPanel{
 	private JButton selectApplicantButton;
 	private JScrollPane scrollPane;
 	private JTable table;
+	JButton updateButton = new JButton();
+	private JButton btnBack;
+	
 	public StaffPanel(MainFrame main){
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -64,11 +75,15 @@ public class StaffPanel extends JPanel{
 		
 		
 		this.table = new JTable();
+		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		table.setRowHeight(table.getRowHeight()+30);
+		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		
 		Object[][] rows = this.main.getController().getApplicants();
 		String[] columns = {
-				"ApplicantID", "Name", "Phone Number", "Gender", "Work Experience", "Generic Skill", "Technical Skill", "Achievement","Qualification","Short Listed","Job Offer"
-			};
+				"ApplicantID", "Name","Short Listed","Job Offer"
+		};
+		
 		this.table.setModel(new DefaultTableModel(rows,columns) {
 			@Override
 			public boolean isCellEditable(int row,int column){
@@ -76,8 +91,10 @@ public class StaffPanel extends JPanel{
 			}
 		});
 		this.table.setFillsViewportHeight(true);
-		this.table.setCellSelectionEnabled(true);
 		scrollPane.setViewportView(this.table);
+
+
+		
 		
 		this.addApplicantButton = new JButton("Add New Applicant");
 		addApplicantButton.addActionListener(new ActionListener() {
@@ -126,5 +143,20 @@ public class StaffPanel extends JPanel{
 		gbc_selectApplicantButton.gridx = 3;
 		gbc_selectApplicantButton.gridy = 5;
 		add(selectApplicantButton, gbc_selectApplicantButton);
+		
+		btnBack = new JButton("Back");
+		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
+		gbc_btnBack.gridx = 4;
+		gbc_btnBack.gridy = 5;
+		add(btnBack, gbc_btnBack);
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showLoginPanel();
+			}
+		});
 	}
+	
+	
 }

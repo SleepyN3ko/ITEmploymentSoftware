@@ -146,7 +146,7 @@ public class LoginPanel extends JPanel{
 				{
 					String errorMsg = main.getController().verifyManager(username, password,1);
 					if (errorMsg == ""){
-						main.showRegisterPanel();
+						main.showManagerPanel();
 					}
 					else {
 						JOptionPane.showMessageDialog(null, errorMsg, "Error", JOptionPane.ERROR_MESSAGE);
