@@ -54,6 +54,12 @@ public class MainFrame extends JFrame{
 		getContentPane().add(panel,"ManagerPanel");
 		this.card.show(this.getContentPane(), "ManagerPanel");
 	}
+	public void showViewApplicantPanel(String ApplicantID)
+	{
+		ViewApplicantPanel panel = new ViewApplicantPanel(this,ApplicantID);
+		getContentPane().add(panel,"ViewApplicantPanel");
+		this.card.show(this.getContentPane(), "ViewApplicantPanel");
+	}
 	public void showAddUpdateApplicantPanel(String ApplicantID){
 		AddUpdateApplicantPanel panel = new AddUpdateApplicantPanel(this,ApplicantID);
 		getContentPane().add(panel,"AddUpdateApplicantPanel");

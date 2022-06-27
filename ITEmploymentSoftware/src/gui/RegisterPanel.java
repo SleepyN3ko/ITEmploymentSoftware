@@ -141,8 +141,7 @@ public class RegisterPanel extends JPanel {
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_backButton = new GridBagConstraints();
 		gbc_backButton.gridwidth = 2;
-		gbc_backButton.insets = new Insets(0, 0, 0, 5);
-		gbc_backButton.gridx = 2;
+		gbc_backButton.gridx = 4;
 		gbc_backButton.gridy = 5;
 		add(backButton, gbc_backButton);
 		backButton.addActionListener(new ActionListener() {

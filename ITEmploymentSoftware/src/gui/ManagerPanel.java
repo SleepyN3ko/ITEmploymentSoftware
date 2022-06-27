@@ -25,16 +25,16 @@ public class ManagerPanel extends JPanel{
 	public ManagerPanel(MainFrame main){
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20,20};
+		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20, 0,20,20};
 		gridBagLayout.rowHeights = new int[]{20, 20, 20, 20,20,20};
-		gridBagLayout.columnWeights = new double[]{1,1.0,1.0,1,1,1};
+		gridBagLayout.columnWeights = new double[]{1,1.0,1.0,1, 0.0,1,1};
 		gridBagLayout.rowWeights = new double[]{1,1.0,1,1,1,1};
 		setLayout(gridBagLayout);
 		
 		JLabel lblWelcome = new JLabel("Welcome Manager :D");
 		lblWelcome.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_lblWelcome = new GridBagConstraints();
-		gbc_lblWelcome.gridwidth = 4;
+		gbc_lblWelcome.gridwidth = 5;
 		gbc_lblWelcome.insets = new Insets(0, 0, 5, 5);
 		gbc_lblWelcome.gridx = 1;
 		gbc_lblWelcome.gridy = 0;
@@ -42,7 +42,7 @@ public class ManagerPanel extends JPanel{
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.gridwidth = 4;
+		gbc_scrollPane.gridwidth = 5;
 		gbc_scrollPane.gridheight = 4;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
@@ -115,11 +115,26 @@ public class ManagerPanel extends JPanel{
 		gbc_btnListJobOffer.gridy = 5;
 		add(btnListJobOffer, gbc_btnListJobOffer);
 		
+		JButton btnViewDetail = new JButton("View detail");
+		btnViewDetail.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_btnViewDetail = new GridBagConstraints();
+		gbc_btnViewDetail.insets = new Insets(0, 0, 0, 5);
+		gbc_btnViewDetail.gridx = 4;
+		gbc_btnViewDetail.gridy = 5;
+		add(btnViewDetail, gbc_btnViewDetail);
+		btnViewDetail.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(table.getSelectedRow()==-1)){
+					String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
+					main.showViewApplicantPanel(selectedApplicantID);
+				}
+			}
+		});
 		JButton btnBack = new JButton("Back");
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
 		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
-		gbc_btnBack.gridx = 4;
+		gbc_btnBack.gridx = 5;
 		gbc_btnBack.gridy = 5;
 		add(btnBack, gbc_btnBack);
 		btnBack.addActionListener(new ActionListener() {
