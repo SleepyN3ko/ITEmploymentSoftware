@@ -15,10 +15,14 @@ import java.awt.Component;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.DefaultCellEditor;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
@@ -29,9 +33,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
-
-
-
 
 public class StaffPanel extends JPanel{
 	private MainFrame main;
@@ -81,15 +82,28 @@ public class StaffPanel extends JPanel{
 		
 		Object[][] rows = this.main.getController().getApplicants();
 		String[] columns = {
-				"ApplicantID", "Name","Short Listed","Job Offer"
+				"ApplicantID", "Name","Short Listed","Job Offer","View"
 		};
 		
 		this.table.setModel(new DefaultTableModel(rows,columns) {
 			@Override
 			public boolean isCellEditable(int row,int column){
+				if (column==4){
+					return true;
+				}
 				return false;
 			}
 		});
+		Action view = new AbstractAction()
+		{
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        int modelRow = Integer.valueOf(e.getActionCommand());
+		        String selectedApplicantID = rows[modelRow][0].toString();
+		        main.showAddUpdateApplicantPanel(selectedApplicantID);
+		    }
+		};
+		ButtonColumn viewColumn = new ButtonColumn(this.table,view,4);
 		this.table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(this.table);
 
