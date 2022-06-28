@@ -126,7 +126,7 @@ public class ManagerPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				if (!(table.getSelectedRow()==-1)){
 					String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
-					main.showViewApplicantPanel(selectedApplicantID);
+					main.showViewApplicantPanel(selectedApplicantID,"manager");
 				}
 			}
 		});

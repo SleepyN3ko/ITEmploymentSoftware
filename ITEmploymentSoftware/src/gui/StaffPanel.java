@@ -76,19 +76,17 @@ public class StaffPanel extends JPanel{
 		
 		
 		this.table = new JTable();
-		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		table.setRowHeight(table.getRowHeight()+30);
-		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		
 		Object[][] rows = this.main.getController().getApplicants();
 		String[] columns = {
-				"ApplicantID", "Name","Short Listed","Job Offer","View"
+				"ApplicantID", "Name","Short Listed","Job Offer","View Applicant","Update Applicant"
 		};
 		
 		this.table.setModel(new DefaultTableModel(rows,columns) {
 			@Override
 			public boolean isCellEditable(int row,int column){
-				if (column==4){
+				if (column==4 || column==5){
 					return true;
 				}
 				return false;
@@ -100,10 +98,22 @@ public class StaffPanel extends JPanel{
 		    {
 		        int modelRow = Integer.valueOf(e.getActionCommand());
 		        String selectedApplicantID = rows[modelRow][0].toString();
+		        main.showViewApplicantPanel(selectedApplicantID,"staff");
+		    }
+		};
+		Action update = new AbstractAction()
+		{
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        int modelRow = Integer.valueOf(e.getActionCommand());
+		        String selectedApplicantID = rows[modelRow][0].toString();
 		        main.showAddUpdateApplicantPanel(selectedApplicantID);
 		    }
 		};
 		ButtonColumn viewColumn = new ButtonColumn(this.table,view,4);
+		ButtonColumn updateColumn = new ButtonColumn(this.table,update,5);
+		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
+		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		this.table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(this.table);
 
