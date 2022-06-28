@@ -26,8 +26,7 @@ public class MainFrame extends JFrame{
 		getContentPane().setLayout(this.card);
 		
 		this.cont = new Controller();
-		//this.showLoginPanel();
-		this.showStaffPanel();
+		this.showLoginPanel();
 		this.setVisible(true);
 	}
 	
@@ -48,6 +47,18 @@ public class MainFrame extends JFrame{
 		StaffPanel panel = new StaffPanel(this);
 		getContentPane().add(panel,"StaffPanel");
 		this.card.show(this.getContentPane(), "StaffPanel");
+	}
+	public void showManagerPanel()
+	{
+		ManagerPanel panel = new ManagerPanel(this);
+		getContentPane().add(panel,"ManagerPanel");
+		this.card.show(this.getContentPane(), "ManagerPanel");
+	}
+	public void showViewApplicantPanel(String ApplicantID)
+	{
+		ViewApplicantPanel panel = new ViewApplicantPanel(this,ApplicantID);
+		getContentPane().add(panel,"ViewApplicantPanel");
+		this.card.show(this.getContentPane(), "ViewApplicantPanel");
 	}
 	public void showAddUpdateApplicantPanel(String ApplicantID){
 		AddUpdateApplicantPanel panel = new AddUpdateApplicantPanel(this,ApplicantID);
