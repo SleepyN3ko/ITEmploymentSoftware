@@ -131,7 +131,7 @@ public class Controller {
 
 		List<Applicant> applicantList= this.ds.getApplicants();
 		//Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getphoneNumber(),p.getGender(),p.getWorkExperience(),p.getGenericSkill(),p.getTechnicalSkill(),p.getAchievement(),p.getQualification(),p.getShortlistStatus(),p.getReceivedJobOffer()}).toArray(Object[][]::new);
-		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),"View","Update"}).toArray(Object[][]::new);
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),"View","Update","Delete"}).toArray(Object[][]::new);
 
 		return data;	
 	}
@@ -155,7 +155,7 @@ public class Controller {
 				}
 			}
 		}
-		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),"View","Update"}).toArray(Object[][]::new);
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),"View","Update","Delete"}).toArray(Object[][]::new);
 
 		return data;	
 	}
@@ -172,10 +172,13 @@ public class Controller {
 		return this.ds.getImageFromStorage(imagePath);
 	}
 	public void saveImage(Image image, String imagePath) {
-		this.ds.saveImage(image,imagePath);
+		this.ds.saveImageDS(image,imagePath);
 	}
 	public void updateApplicant(Applicant currentApplicant) {
-		this.ds.updateApplicant(currentApplicant);
+		this.ds.updateApplicantDS(currentApplicant);
+	}
+	public void deleteApplicant(String selectedApplicantID) {
+		this.ds.deleteApplicantDS(selectedApplicantID);
 	}
 }
 

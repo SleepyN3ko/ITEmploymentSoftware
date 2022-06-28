@@ -152,7 +152,7 @@ public class DataStorage {
 		}
 		return false;
 	}
-	public void saveImage(Image image, String imagePath) {
+	public void saveImageDS(Image image, String imagePath) {
 		try {
 		    // retrieve image
 		    BufferedImage bi = (BufferedImage) image;
@@ -161,10 +161,28 @@ public class DataStorage {
 		} catch (IOException e) {
 		}
 	}
-	public void updateApplicant(Applicant currentApplicant) {
+	public void updateApplicantDS(Applicant currentApplicant) {
 		for (int index=0;index<applicantVector.size();index++){
 			if (applicantVector.get(index).getApplicantID().equals(currentApplicant.getApplicantID())){
 				applicantVector.set(index, currentApplicant);
+				break;
+			}
+		}
+		try {
+			BufferedWriter fw = new BufferedWriter(new FileWriter("applicantProfiles.csv",false));
+			for (int index=0;index<applicantVector.size();index++){
+				fw.append(applicantVector.get(index).applicantAsCSV());
+				fw.newLine();
+			}
+			fw.close();
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+	}
+	public void deleteApplicantDS(String selectedApplicantID) {
+		for (int index=0;index<applicantVector.size();index++){
+			if (applicantVector.get(index).getApplicantID().equals(selectedApplicantID)){
+				applicantVector.remove(index);
 				break;
 			}
 		}

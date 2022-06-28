@@ -126,13 +126,13 @@ public class StaffPanel extends JPanel{
 		
 		Object[][] rows = this.main.getController().getApplicants();
 		String[] columns = {
-				"ApplicantID", "Name","View Applicant","Update Applicant"
+				"ApplicantID", "Name","View Applicant","Update Applicant","Delete Applicant"
 		};
 		
 		this.table.setModel(new DefaultTableModel(rows,columns) {
 			@Override
 			public boolean isCellEditable(int row,int column){
-				if (column==2 || column==3){
+				if (column==2 || column==3 || column==4){
 					return true;
 				}
 				return false;
@@ -156,52 +156,23 @@ public class StaffPanel extends JPanel{
 		        main.showAddUpdateApplicantPanel(selectedApplicantID);
 		    }
 		};
+		Action delete = new AbstractAction()
+		{
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        int modelRow = Integer.valueOf(e.getActionCommand());
+		        String selectedApplicantID = rows[modelRow][0].toString();
+		        main.getController().deleteApplicant(selectedApplicantID);
+		        main.showStaffPanel();
+		    }
+		};
 		ButtonColumn viewColumn = new ButtonColumn(this.table,view,2);
 		ButtonColumn updateColumn = new ButtonColumn(this.table,update,3);
+		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,4);
 		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		this.table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(this.table);
-		/*
-		this.updateApplicantButton = new JButton("Update Existing Applicant");
-		updateApplicantButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!(table.getSelectedRow()==-1)){
-					String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
-					main.showAddUpdateApplicantPanel(selectedApplicantID);
-				}
-			}
-		});
-		updateApplicantButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_updateApplicantButton = new GridBagConstraints();
-		gbc_updateApplicantButton.insets = new Insets(0, 0, 0, 5);
-		gbc_updateApplicantButton.gridx = 2;
-		gbc_updateApplicantButton.gridy = 5;
-		add(updateApplicantButton, gbc_updateApplicantButton);
-		
-		this.selectApplicantButton = new JButton("Select Applicant For Interview");
-		selectApplicantButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!(table.getSelectedRow()==-1)){
-					String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
-					Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);
-					selectedApplicant.setShortlistStatus(!selectedApplicant.getShortlistStatus());
-					main.getController().updateApplicant(selectedApplicant);
-					main.showStaffPanel();
-				}
-			}
-		});
-		selectApplicantButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_selectApplicantButton = new GridBagConstraints();
-		gbc_selectApplicantButton.insets = new Insets(0, 0, 0, 5);
-		gbc_selectApplicantButton.gridx = 3;
-		gbc_selectApplicantButton.gridy = 5;
-		add(selectApplicantButton, gbc_selectApplicantButton);
-		*/
-		
-		
-				
-				
 				this.addApplicantButton = new JButton("Add New Applicant");
 				addApplicantButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -243,7 +214,7 @@ public class StaffPanel extends JPanel{
 			table.setModel(new DefaultTableModel(rows,columns) {
 				@Override
 				public boolean isCellEditable(int row,int column){
-					if (column==2 || column==3){
+					if (column==2 || column==3 || column==4){
 						return true;
 					}
 					return false;
@@ -268,8 +239,20 @@ public class StaffPanel extends JPanel{
 			        main.showAddUpdateApplicantPanel(selectedApplicantID);
 			    }
 			};
+			Action delete = new AbstractAction()
+			{
+			    public void actionPerformed(ActionEvent e)
+			    {
+			        System.out.println("Delete is clicked");
+			        int modelRow = Integer.valueOf(e.getActionCommand());
+			        String selectedApplicantID = rows[modelRow][0].toString();
+			        main.getController().deleteApplicant(selectedApplicantID);
+			        main.showStaffPanel();
+			    }
+			};
 			ButtonColumn viewColumn = new ButtonColumn(table,view,2);
 			ButtonColumn updateColumn = new ButtonColumn(table,update,3);
+			ButtonColumn deleteColumn = new ButtonColumn(table,delete,4);
 		}
 	}
 	
