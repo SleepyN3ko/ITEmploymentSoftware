@@ -16,6 +16,8 @@ import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JButton;
 
 public class ManagerPanel extends JPanel{
@@ -57,15 +59,28 @@ public class ManagerPanel extends JPanel{
 		
 		Object[][] rows = this.main.getController().getApplicants();
 		String[] columns = {
-				"ApplicantID", "Name","Short Listed","Job Offer"
+				"ApplicantID", "Name","Short Listed","Job Offer","View Applicant"
 		};
 		
 		this.table.setModel(new DefaultTableModel(rows,columns) {
 			@Override
 			public boolean isCellEditable(int row,int column){
+				if (column==4){
+					return true;
+				}
 				return false;
 			}
 		});
+		Action view = new AbstractAction()
+		{
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        int modelRow = Integer.valueOf(e.getActionCommand());
+		        String selectedApplicantID = rows[modelRow][0].toString();
+		        main.showViewApplicantPanel(selectedApplicantID,"manager");
+		    }
+		};
+		ButtonColumn viewColumn = new ButtonColumn(this.table,view,4);
 		this.table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(this.table);
 		
@@ -115,21 +130,7 @@ public class ManagerPanel extends JPanel{
 		gbc_btnListJobOffer.gridy = 5;
 		add(btnListJobOffer, gbc_btnListJobOffer);
 		
-		JButton btnViewDetail = new JButton("View detail");
-		btnViewDetail.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_btnViewDetail = new GridBagConstraints();
-		gbc_btnViewDetail.insets = new Insets(0, 0, 0, 5);
-		gbc_btnViewDetail.gridx = 4;
-		gbc_btnViewDetail.gridy = 5;
-		add(btnViewDetail, gbc_btnViewDetail);
-		btnViewDetail.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!(table.getSelectedRow()==-1)){
-					String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
-					main.showViewApplicantPanel(selectedApplicantID,"manager");
-				}
-			}
-		});
+
 		JButton btnBack = new JButton("Back");
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
