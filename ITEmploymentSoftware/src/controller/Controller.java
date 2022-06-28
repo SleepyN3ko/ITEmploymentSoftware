@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 import javax.swing.ImageIcon;
 
@@ -130,7 +131,31 @@ public class Controller {
 
 		List<Applicant> applicantList= this.ds.getApplicants();
 		//Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getphoneNumber(),p.getGender(),p.getWorkExperience(),p.getGenericSkill(),p.getTechnicalSkill(),p.getAchievement(),p.getQualification(),p.getShortlistStatus(),p.getReceivedJobOffer()}).toArray(Object[][]::new);
-		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View","Update"}).toArray(Object[][]::new);
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),"View","Update"}).toArray(Object[][]::new);
+
+		return data;	
+	}
+	public Object[][] getApplicants(List<String> filters){
+		List<Applicant> applicantList= this.ds.getApplicants();
+		if (filters.size()>0){
+			for (int filterIndex=0;filterIndex<filters.size();filterIndex++){
+				String[] filterKeyValuePair = filters.get(filterIndex).split(",");
+				String filterKey = filterKeyValuePair[0];
+				String filterValue = filterKeyValuePair[1];
+				if (filterKey.equals("gender")){ //specific column to filter
+					if (!filterValue.equals("All")){
+						applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getGender().equals(filterValue.toString())).collect(Collectors.toList());
+					}
+					
+				}
+				else if (filterKey.equals("tskill")){
+					if (!filterValue.equals("All")){
+						applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getTechnicalSkill().equals(filterValue.toString())).collect(Collectors.toList());
+					}
+				}
+			}
+		}
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),"View","Update"}).toArray(Object[][]::new);
 
 		return data;	
 	}

@@ -134,7 +134,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 		gbc_technicalSkillLabel.gridy = 2;
 		add(technicalSkillLabel, gbc_technicalSkillLabel);
 		
-		String[] technicalSkills = {"Programming","Industrial"};
+		String[] technicalSkills = {"Python","C++","Java","Project Management","People Management"};
 		JComboBox technicalSkillCombo = new JComboBox(technicalSkills);
 		technicalSkillCombo.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_technicalSkillCombo = new GridBagConstraints();
