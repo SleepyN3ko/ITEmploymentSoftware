@@ -27,7 +27,6 @@ import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import customAdditionalClasses.ButtonColumn;
 public class StaffPanel extends JPanel{
 	private MainFrame main;
 	private JLabel welcomeLabel;
