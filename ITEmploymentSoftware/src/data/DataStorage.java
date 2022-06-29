@@ -75,6 +75,7 @@ public class DataStorage {
 		}  
 	}
 	public void addStaff(Staff newStaff) {
+		//add staff to vector and data storage
 		this.staffVector.add(newStaff);
 		try {
 			BufferedWriter fw = new BufferedWriter(new FileWriter("staffAccounts.csv",true));
@@ -92,7 +93,7 @@ public class DataStorage {
 		return this.managerVector;
 	}
 	public void addManager(Manager newManager) {
-
+		//add manager to vector and data storage
 		this.managerVector.add(newManager);
 		try {
 			BufferedWriter fw = new BufferedWriter(new FileWriter("managerAccounts.csv",true));
@@ -104,21 +105,10 @@ public class DataStorage {
 		}
 	}
 	public void addApplicant(Applicant newApplicant){
+		//add applicant to vector and data storage
 		this.applicantVector.add(newApplicant);
 		try {
 			BufferedWriter fw = new BufferedWriter(new FileWriter("applicantProfiles.csv",true));
-			/*String line = "";
-			line+=newApplicant.getApplicantID()+",";
-			line+=newApplicant.getName()+",";
-			line+=newApplicant.getphoneNumber()+",";
-			line+=newApplicant.getGender()+",";
-			line+=newApplicant.getWorkExperience()+",";
-			line+=newApplicant.getGenericSkill()+",";
-			line+=newApplicant.getTechnicalSkill()+",";
-			line+=newApplicant.getAchievement()+",";
-			line+=newApplicant.getQualification()+",";
-			line+=Boolean.toString(newApplicant.getShortlistStatus())+",";
-			line+=Boolean.toString(newApplicant.getReceivedJobOffer());*/
 			String line = newApplicant.applicantAsCSV();
 			fw.append(line);
 			fw.newLine();
@@ -131,12 +121,13 @@ public class DataStorage {
 		return this.applicantVector;
 	}
 	public BufferedImage getImageFromStorage(String imagePath) throws IOException {
+		//retrieve image from storage
 		File imageFile = new File(imagePath);
 		BufferedImage img = ImageIO.read(imageFile);
 		return img;
 	}
 	
-	public Applicant getApplicants(String applicantID) {
+	public Applicant getApplicant(String applicantID) {
 		for (int index = 0;index<applicantVector.size();index++){
 			if (applicantVector.get(index).getApplicantID().equals(applicantID)){
 				return applicantVector.get(index);
@@ -145,6 +136,7 @@ public class DataStorage {
 		return null;
 	}
 	public boolean ApplicantExists(String applicantID) {
+		//check if applicant with this specific id exists
 		for (int index = 0;index<applicantVector.size();index++){
 			if (applicantVector.get(index).getApplicantID().equals(applicantID)){
 				return true;
@@ -152,22 +144,45 @@ public class DataStorage {
 		}
 		return false;
 	}
-	public void saveImage(Image image, String imagePath) {
+	public void saveImageDS(Image image, String imagePath) {
 		try {
 		    // retrieve image
 		    BufferedImage bi = (BufferedImage) image;
 		    File outputfile = new File(imagePath);
+		    //save image to specific path
 		    ImageIO.write(bi, "png", outputfile);
 		} catch (IOException e) {
 		}
 	}
-	public void updateApplicant(Applicant currentApplicant) {
+	public void updateApplicantDS(Applicant currentApplicant) {
+		//update specific applicant from vector
 		for (int index=0;index<applicantVector.size();index++){
 			if (applicantVector.get(index).getApplicantID().equals(currentApplicant.getApplicantID())){
 				applicantVector.set(index, currentApplicant);
 				break;
 			}
 		}
+		//save updated applicant
+		try {
+			BufferedWriter fw = new BufferedWriter(new FileWriter("applicantProfiles.csv",false));
+			for (int index=0;index<applicantVector.size();index++){
+				fw.append(applicantVector.get(index).applicantAsCSV());
+				fw.newLine();
+			}
+			fw.close();
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+	}
+	public void deleteApplicantDS(String selectedApplicantID) {
+		//remove specific applicant from vector
+		for (int index=0;index<applicantVector.size();index++){
+			if (applicantVector.get(index).getApplicantID().equals(selectedApplicantID)){
+				applicantVector.remove(index);
+				break;
+			}
+		}
+		//remove selected applicant from file
 		try {
 			BufferedWriter fw = new BufferedWriter(new FileWriter("applicantProfiles.csv",false));
 			for (int index=0;index<applicantVector.size();index++){

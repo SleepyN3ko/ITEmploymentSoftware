@@ -27,9 +27,9 @@ public class MainFrame extends JFrame{
 		
 		this.cont = new Controller();
 		this.showLoginPanel();
+		//this.showStaffPanel();
 		this.setVisible(true);
 	}
-	
 	public void showLoginPanel()
 	{
 		LoginPanel panel = new LoginPanel(this);

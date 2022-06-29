@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 import javax.swing.ImageIcon;
 
@@ -130,7 +131,39 @@ public class Controller {
 
 		List<Applicant> applicantList= this.ds.getApplicants();
 		//Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getphoneNumber(),p.getGender(),p.getWorkExperience(),p.getGenericSkill(),p.getTechnicalSkill(),p.getAchievement(),p.getQualification(),p.getShortlistStatus(),p.getReceivedJobOffer()}).toArray(Object[][]::new);
-		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View","Update"}).toArray(Object[][]::new);
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),"View","Update","Delete"}).toArray(Object[][]::new);
+
+		return data;	
+	}
+	public Object[][] getApplicants(List<String> filters){
+		List<Applicant> applicantList= this.ds.getApplicants(); //get data
+		if (filters.size()>0){
+			//if there is a filter then apply the filter
+			for (int filterIndex=0;filterIndex<filters.size();filterIndex++){
+				String[] filterKeyValuePair = filters.get(filterIndex).split(",");
+				//split the filter into key value pairs
+				String filterKey = filterKeyValuePair[0];
+				String filterValue = filterKeyValuePair[1];
+				//checks what is the column to filter then filter according to value
+				if (filterKey.equals("gender")){ 
+					if (!filterValue.equals("All")){
+						applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getGender().equals(filterValue.toString())).collect(Collectors.toList());
+					}
+					
+				}
+				else if (filterKey.equals("tskill")){
+					if (!filterValue.equals("All")){
+						applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getTechnicalSkill().equals(filterValue.toString())).collect(Collectors.toList());
+					}
+				}
+				else if (filterKey.equals("qualification")){
+					if (!filterValue.equals("All")){
+						applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getQualification().equals(filterValue.toString())).collect(Collectors.toList());
+					}
+				}
+			}
+		}
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),"View","Update","Delete"}).toArray(Object[][]::new);
 
 		return data;	
 	}
@@ -138,7 +171,7 @@ public class Controller {
 		return this.ds.ApplicantExists(ApplicantID);
 	}
 	public Applicant getApplicant(String ApplicantID){
-		return this.ds.getApplicants(ApplicantID);
+		return this.ds.getApplicant(ApplicantID);
 	}
 	public void addApplicant(Applicant currentApplicant){
 		this.ds.addApplicant(currentApplicant);
@@ -147,10 +180,13 @@ public class Controller {
 		return this.ds.getImageFromStorage(imagePath);
 	}
 	public void saveImage(Image image, String imagePath) {
-		this.ds.saveImage(image,imagePath);
+		this.ds.saveImageDS(image,imagePath);
 	}
 	public void updateApplicant(Applicant currentApplicant) {
-		this.ds.updateApplicant(currentApplicant);
+		this.ds.updateApplicantDS(currentApplicant);
+	}
+	public void deleteApplicant(String selectedApplicantID) {
+		this.ds.deleteApplicantDS(selectedApplicantID);
 	}
 }
 
