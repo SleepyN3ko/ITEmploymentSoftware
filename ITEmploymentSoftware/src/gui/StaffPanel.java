@@ -49,20 +49,23 @@ public class StaffPanel extends JPanel{
 	private JComboBox genderFilter;
 	private JLabel lblTechnicalSkills;
 	private JComboBox techSkillFilter;
+	private filterSelection filterListener = new filterSelection();
+	private JLabel lblQualifications;
+	private JComboBox qualificationFilter;
 	
 	public StaffPanel(MainFrame main){
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20,20,20, 20, 20, 20,20,20};
+		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20, 0,20,20, 20, 20, 20,20,20};
 		gridBagLayout.rowHeights = new int[]{20, 20, 20, 20,20,20,20, 20, 20, 20,20,20};
-		gridBagLayout.columnWeights = new double[]{1.0,1.0,1.0, 1.0,1.0,1.0, 1.0,1.0,1.0, 1.0,1.0,1.0};
+		gridBagLayout.columnWeights = new double[]{1.0,1.0,1.0, 1.0,1.0, 1.0,1.0, 1.0,1.0,1.0, 1.0,1.0,1.0};
 		gridBagLayout.rowWeights = new double[]{1.0,1.0,1.0, 1.0,1.0,1.0, 1.0,1.0,1.0, 1.0,1.0,1.0};
 		setLayout(gridBagLayout);
 		
 		this.welcomeLabel = new JLabel("Welcome HR Staff :)");
 		welcomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_welcomeLabel = new GridBagConstraints();
-		gbc_welcomeLabel.gridwidth = 10;
+		gbc_welcomeLabel.gridwidth = 11;
 		gbc_welcomeLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_welcomeLabel.gridx = 1;
 		gbc_welcomeLabel.gridy = 0;
@@ -80,13 +83,33 @@ public class StaffPanel extends JPanel{
 		String[] genderfilters = {"All","Male","Female"};
 		genderFilter = new JComboBox(genderfilters);
 		genderFilter.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		genderFilter.addActionListener(new filterSelection());
+		genderFilter.addActionListener(filterListener);
 		GridBagConstraints gbc_genderFilter = new GridBagConstraints();
 		gbc_genderFilter.insets = new Insets(0, 0, 5, 5);
 		gbc_genderFilter.fill = GridBagConstraints.HORIZONTAL;
 		gbc_genderFilter.gridx = 2;
 		gbc_genderFilter.gridy = 1;
 		add(genderFilter, gbc_genderFilter);
+		
+		lblQualifications = new JLabel("Qualifications");
+		lblQualifications.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_lblQualifications = new GridBagConstraints();
+		gbc_lblQualifications.anchor = GridBagConstraints.EAST;
+		gbc_lblQualifications.insets = new Insets(0, 0, 5, 5);
+		gbc_lblQualifications.gridx = 4;
+		gbc_lblQualifications.gridy = 1;
+		add(lblQualifications, gbc_lblQualifications);
+		
+		String[] qualifications = {"All","ENG Diploma","IT Diploma","Business Diploma","Science Diploma","CS Degree","EEE Degree"};
+		qualificationFilter = new JComboBox(qualifications);
+		qualificationFilter.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		qualificationFilter.addActionListener(filterListener);
+		GridBagConstraints gbc_qualificationFilter = new GridBagConstraints();
+		gbc_qualificationFilter.insets = new Insets(0, 0, 5, 5);
+		gbc_qualificationFilter.fill = GridBagConstraints.HORIZONTAL;
+		gbc_qualificationFilter.gridx = 5;
+		gbc_qualificationFilter.gridy = 1;
+		add(qualificationFilter, gbc_qualificationFilter);
 		
 		lblTechnicalSkills = new JLabel("Technical Skills:");
 		lblTechnicalSkills.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -101,7 +124,7 @@ public class StaffPanel extends JPanel{
 		String[] technicalSkills = {"All","Python","C++","Java","Project Management","People Management"};
 		techSkillFilter = new JComboBox(technicalSkills);
 		techSkillFilter.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		techSkillFilter.addActionListener(new filterSelection());
+		techSkillFilter.addActionListener(filterListener);
 		GridBagConstraints gbc_techSkillFilter = new GridBagConstraints();
 		gbc_techSkillFilter.insets = new Insets(0, 0, 5, 5);
 		gbc_techSkillFilter.fill = GridBagConstraints.HORIZONTAL;
@@ -114,7 +137,7 @@ public class StaffPanel extends JPanel{
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridwidth = 10;
+		gbc_scrollPane.gridwidth = 11;
 		gbc_scrollPane.gridheight = 4;
 		gbc_scrollPane.gridx = 1;
 		gbc_scrollPane.gridy = 4;
@@ -191,7 +214,7 @@ public class StaffPanel extends JPanel{
 				GridBagConstraints gbc_btnBack = new GridBagConstraints();
 				gbc_btnBack.gridwidth = 5;
 				gbc_btnBack.insets = new Insets(0, 0, 5, 5);
-				gbc_btnBack.gridx = 6;
+				gbc_btnBack.gridx = 7;
 				gbc_btnBack.gridy = 8;
 				add(btnBack, gbc_btnBack);
 		btnBack.addActionListener(new ActionListener() {
@@ -207,10 +230,12 @@ public class StaffPanel extends JPanel{
 			List<String> filters = new ArrayList<String>();
 			filters.add("gender,"+genderFilter.getSelectedItem());//add selected gender filter to filters
 			filters.add("tskill,"+techSkillFilter.getSelectedItem()); //add selected technical skill filter to filters
-			Object[][] rows = main.getController().getApplicants(filters);
+			filters.add("qualification,"+qualificationFilter.getSelectedItem());
+			Object[][] rows = main.getController().getApplicants(filters); //use overloaded method to filter applicant on controller side
 			String[] columns = {
-					"ApplicantID", "Name","View Applicant","Update Applicant"
+					"ApplicantID", "Name","View Applicant","Update Applicant","Delete Applicants"
 			};
+			//remaking the table model
 			table.setModel(new DefaultTableModel(rows,columns) {
 				@Override
 				public boolean isCellEditable(int row,int column){
@@ -243,7 +268,6 @@ public class StaffPanel extends JPanel{
 			{
 			    public void actionPerformed(ActionEvent e)
 			    {
-			        System.out.println("Delete is clicked");
 			        int modelRow = Integer.valueOf(e.getActionCommand());
 			        String selectedApplicantID = rows[modelRow][0].toString();
 			        main.getController().deleteApplicant(selectedApplicantID);

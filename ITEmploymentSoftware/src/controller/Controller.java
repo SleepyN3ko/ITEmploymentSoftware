@@ -136,13 +136,16 @@ public class Controller {
 		return data;	
 	}
 	public Object[][] getApplicants(List<String> filters){
-		List<Applicant> applicantList= this.ds.getApplicants();
+		List<Applicant> applicantList= this.ds.getApplicants(); //get data
 		if (filters.size()>0){
+			//if there is a filter then apply the filter
 			for (int filterIndex=0;filterIndex<filters.size();filterIndex++){
 				String[] filterKeyValuePair = filters.get(filterIndex).split(",");
+				//split the filter into key value pairs
 				String filterKey = filterKeyValuePair[0];
 				String filterValue = filterKeyValuePair[1];
-				if (filterKey.equals("gender")){ //specific column to filter
+				//checks what is the column to filter then filter according to value
+				if (filterKey.equals("gender")){ 
 					if (!filterValue.equals("All")){
 						applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getGender().equals(filterValue.toString())).collect(Collectors.toList());
 					}
@@ -151,6 +154,11 @@ public class Controller {
 				else if (filterKey.equals("tskill")){
 					if (!filterValue.equals("All")){
 						applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getTechnicalSkill().equals(filterValue.toString())).collect(Collectors.toList());
+					}
+				}
+				else if (filterKey.equals("qualification")){
+					if (!filterValue.equals("All")){
+						applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getQualification().equals(filterValue.toString())).collect(Collectors.toList());
 					}
 				}
 			}
@@ -163,7 +171,7 @@ public class Controller {
 		return this.ds.ApplicantExists(ApplicantID);
 	}
 	public Applicant getApplicant(String ApplicantID){
-		return this.ds.getApplicants(ApplicantID);
+		return this.ds.getApplicant(ApplicantID);
 	}
 	public void addApplicant(Applicant currentApplicant){
 		this.ds.addApplicant(currentApplicant);

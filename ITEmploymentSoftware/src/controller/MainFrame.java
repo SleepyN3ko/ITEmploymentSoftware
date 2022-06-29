@@ -26,11 +26,10 @@ public class MainFrame extends JFrame{
 		getContentPane().setLayout(this.card);
 		
 		this.cont = new Controller();
-		//this.showLoginPanel();
-		this.showStaffPanel();
+		this.showLoginPanel();
+		//this.showStaffPanel();
 		this.setVisible(true);
 	}
-	
 	public void showLoginPanel()
 	{
 		LoginPanel panel = new LoginPanel(this);
