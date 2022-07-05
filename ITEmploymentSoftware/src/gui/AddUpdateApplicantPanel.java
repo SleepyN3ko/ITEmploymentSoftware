@@ -35,7 +35,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 	private JTextField phoneNumberField;
 	private JTextField workExperienceField;
 	private JTextField genericSkillField;
-	private JTextField qualificationsField;
+	private JComboBox qualificationsCombo;
 	private JTextField achievementsField;
 	private Image newImage;
 	private boolean imageUpdated;
@@ -134,7 +134,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 		gbc_technicalSkillLabel.gridy = 2;
 		add(technicalSkillLabel, gbc_technicalSkillLabel);
 		
-		String[] technicalSkills = {"Programming","Industrial"};
+		String[] technicalSkills = {"Python","C++","Java","Project Management","People Management"};
 		JComboBox technicalSkillCombo = new JComboBox(technicalSkills);
 		technicalSkillCombo.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_technicalSkillCombo = new GridBagConstraints();
@@ -171,16 +171,16 @@ public class AddUpdateApplicantPanel extends JPanel{
 		gbc_qualificationsLabel.gridx = 2;
 		gbc_qualificationsLabel.gridy = 3;
 		add(qualificationsLabel, gbc_qualificationsLabel);
-		
-		qualificationsField = new JTextField();
-		qualificationsField.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_qualificationsField = new GridBagConstraints();
-		gbc_qualificationsField.insets = new Insets(0, 0, 5, 5);
-		gbc_qualificationsField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_qualificationsField.gridx = 3;
-		gbc_qualificationsField.gridy = 3;
-		add(qualificationsField, gbc_qualificationsField);
-		qualificationsField.setColumns(10);
+
+		String[] qualifications = {"ENG Diploma","IT Diploma","Business Diploma","Science Diploma","CS Degree","EEE Degree"};
+		qualificationsCombo = new JComboBox(qualifications);
+		qualificationsCombo.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_qualificationsCombo = new GridBagConstraints();
+		gbc_qualificationsCombo.insets = new Insets(0, 0, 5, 5);
+		gbc_qualificationsCombo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_qualificationsCombo.gridx = 3;
+		gbc_qualificationsCombo.gridy = 3;
+		add(qualificationsCombo, gbc_qualificationsCombo);
 		
 		JLabel workExperienceLabel = new JLabel("Work Experience");
 		workExperienceLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -256,13 +256,15 @@ public class AddUpdateApplicantPanel extends JPanel{
 		JButton addUpdateButton = new JButton("");
 		addUpdateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//add/update button to add/update an applicant
+				//stores all the fields into current applicant to be stored in datastorage
 				currentApplicant.setName(nameField.getText());
 				currentApplicant.setphoneNumber(phoneNumberField.getText());
 				currentApplicant.setGender((String) genderCombo.getSelectedItem());
 				currentApplicant.setWorkExperience(workExperienceField.getText());
 				currentApplicant.setGenericSkill(genericSkillField.getText());
 				currentApplicant.setTechnicalSkill((String) technicalSkillCombo.getSelectedItem());
-				currentApplicant.setQualification(qualificationsField.getText());
+				currentApplicant.setQualification((String)qualificationsCombo.getSelectedItem());
 				currentApplicant.setAchievement(achievementsField.getText());
 				if (imageUpdated){
 					currentApplicant.setImage("./applicantImages/"+currentApplicant.getApplicantID()+".png");
@@ -301,19 +303,20 @@ public class AddUpdateApplicantPanel extends JPanel{
 		add(backButton, gbc_backButton);
 		//read from file to update existing applicant and some different settings for new applicant
 		if (ApplicantID.equals("new")){
-			//new user
+			//generates form for creating new applicant
 			currentApplicant = new Applicant();
 			this.panelTitle.setText("Create New Applicant");
 			addUpdateButton.setText("Create");
 		}
 		else{
+			//fill the form with the stored applicant details
 			currentApplicant = this.main.getController().getApplicant(ApplicantID);
 			addUpdateButton.setText("Update");
 			nameField.setText(currentApplicant.getName());
 			phoneNumberField.setText(currentApplicant.getphoneNumber());
 			workExperienceField.setText(currentApplicant.getWorkExperience());
 			genericSkillField.setText(currentApplicant.getGenericSkill());
-			qualificationsField.setText(currentApplicant.getQualification());
+			qualificationsCombo.setSelectedItem(currentApplicant.getQualification());
 			achievementsField.setText(currentApplicant.getAchievement());
 			genderCombo.setSelectedItem(currentApplicant.getGender());
 			technicalSkillCombo.setSelectedItem(currentApplicant.getTechnicalSkill());
