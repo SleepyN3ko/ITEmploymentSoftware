@@ -25,10 +25,12 @@ public class MainFrame extends JFrame{
 		this.card = new CardLayout();
 		getContentPane().setLayout(this.card);
 		
-		this.cont = new Controller();
+		this.cont = new Controller();=
+		
 		this.showLoginPanel();
-		//this.showStaffPanel();
-		this.setVisible(true);
+		//this.showStaffPanel();=
+		//this.showManagerPanel();
+    this.setVisible(true);
 	}
 	public void showLoginPanel()
 	{

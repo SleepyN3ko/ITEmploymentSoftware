@@ -15,8 +15,15 @@ import java.awt.event.ActionListener;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class ManagerPanel extends JPanel{
 	private MainFrame main;
@@ -57,15 +64,83 @@ public class ManagerPanel extends JPanel{
 		
 		Object[][] rows = this.main.getController().getApplicants();
 		String[] columns = {
-				"ApplicantID", "Name","Short Listed","Job Offer"
+				"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
 		};
 		
 		this.table.setModel(new DefaultTableModel(rows,columns) {
 			@Override
 			public boolean isCellEditable(int row,int column){
+				if (column==2||column==3||column==4){
+					return true;
+				}
 				return false;
 			}
 		});
+		Action view = new AbstractAction()
+		{
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        int modelRow = Integer.valueOf(e.getActionCommand());
+		        String selectedApplicantID = rows[modelRow][0].toString();
+		        main.showViewApplicantPanel(selectedApplicantID,"manager");
+		    }
+		};
+		ButtonColumn viewColumn = new ButtonColumn(this.table,view,4);
+		TableColumn shortListColumn = table.getColumnModel().getColumn(2);
+		TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
+		
+		JComboBox comboBoxShort = new JComboBox();
+		comboBoxShort.addItem("true");
+		comboBoxShort.addItem("false");
+		comboBoxShort.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		shortListColumn.setCellEditor(new DefaultCellEditor(comboBoxShort));
+		comboBoxShort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(table.getSelectedRow()==-1)){
+					if (comboBoxShort.getSelectedIndex()==0){
+						String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
+						Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);
+						selectedApplicant.setShortlistStatus(true);
+						main.getController().updateApplicant(selectedApplicant);
+						
+					}
+					else if (comboBoxShort.getSelectedIndex()==1){
+						String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
+						Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);
+						selectedApplicant.setShortlistStatus(false);
+						main.getController().updateApplicant(selectedApplicant);
+												
+					}
+				}
+			}
+		});
+		
+		JComboBox comboBoxJob = new JComboBox();
+		comboBoxJob.addItem("true");
+		comboBoxJob.addItem("false");
+		comboBoxJob.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		jobOfferedColumn.setCellEditor(new DefaultCellEditor(comboBoxJob));
+		comboBoxJob.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(table.getSelectedRow()==-1)){
+					if (comboBoxJob.getSelectedIndex()==0){
+						String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
+						Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);
+						selectedApplicant.setReceivedJobOffer(true);
+						main.getController().updateApplicant(selectedApplicant);
+						
+					}
+					else if (comboBoxJob.getSelectedIndex()==1){
+						String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
+						Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);
+						selectedApplicant.setReceivedJobOffer(false);
+						main.getController().updateApplicant(selectedApplicant);
+												
+					}
+				}
+			}
+		});
+		
 		this.table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(this.table);
 		
@@ -115,21 +190,7 @@ public class ManagerPanel extends JPanel{
 		gbc_btnListJobOffer.gridy = 5;
 		add(btnListJobOffer, gbc_btnListJobOffer);
 		
-		JButton btnViewDetail = new JButton("View detail");
-		btnViewDetail.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_btnViewDetail = new GridBagConstraints();
-		gbc_btnViewDetail.insets = new Insets(0, 0, 0, 5);
-		gbc_btnViewDetail.gridx = 4;
-		gbc_btnViewDetail.gridy = 5;
-		add(btnViewDetail, gbc_btnViewDetail);
-		btnViewDetail.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!(table.getSelectedRow()==-1)){
-					String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
-					main.showViewApplicantPanel(selectedApplicantID,"manager");
-				}
-			}
-		});
+
 		JButton btnBack = new JButton("Back");
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
