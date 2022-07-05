@@ -26,7 +26,7 @@ public class MainFrame extends JFrame{
 		getContentPane().setLayout(this.card);
 		
 		this.cont = new Controller();
-		this.showLoginPanel();
+		this.showManagerPanel();
 		this.setVisible(true);
 	}
 	

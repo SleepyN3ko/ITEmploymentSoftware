@@ -15,10 +15,15 @@ import java.awt.event.ActionListener;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class ManagerPanel extends JPanel{
 	private MainFrame main;
@@ -59,13 +64,13 @@ public class ManagerPanel extends JPanel{
 		
 		Object[][] rows = this.main.getController().getApplicants();
 		String[] columns = {
-				"ApplicantID", "Name","Short Listed","Job Offer","View Applicant"
+				"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
 		};
 		
 		this.table.setModel(new DefaultTableModel(rows,columns) {
 			@Override
 			public boolean isCellEditable(int row,int column){
-				if (column==4){
+				if (column==2||column==3||column==4){
 					return true;
 				}
 				return false;
@@ -81,6 +86,61 @@ public class ManagerPanel extends JPanel{
 		    }
 		};
 		ButtonColumn viewColumn = new ButtonColumn(this.table,view,4);
+		TableColumn shortListColumn = table.getColumnModel().getColumn(2);
+		TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
+		
+		JComboBox comboBoxShort = new JComboBox();
+		comboBoxShort.addItem("true");
+		comboBoxShort.addItem("false");
+		comboBoxShort.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		shortListColumn.setCellEditor(new DefaultCellEditor(comboBoxShort));
+		comboBoxShort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(table.getSelectedRow()==-1)){
+					if (comboBoxShort.getSelectedIndex()==0){
+						String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
+						Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);
+						selectedApplicant.setShortlistStatus(true);
+						main.getController().updateApplicant(selectedApplicant);
+						
+					}
+					else if (comboBoxShort.getSelectedIndex()==1){
+						String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
+						Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);
+						selectedApplicant.setShortlistStatus(false);
+						main.getController().updateApplicant(selectedApplicant);
+												
+					}
+				}
+			}
+		});
+		
+		JComboBox comboBoxJob = new JComboBox();
+		comboBoxJob.addItem("true");
+		comboBoxJob.addItem("false");
+		comboBoxJob.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		jobOfferedColumn.setCellEditor(new DefaultCellEditor(comboBoxJob));
+		comboBoxJob.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(table.getSelectedRow()==-1)){
+					if (comboBoxJob.getSelectedIndex()==0){
+						String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
+						Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);
+						selectedApplicant.setReceivedJobOffer(true);
+						main.getController().updateApplicant(selectedApplicant);
+						
+					}
+					else if (comboBoxJob.getSelectedIndex()==1){
+						String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
+						Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);
+						selectedApplicant.setReceivedJobOffer(false);
+						main.getController().updateApplicant(selectedApplicant);
+												
+					}
+				}
+			}
+		});
+		
 		this.table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(this.table);
 		
