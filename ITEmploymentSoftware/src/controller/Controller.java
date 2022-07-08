@@ -135,6 +135,16 @@ public class Controller {
 
 		return data;	
 	}
+	public Object[][] getApplicantsManager(){
+		//{p.getApplicantID(),p.getName(),p.getphoneNumber(),p.getGender(),p.getWorkExperience(),p.getGenericSkill(),p.getTechnicalSkill(),p.getAchievement(),p.getQualification(),p.getShortlistStatus(),p.getReceivedJobOffer()})
+
+		List<Applicant> applicantList= this.ds.getApplicants();
+		//Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getphoneNumber(),p.getGender(),p.getWorkExperience(),p.getGenericSkill(),p.getTechnicalSkill(),p.getAchievement(),p.getQualification(),p.getShortlistStatus(),p.getReceivedJobOffer()}).toArray(Object[][]::new);
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View"}).toArray(Object[][]::new);
+
+		return data;	
+	}
+	
 	public Object[][] getApplicants(List<String> filters){
 		List<Applicant> applicantList= this.ds.getApplicants(); //get data
 		if (filters.size()>0){
@@ -167,6 +177,25 @@ public class Controller {
 
 		return data;	
 	}
+	
+	public Object[][] getShortlistApplicants(){
+		List<Applicant> applicantList= this.ds.getApplicants();
+		
+		applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getShortlistStatus() == true).collect(Collectors.toList());
+		
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View"}).toArray(Object[][]::new);
+		return data;
+	}
+	
+	public Object[][] getJobOfferedApplicants(){
+		List<Applicant> applicantList= this.ds.getApplicants();
+		
+		applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getReceivedJobOffer() == true).collect(Collectors.toList());
+		
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View"}).toArray(Object[][]::new);
+		return data;
+	}
+	
 	public boolean ApplicantExists(String ApplicantID){
 		return this.ds.ApplicantExists(ApplicantID);
 	}
