@@ -28,6 +28,7 @@ import javax.swing.JComboBox;
 public class ManagerPanel extends JPanel{
 	private MainFrame main;
 	private JTable table;
+	private JLabel lblCount;
 
 	public ManagerPanel(MainFrame main){
 		this.main = main;
@@ -51,6 +52,7 @@ public class ManagerPanel extends JPanel{
 		btnShowShortlisted.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Object[][] rows = main.getController().getShortlistApplicants();
+				lblCount.setText("Count: "+rows.length);
 				String[] columns = {
 						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
 				};
@@ -88,6 +90,7 @@ public class ManagerPanel extends JPanel{
 		btnShowJobOffered.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Object[][] rows = main.getController().getJobOfferedApplicants();
+				lblCount.setText("Count: "+rows.length);
 				String[] columns = {
 						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
 				};
@@ -133,6 +136,7 @@ public class ManagerPanel extends JPanel{
 		btnShowBoth.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Object[][] rows = main.getController().getBothApplicants();
+				lblCount.setText("Count: "+rows.length);
 				String[] columns = {
 						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
 				};
@@ -167,6 +171,13 @@ public class ManagerPanel extends JPanel{
 		gbc_btnShowBoth.gridy = 2;
 		add(btnShowBoth, gbc_btnShowBoth);
 		
+		this.lblCount = new JLabel("Count");
+		GridBagConstraints gbc_lblCount = new GridBagConstraints();
+		gbc_lblCount.insets = new Insets(0, 0, 5, 5);
+		gbc_lblCount.gridx = 5;
+		gbc_lblCount.gridy = 2;
+		add(lblCount, gbc_lblCount);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 5;
@@ -183,6 +194,7 @@ public class ManagerPanel extends JPanel{
 		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		
 		Object[][] rows = this.main.getController().getApplicantsManager();
+		lblCount.setText("Count: "+rows.length);
 		String[] columns = {
 				"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
 		};
@@ -301,6 +313,20 @@ public class ManagerPanel extends JPanel{
 		gbc_btnJobOffer.gridx = 2;
 		gbc_btnJobOffer.gridy = 7;
 		add(btnJobOffer, gbc_btnJobOffer);
+		
+		JButton btnRefresh = new JButton("Refresh");
+		btnRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showManagerPanel();
+			}
+		});
+		btnRefresh.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_btnRefresh = new GridBagConstraints();
+		gbc_btnRefresh.gridwidth = 2;
+		gbc_btnRefresh.insets = new Insets(0, 0, 0, 5);
+		gbc_btnRefresh.gridx = 3;
+		gbc_btnRefresh.gridy = 7;
+		add(btnRefresh, gbc_btnRefresh);
 		
 
 		JButton btnBack = new JButton("Back");
