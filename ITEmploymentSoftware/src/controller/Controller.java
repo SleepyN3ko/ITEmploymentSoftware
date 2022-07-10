@@ -196,6 +196,16 @@ public class Controller {
 		return data;
 	}
 	
+	public Object[][] getBothApplicants(){
+		List<Applicant> applicantList= this.ds.getApplicants();
+		
+		applicantList = (List<Applicant>) applicantList.stream().filter((p->p.getReceivedJobOffer() == true)).collect(Collectors.toList());
+		applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getShortlistStatus() == true).collect(Collectors.toList());
+		
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View"}).toArray(Object[][]::new);
+		return data;
+	}
+	
 	public boolean ApplicantExists(String ApplicantID){
 		return this.ds.ApplicantExists(ApplicantID);
 	}
