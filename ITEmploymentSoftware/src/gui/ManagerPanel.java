@@ -124,13 +124,19 @@ public class ManagerPanel extends JPanel{
 		gbc_btnShowJobOffered.gridy = 1;
 		add(btnShowJobOffered, gbc_btnShowJobOffered);
 		
-		JButton btnViewStaffInfo = new JButton("View Staff Info");
+		JButton btnViewStaffInfo = new JButton("View Staffs Info");
 		btnViewStaffInfo.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnViewStaffInfo = new GridBagConstraints();
 		gbc_btnViewStaffInfo.insets = new Insets(0, 0, 5, 5);
 		gbc_btnViewStaffInfo.gridx = 5;
 		gbc_btnViewStaffInfo.gridy = 1;
 		add(btnViewStaffInfo, gbc_btnViewStaffInfo);
+		btnViewStaffInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showInfoStaffPanel();
+			}
+		});
+		
 		
 		JButton btnShowBoth = new JButton("Show Shortlisted and Job Offered");
 		btnShowBoth.addActionListener(new ActionListener() {
@@ -172,6 +178,7 @@ public class ManagerPanel extends JPanel{
 		add(btnShowBoth, gbc_btnShowBoth);
 		
 		this.lblCount = new JLabel("Count");
+		lblCount.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_lblCount = new GridBagConstraints();
 		gbc_lblCount.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCount.gridx = 5;
