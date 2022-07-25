@@ -1,2 +1,234 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_a3i5MAwPEe2-uvIZane2ZQ" name="RootElement"/>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:java="http://www.eclipse.org/papyrus/JAVA/1" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Model xmi:id="_a3i5MAwPEe2-uvIZane2ZQ" name="RootElement">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_1kqKIAwREe2-uvIZane2ZQ">
+      <importedPackage xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_O6wCIAwyEe2ltseQyCJiWg">
+      <importedPackage xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_dxyEoAwuEe2ltseQyCJiWg" name="Final Class Diagram">
+      <packagedElement xmi:type="uml:Class" xmi:id="_xOLL4AwuEe2ltseQyCJiWg" name="MainFrame">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_6OxCoAwuEe2ltseQyCJiWg" name="cont"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_cia5EAwvEe2ltseQyCJiWg" name="showLoginPanel"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_cqiTQAwvEe2ltseQyCJiWg" name="showRegisterPanel"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_d_WxIAwvEe2ltseQyCJiWg" name="showStaffPanel"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_eTspcAwvEe2ltseQyCJiWg" name="showViewApplicantPanel"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_efMu0AwvEe2ltseQyCJiWg" name="showAddUpdateApplicantPanel"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_e4k4IAwvEe2ltseQyCJiWg" name="showInfoStaffPanel"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="__edlMAwvEe2ltseQyCJiWg" name="Controller">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_OSJb8AwwEe2ltseQyCJiWg" name="ds"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_TVc9wAwwEe2ltseQyCJiWg" name="verifyStaff">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_am6jwAwxEe2ltseQyCJiWg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_uM32sAwxEe2ltseQyCJiWg" name="username" effect="create">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_BWxfwAwyEe2ltseQyCJiWg" name="password">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_X2IowAwyEe2ltseQyCJiWg" name="flag">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_TvgcgAwwEe2ltseQyCJiWg" name="registerStaff">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_idXGIAwyEe2ltseQyCJiWg" name="username">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_kUltgAwyEe2ltseQyCJiWg" name="password">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_U7j_8AwwEe2ltseQyCJiWg" name="staffExists"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_mzex0AwyEe2ltseQyCJiWg" name="verifyManager"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_nLH1wAwyEe2ltseQyCJiWg" name="managerExists"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_onY_cAwyEe2ltseQyCJiWg" name="registerManager"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_oymw8AwyEe2ltseQyCJiWg" name="managerLoginFailed"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_o7iDcAwyEe2ltseQyCJiWg" name="staffLoginFailed"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_pFepoAwyEe2ltseQyCJiWg" name="getStaffs"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_pOCIsAwyEe2ltseQyCJiWg" name="getApplicants"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_pXdKcAwyEe2ltseQyCJiWg" name="getApplicantsManager"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_pfnA4AwyEe2ltseQyCJiWg" name="getApplicants"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_poUQ8AwyEe2ltseQyCJiWg" name="getShortlistApplicants"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_pvaXcAwyEe2ltseQyCJiWg" name="getJobOfferedApplicants"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_p3zecAwyEe2ltseQyCJiWg" name="getBothApplicants"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_qBQ8cAwyEe2ltseQyCJiWg" name="applicantsExists"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_SzagUAwzEe2ltseQyCJiWg" name="getApplicant"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_S8rKAAwzEe2ltseQyCJiWg" name="getStaff"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_TGwTEAwzEe2ltseQyCJiWg" name="addApplicant"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_TQCx8AwzEe2ltseQyCJiWg" name="addStaff"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_TYUkMAwzEe2ltseQyCJiWg" name="getImage"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_ThSS8AwzEe2ltseQyCJiWg" name="saveImage"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_TrKnsAwzEe2ltseQyCJiWg" name="updateApplicant"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_T1irsAwzEe2ltseQyCJiWg" name="updateStaff"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_AAzgcAw0Ee2ltseQyCJiWg" name="deleteApplicant"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_AJuy8Aw0Ee2ltseQyCJiWg" name="deleteStaff"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_eJu1IAwvEe2ltseQyCJiWg" name="showManagerPanel"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_M2NFkAw0Ee2ltseQyCJiWg" name="Data Storage">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_r62pYAw0Ee2ltseQyCJiWg" name="addStaff"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sAjowAw0Ee2ltseQyCJiWg" name="getStaffVector"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sGjjEAw0Ee2ltseQyCJiWg" name="getManagerVector"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sL_csAw0Ee2ltseQyCJiWg" name="addManager"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sR-v8Aw0Ee2ltseQyCJiWg" name="addApplicant"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sYuRIAw0Ee2ltseQyCJiWg" name="getApplicants"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_seUi0Aw0Ee2ltseQyCJiWg" name="getImageFromStorage"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sj60gAw0Ee2ltseQyCJiWg" name="getApplicant"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_spvIoAw0Ee2ltseQyCJiWg" name="getStaff"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sw_nMAw0Ee2ltseQyCJiWg" name="applicantExists"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_s26pAAw0Ee2ltseQyCJiWg" name="saveImageDS"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tEoU4Aw0Ee2ltseQyCJiWg" name="updateApplicantDS"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tLEUEAw0Ee2ltseQyCJiWg" name="updateStaffDS"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_fja9MAw1Ee2ltseQyCJiWg" name="deleteApplicantDS"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_gfnfsAw1Ee2ltseQyCJiWg" name="deleteStaffDS"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_CtYwkAw2Ee2ltseQyCJiWg" name="Applicants">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_LkyPEAw2Ee2ltseQyCJiWg" name="applicantID" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_LuTXcAw2Ee2ltseQyCJiWg" name="name" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_L1rKwAw2Ee2ltseQyCJiWg" name="phoneNumber" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_L8DfkAw2Ee2ltseQyCJiWg" name="gender" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_MEN9EAw2Ee2ltseQyCJiWg" name="workExperience" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_NeQ5MAw2Ee2ltseQyCJiWg" name="genericSkill" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Os_9MAw2Ee2ltseQyCJiWg" name="technicalSkill" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_O6YR4Aw2Ee2ltseQyCJiWg" name="achievement" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_PCdP0Aw2Ee2ltseQyCJiWg" name="qualification" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_QHaswAw2Ee2ltseQyCJiWg" name="applicantImagePath" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_QTk5cAw2Ee2ltseQyCJiWg" name="shortlisted" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_QfRMEAw2Ee2ltseQyCJiWg" name="recievedJobOffer" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_DFOBwAw2Ee2ltseQyCJiWg" name="Manager">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_gEXcMAw3Ee2ltseQyCJiWg" name="username" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_gMjH0Aw3Ee2ltseQyCJiWg" name="password" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_DeigsAw2Ee2ltseQyCJiWg" name="Staff">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_gXFj4Aw3Ee2ltseQyCJiWg" name="username" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_gpSuMAw3Ee2ltseQyCJiWg" name="password" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_9A-VcAw3Ee2ltseQyCJiWg" name="Class1"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_9mp1YAw3Ee2ltseQyCJiWg" name="Class2"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_95YkIAw3Ee2ltseQyCJiWg" name="Class3"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_-Y-qMAw3Ee2ltseQyCJiWg" name="Class4"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_-1BF8Aw3Ee2ltseQyCJiWg" name="Class5"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="__Ucz8Aw3Ee2ltseQyCJiWg" name="Class6"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="__jk1EAw3Ee2ltseQyCJiWg" name="Class7"/>
+      <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_KWga4AwyEe2ltseQyCJiWg">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KWhB8AwyEe2ltseQyCJiWg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/JAVA/1#/"/>
+        </eAnnotations>
+        <appliedProfile xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
+      </profileApplication>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lrsnMAwuEe2ltseQyCJiWg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lrucYAwuEe2ltseQyCJiWg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/JAVA/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
+    </profileApplication>
+  </uml:Model>
+  <java:JavaClass xmi:id="_zpTKgAwuEe2ltseQyCJiWg" base_Classifier="_xOLL4AwuEe2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_942uwAwuEe2ltseQyCJiWg" base_Property="_6OxCoAwuEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_foiVcAwvEe2ltseQyCJiWg" base_Operation="_cia5EAwvEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_qzi1UAwvEe2ltseQyCJiWg" base_Operation="_cqiTQAwvEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_rV4GUAwvEe2ltseQyCJiWg" base_Operation="_d_WxIAwvEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_r2b1sAwvEe2ltseQyCJiWg" base_Operation="_eJu1IAwvEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_scw14AwvEe2ltseQyCJiWg" base_Operation="_eTspcAwvEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_tIdeQAwvEe2ltseQyCJiWg" base_Operation="_efMu0AwvEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_tumRMAwvEe2ltseQyCJiWg" base_Operation="_e4k4IAwvEe2ltseQyCJiWg"/>
+  <java:JavaClass xmi:id="_Bk8wkAwwEe2ltseQyCJiWg" base_Classifier="__edlMAwvEe2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_PryIYAwwEe2ltseQyCJiWg" base_Property="_OSJb8AwwEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_W-2GUAwwEe2ltseQyCJiWg" base_Operation="_TVc9wAwwEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_XowmAAwwEe2ltseQyCJiWg" base_Operation="_TvgcgAwwEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_YKqZMAwwEe2ltseQyCJiWg" base_Operation="_U7j_8AwwEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_sb5L0AwyEe2ltseQyCJiWg" base_Operation="_mzex0AwyEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_s5H6YAwyEe2ltseQyCJiWg" base_Operation="_nLH1wAwyEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_tVHS0AwyEe2ltseQyCJiWg" base_Operation="_onY_cAwyEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_t2eTcAwyEe2ltseQyCJiWg" base_Operation="_oymw8AwyEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_uebrUAwyEe2ltseQyCJiWg" base_Operation="_o7iDcAwyEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_vBSgwAwyEe2ltseQyCJiWg" base_Operation="_pFepoAwyEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_vr9OYAwyEe2ltseQyCJiWg" base_Operation="_pOCIsAwyEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_wKoHYAwyEe2ltseQyCJiWg" base_Operation="_pXdKcAwyEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_wm6awAwyEe2ltseQyCJiWg" base_Operation="_pfnA4AwyEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_xIv8gAwyEe2ltseQyCJiWg" base_Operation="_pvaXcAwyEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_xp9MIAwyEe2ltseQyCJiWg" base_Operation="_poUQ8AwyEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_yRDBUAwyEe2ltseQyCJiWg" base_Operation="_p3zecAwyEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_y4QyUAwyEe2ltseQyCJiWg" base_Operation="_qBQ8cAwyEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_VFa_MAwzEe2ltseQyCJiWg" base_Operation="_SzagUAwzEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_VfN_QAwzEe2ltseQyCJiWg" base_Operation="_S8rKAAwzEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_WNh2wAwzEe2ltseQyCJiWg" base_Operation="_TGwTEAwzEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_WpzjEAwzEe2ltseQyCJiWg" base_Operation="_TQCx8AwzEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_XElakAwzEe2ltseQyCJiWg" base_Operation="_TYUkMAwzEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_XmRLUAwzEe2ltseQyCJiWg" base_Operation="_ThSS8AwzEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_YC8gQAwzEe2ltseQyCJiWg" base_Operation="_TrKnsAwzEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_YeDu8AwzEe2ltseQyCJiWg" base_Operation="_T1irsAwzEe2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_EHXtMAw0Ee2ltseQyCJiWg" base_Operation="_AAzgcAw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_EmnN8Aw0Ee2ltseQyCJiWg" base_Operation="_AJuy8Aw0Ee2ltseQyCJiWg"/>
+  <java:JavaClass xmi:id="_XSAWEAw0Ee2ltseQyCJiWg" base_Classifier="_M2NFkAw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_zu9e4Aw0Ee2ltseQyCJiWg" base_Operation="_r62pYAw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_0jmn4Aw0Ee2ltseQyCJiWg" base_Operation="_sAjowAw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_1CdHEAw0Ee2ltseQyCJiWg" base_Operation="_sGjjEAw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_16dGEAw0Ee2ltseQyCJiWg" base_Operation="_sL_csAw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_2kEDwAw0Ee2ltseQyCJiWg" base_Operation="_sR-v8Aw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_2_xIUAw0Ee2ltseQyCJiWg" base_Operation="_sYuRIAw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_3bQKcAw0Ee2ltseQyCJiWg" base_Operation="_seUi0Aw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_37cGYAw0Ee2ltseQyCJiWg" base_Operation="_sj60gAw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_4fJQYAw0Ee2ltseQyCJiWg" base_Operation="_spvIoAw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_5FCywAw0Ee2ltseQyCJiWg" base_Operation="_sw_nMAw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_C7ALQAw1Ee2ltseQyCJiWg" base_Operation="_s26pAAw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_DcUIkAw1Ee2ltseQyCJiWg" base_Operation="_tEoU4Aw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_D5t2QAw1Ee2ltseQyCJiWg" base_Operation="_tLEUEAw0Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_mk9GQAw1Ee2ltseQyCJiWg" base_Operation="_gfnfsAw1Ee2ltseQyCJiWg"/>
+  <java:JavaMethod xmi:id="_nwYXkAw1Ee2ltseQyCJiWg" base_Operation="_fja9MAw1Ee2ltseQyCJiWg"/>
+  <java:JavaClass xmi:id="_GqVHQAw2Ee2ltseQyCJiWg" base_Classifier="_CtYwkAw2Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_VhgW4Aw2Ee2ltseQyCJiWg" base_Property="_LkyPEAw2Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_WENbUAw2Ee2ltseQyCJiWg" base_Property="_LuTXcAw2Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_XN0HsAw2Ee2ltseQyCJiWg" base_Property="_L1rKwAw2Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_Xr2ukAw2Ee2ltseQyCJiWg" base_Property="_L8DfkAw2Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_YLOyMAw2Ee2ltseQyCJiWg" base_Property="_MEN9EAw2Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_YoDREAw2Ee2ltseQyCJiWg" base_Property="_NeQ5MAw2Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_ZEcSIAw2Ee2ltseQyCJiWg" base_Property="_Os_9MAw2Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_Zvy8QAw2Ee2ltseQyCJiWg" base_Property="_O6YR4Aw2Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_adw1gAw2Ee2ltseQyCJiWg" base_Property="_PCdP0Aw2Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_a5XzcAw2Ee2ltseQyCJiWg" base_Property="_QHaswAw2Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_bb7t8Aw2Ee2ltseQyCJiWg" base_Property="_QTk5cAw2Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_cDcZ4Aw2Ee2ltseQyCJiWg" base_Property="_QfRMEAw2Ee2ltseQyCJiWg"/>
+  <java:JavaClass xmi:id="_aC_voAw3Ee2ltseQyCJiWg" base_Classifier="_DFOBwAw2Ee2ltseQyCJiWg"/>
+  <java:JavaClass xmi:id="_ahoMYAw3Ee2ltseQyCJiWg" base_Classifier="_DeigsAw2Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_xeHWQAw3Ee2ltseQyCJiWg" base_Property="_gpSuMAw3Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_zp5RUAw3Ee2ltseQyCJiWg" base_Property="_gXFj4Aw3Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_2q49IAw3Ee2ltseQyCJiWg" base_Property="_gMjH0Aw3Ee2ltseQyCJiWg"/>
+  <java:JavaProperty xmi:id="_3S2VAAw3Ee2ltseQyCJiWg" base_Property="_gEXcMAw3Ee2ltseQyCJiWg"/>
+</xmi:XMI>
