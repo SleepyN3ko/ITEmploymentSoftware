@@ -117,6 +117,7 @@ public class DataStorage {
 			e.printStackTrace();
 		}
 	}
+	
 	public Vector<Applicant> getApplicants() {
 		return this.applicantVector;
 	}
@@ -131,6 +132,14 @@ public class DataStorage {
 		for (int index = 0;index<applicantVector.size();index++){
 			if (applicantVector.get(index).getApplicantID().equals(applicantID)){
 				return applicantVector.get(index);
+			}
+		}
+		return null;
+	}
+	public Staff getStaff(String username){
+		for (int index = 0;index<staffVector.size();index++){
+			if (staffVector.get(index).getUsername().equals(username)){
+				return staffVector.get(index);
 			}
 		}
 		return null;
@@ -174,6 +183,28 @@ public class DataStorage {
 			e.printStackTrace();
 		}
 	}
+	
+	public void updateStaffDS(Staff currentName) {
+		//update specific staff from vector
+		for (int index=0;index<staffVector.size();index++){
+			if (staffVector.get(index).getUsername().equals(currentName.getUsername())){
+				staffVector.set(index, currentName);
+				break;
+			}
+		}
+		//save updated staff
+		try {
+			BufferedWriter fw = new BufferedWriter(new FileWriter("staffAccounts.csv",false));
+			for (int index=0;index<staffVector.size();index++){
+				fw.append(staffVector.get(index).staffAsCSV());
+				fw.newLine();
+			}
+			fw.close();
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+	}
+	
 	public void deleteApplicantDS(String selectedApplicantID) {
 		//remove specific applicant from vector
 		for (int index=0;index<applicantVector.size();index++){
@@ -195,5 +226,25 @@ public class DataStorage {
 		}
 	}
 	
+	public void deleteStaffDS(String selectedUsername) {
+		//remove specific staff from vector
+		for (int index=0;index<staffVector.size();index++){
+			if (staffVector.get(index).getUsername().equals(selectedUsername)){
+				staffVector.remove(index);
+				break;
+			}
+		}
+		//remove selected staff from file
+		try {
+			BufferedWriter fw = new BufferedWriter(new FileWriter("staffAccounts.csv",false));
+			for (int index=0;index<staffVector.size();index++){
+				fw.append(staffVector.get(index).staffAsCSV());
+				fw.newLine();
+			}
+			fw.close();
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+	}
 
 }

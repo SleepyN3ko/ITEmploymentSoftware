@@ -126,6 +126,17 @@ public class Controller {
 		}
 		return failed;
 	}
+	
+	public Object[][] getStaffs(){
+	
+
+		List<Staff> staffList= this.ds.getStaffVector();
+		
+		Object[][] data = staffList.stream().map(p->new Object[]{p.getUsername(),p.getPassword(),"Delete"}).toArray(Object[][]::new);
+
+		return data;	
+	}
+	
 	public Object[][] getApplicants(){
 		//{p.getApplicantID(),p.getName(),p.getphoneNumber(),p.getGender(),p.getWorkExperience(),p.getGenericSkill(),p.getTechnicalSkill(),p.getAchievement(),p.getQualification(),p.getShortlistStatus(),p.getReceivedJobOffer()})
 
@@ -212,8 +223,14 @@ public class Controller {
 	public Applicant getApplicant(String ApplicantID){
 		return this.ds.getApplicant(ApplicantID);
 	}
+	public Staff getStaff(String Username){
+		return this.ds.getStaff(Username);
+	}
 	public void addApplicant(Applicant currentApplicant){
 		this.ds.addApplicant(currentApplicant);
+	}
+	public void addStaff(Staff currentStaff){
+		this.ds.addStaff(currentStaff);
 	}
 	public BufferedImage getImage(String imagePath) throws IOException{
 		return this.ds.getImageFromStorage(imagePath);
@@ -224,8 +241,14 @@ public class Controller {
 	public void updateApplicant(Applicant currentApplicant) {
 		this.ds.updateApplicantDS(currentApplicant);
 	}
+	public void updateStaff(Staff currentStaff) {
+		this.ds.updateStaffDS(currentStaff);
+	}
 	public void deleteApplicant(String selectedApplicantID) {
 		this.ds.deleteApplicantDS(selectedApplicantID);
+	}
+	public void deleteStaff(String selectedUsername) {
+		this.ds.deleteStaffDS(selectedUsername);
 	}
 }
 

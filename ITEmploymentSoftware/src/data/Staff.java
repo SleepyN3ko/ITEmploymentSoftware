@@ -42,5 +42,12 @@ public class Staff {
 	public void login() { 
 		// TODO Auto-generated method
 	 } 
+	public String staffAsCSV(){
+
+		String line = "";
+		line+=this.getUsername()+",";
+		line+=this.getPassword();
+		return line;
+	}
 
 }
