@@ -46,7 +46,7 @@ public class Staff {
 
 		String line = "";
 		line+=this.getUsername()+",";
-		line+=this.getPassword()+",";
+		line+=this.getPassword();
 		return line;
 	}
 
