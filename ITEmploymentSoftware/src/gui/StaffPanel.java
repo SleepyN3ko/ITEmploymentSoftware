@@ -52,6 +52,8 @@ public class StaffPanel extends JPanel{
 	private filterSelection filterListener = new filterSelection();
 	private JLabel lblQualifications;
 	private JComboBox qualificationFilter;
+	private JLabel lblShortlisted;
+	private JComboBox shortlistFilter;
 	
 	public StaffPanel(MainFrame main){
 		this.main = main;
@@ -132,13 +134,33 @@ public class StaffPanel extends JPanel{
 		gbc_techSkillFilter.gridy = 2;
 		add(techSkillFilter, gbc_techSkillFilter);
 		
+		lblShortlisted = new JLabel("Shortlisted:");
+		lblShortlisted.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_lblShortlisted = new GridBagConstraints();
+		gbc_lblShortlisted.anchor = GridBagConstraints.EAST;
+		gbc_lblShortlisted.insets = new Insets(0, 0, 5, 5);
+		gbc_lblShortlisted.gridx = 4;
+		gbc_lblShortlisted.gridy = 2;
+		add(lblShortlisted, gbc_lblShortlisted);
+		
+		String[] shortlist = {"All","Shortlisted","Not Shortlisted"};
+		shortlistFilter = new JComboBox(shortlist);
+		shortlistFilter.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_shortlistFilter = new GridBagConstraints();
+		shortlistFilter.addActionListener(filterListener);
+		gbc_shortlistFilter.insets = new Insets(0, 0, 5, 5);
+		gbc_shortlistFilter.fill = GridBagConstraints.HORIZONTAL;
+		gbc_shortlistFilter.gridx = 5;
+		gbc_shortlistFilter.gridy = 2;
+		add(shortlistFilter, gbc_shortlistFilter);
+		
 		
 		scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridwidth = 11;
-		gbc_scrollPane.gridheight = 4;
+		gbc_scrollPane.gridheight = 7;
 		gbc_scrollPane.gridx = 1;
 		gbc_scrollPane.gridy = 4;
 		add(scrollPane, gbc_scrollPane);
@@ -205,17 +227,17 @@ public class StaffPanel extends JPanel{
 				addApplicantButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 				GridBagConstraints gbc_addApplicantButton = new GridBagConstraints();
 				gbc_addApplicantButton.gridwidth = 4;
-				gbc_addApplicantButton.insets = new Insets(0, 0, 5, 5);
+				gbc_addApplicantButton.insets = new Insets(0, 0, 0, 5);
 				gbc_addApplicantButton.gridx = 1;
-				gbc_addApplicantButton.gridy = 8;
+				gbc_addApplicantButton.gridy = 11;
 				add(addApplicantButton, gbc_addApplicantButton);
-				btnBack = new JButton("Back");
+				btnBack = new JButton("Logout");
 				btnBack.setFont(new Font("Tahoma", Font.PLAIN, 30));
 				GridBagConstraints gbc_btnBack = new GridBagConstraints();
 				gbc_btnBack.gridwidth = 5;
-				gbc_btnBack.insets = new Insets(0, 0, 5, 5);
-				gbc_btnBack.gridx = 7;
-				gbc_btnBack.gridy = 8;
+				gbc_btnBack.insets = new Insets(0, 0, 0, 5);
+				gbc_btnBack.gridx = 5;
+				gbc_btnBack.gridy = 11;
 				add(btnBack, gbc_btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -231,6 +253,15 @@ public class StaffPanel extends JPanel{
 			filters.add("gender,"+genderFilter.getSelectedItem());//add selected gender filter to filters
 			filters.add("tskill,"+techSkillFilter.getSelectedItem()); //add selected technical skill filter to filters
 			filters.add("qualification,"+qualificationFilter.getSelectedItem());
+			if (shortlistFilter.getSelectedItem().equals("Shortlisted")){
+				filters.add("shortlist,"+"true");
+			}
+			else if (shortlistFilter.getSelectedItem().equals("Not Shortlisted")){
+				filters.add("shortlist,"+"false");
+			}
+			else {
+				filters.add("shortlist,"+"All");
+			}
 			Object[][] rows = main.getController().getApplicants(filters); //use overloaded method to filter applicant on controller side
 			String[] columns = {
 					"ApplicantID", "Name","View Applicant","Update Applicant","Delete Applicants"

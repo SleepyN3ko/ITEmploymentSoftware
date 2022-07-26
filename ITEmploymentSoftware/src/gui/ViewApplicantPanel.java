@@ -25,6 +25,7 @@ public class ViewApplicantPanel extends JPanel{
 	private MainFrame main;
 	private JTable table;
 	private Applicant currentApplicant;
+	private JLabel lblRole;
 	
 	public ViewApplicantPanel(MainFrame main, String ApplicantID, String parentPanelName){
 		this.main = main;
@@ -37,6 +38,19 @@ public class ViewApplicantPanel extends JPanel{
 		
 		currentApplicant = this.main.getController().getApplicant(ApplicantID);
 		
+		this.lblRole = new JLabel("");
+		lblRole.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_lblRole = new GridBagConstraints();
+		gbc_lblRole.insets = new Insets(0, 0, 5, 5);
+		gbc_lblRole.gridx = 1;
+		gbc_lblRole.gridy = 1;
+		add(lblRole, gbc_lblRole);
+		if (parentPanelName=="manager"){
+			lblRole.setText("Manager");
+		}
+		else if (parentPanelName=="staff"){
+			lblRole.setText("Staff");
+		}
 		JLabel lblApplicantDetails = new JLabel("Applicant Details");
 		lblApplicantDetails.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_lblApplicantDetails = new GridBagConstraints();

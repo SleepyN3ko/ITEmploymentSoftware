@@ -182,6 +182,11 @@ public class Controller {
 						applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getQualification().equals(filterValue.toString())).collect(Collectors.toList());
 					}
 				}
+				else if (filterKey.equals("shortlist")){
+					if (!filterValue.equals("All")){
+						applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getShortlistStatusAsString().equals(filterValue.toString())).collect(Collectors.toList());
+					}
+				}
 			}
 		}
 		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),"View","Update","Delete"}).toArray(Object[][]::new);

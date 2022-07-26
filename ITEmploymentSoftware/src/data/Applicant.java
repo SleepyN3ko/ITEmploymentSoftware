@@ -52,7 +52,9 @@ public class Applicant {
 	public boolean getShortlistStatus() {
 	 	 return shortlisted; 
 	}
-
+	public String getShortlistStatusAsString() {
+	 	 return String.valueOf(shortlisted); 
+	}
 	public void setShortlistStatus(boolean shortlistStatus) { 
 		 this.shortlisted = shortlistStatus; 
 	}

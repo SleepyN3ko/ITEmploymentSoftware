@@ -37,7 +37,6 @@ public class InfoStaffPanel extends JPanel{
 		gridBagLayout.columnWeights = new double[]{1,1.0,1.0,1, 0.0,1, 0.0,1};
 		gridBagLayout.rowWeights = new double[]{1, 1.0, 0.0,1.0,1,1,1,1};
 		setLayout(gridBagLayout);
-		
 		JLabel lblStaffInfoLabel = new JLabel("Showing Staffs Info");
 		lblStaffInfoLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_lblStaffInfoLabel = new GridBagConstraints();
@@ -84,12 +83,26 @@ public class InfoStaffPanel extends JPanel{
 		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,2);
 		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		JButton btnRegisterStaffmanager = new JButton("Register Staff/Manager");
+		btnRegisterStaffmanager.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showRegisterPanel();
+			}
+		});
+		btnRegisterStaffmanager.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_btnRegisterStaffmanager = new GridBagConstraints();
+		gbc_btnRegisterStaffmanager.gridwidth = 3;
+		gbc_btnRegisterStaffmanager.insets = new Insets(0, 0, 0, 5);
+		gbc_btnRegisterStaffmanager.gridx = 1;
+		gbc_btnRegisterStaffmanager.gridy = 7;
+		add(btnRegisterStaffmanager, gbc_btnRegisterStaffmanager);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.gridwidth = 2;
 		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
-		gbc_btnBack.gridx = 6;
+		gbc_btnBack.gridx = 4;
 		gbc_btnBack.gridy = 7;
 		add(btnBack, gbc_btnBack);
 		btnBack.addActionListener(new ActionListener() {
