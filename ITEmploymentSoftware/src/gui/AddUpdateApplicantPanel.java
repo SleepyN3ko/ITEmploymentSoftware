@@ -48,12 +48,20 @@ public class AddUpdateApplicantPanel extends JPanel{
 		gridBagLayout.columnWeights = new double[]{1,1,1,1,1,1,1,1};
 		gridBagLayout.rowWeights = new double[]{1,1,1,1,1,1,1,1};
 		setLayout(gridBagLayout);
+		
+		JLabel lblStaff = new JLabel("Staff");
+		lblStaff.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_lblStaff = new GridBagConstraints();
+		gbc_lblStaff.insets = new Insets(0, 0, 5, 5);
+		gbc_lblStaff.gridx = 0;
+		gbc_lblStaff.gridy = 0;
+		add(lblStaff, gbc_lblStaff);
 		this.panelTitle = new JLabel("");
 		panelTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_panelTitle = new GridBagConstraints();
-		gbc_panelTitle.gridwidth = 6;
+		gbc_panelTitle.gridwidth = 5;
 		gbc_panelTitle.insets = new Insets(0, 0, 5, 5);
-		gbc_panelTitle.gridx = 0;
+		gbc_panelTitle.gridx = 1;
 		gbc_panelTitle.gridy = 0;
 		add(panelTitle, gbc_panelTitle);
 		
@@ -297,7 +305,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_backButton = new GridBagConstraints();
 		gbc_backButton.gridwidth = 4;
-		gbc_backButton.insets = new Insets(0, 0, 5, 5);
+		gbc_backButton.insets = new Insets(0, 0, 5, 0);
 		gbc_backButton.gridx = 4;
 		gbc_backButton.gridy = 5;
 		add(backButton, gbc_backButton);

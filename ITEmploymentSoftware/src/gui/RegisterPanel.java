@@ -27,6 +27,7 @@ public class RegisterPanel extends JPanel {
 	private JButton backButton;
 	private JComboBox roleCombo;
 	private JLabel roleLabel;
+	private JLabel lblManager;
 	public RegisterPanel(MainFrame main) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20,20};
@@ -35,12 +36,20 @@ public class RegisterPanel extends JPanel {
 		gridBagLayout.rowWeights = new double[]{1,1,1,1,1,1};
 		setLayout(gridBagLayout);
 		
+		lblManager = new JLabel("Manager");
+		lblManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_lblManager = new GridBagConstraints();
+		gbc_lblManager.insets = new Insets(0, 0, 5, 5);
+		gbc_lblManager.gridx = 0;
+		gbc_lblManager.gridy = 0;
+		add(lblManager, gbc_lblManager);
+		
 		this.panelTitle = new JLabel("Register Page");
 		panelTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_panelTitle = new GridBagConstraints();
-		gbc_panelTitle.gridwidth = 4;
+		gbc_panelTitle.gridwidth = 3;
 		gbc_panelTitle.insets = new Insets(0, 0, 5, 5);
-		gbc_panelTitle.gridx = 1;
+		gbc_panelTitle.gridx = 2;
 		gbc_panelTitle.gridy = 0;
 		add(panelTitle, gbc_panelTitle);
 		
@@ -111,7 +120,9 @@ public class RegisterPanel extends JPanel {
 					String errorMsg = main.getController().verifyManager(username, password,0);
 					if (errorMsg == ""){
 						main.getController().registerManager(username, password);
-						main.showLoginPanel();
+						usernameField.setText("");
+						passwordField.setText("");
+						JOptionPane.showMessageDialog(null, "Manager has been successfully created", "Success", JOptionPane.INFORMATION_MESSAGE);
 					}
 					else {
 						JOptionPane.showMessageDialog(null, errorMsg, "Error", JOptionPane.ERROR_MESSAGE);
@@ -121,7 +132,10 @@ public class RegisterPanel extends JPanel {
 					String errorMsg = main.getController().verifyStaff(username, password,0);
 					if (errorMsg == ""){
 						main.getController().registerStaff(username, password);
-						main.showLoginPanel();
+						usernameField.setText("");
+						passwordField.setText("");
+						JOptionPane.showMessageDialog(null, "Staff has been successfully created", "Success", JOptionPane.INFORMATION_MESSAGE);
+					
 					}
 					else {
 						JOptionPane.showMessageDialog(null, errorMsg, "Error", JOptionPane.ERROR_MESSAGE);
@@ -146,7 +160,7 @@ public class RegisterPanel extends JPanel {
 		add(backButton, gbc_backButton);
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.showLoginPanel();
+				main.showInfoStaffPanel();
 			}
 		});
 	}

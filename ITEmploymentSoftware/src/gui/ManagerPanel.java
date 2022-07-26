@@ -42,7 +42,7 @@ public class ManagerPanel extends JPanel{
 		JLabel lblWelcome = new JLabel("Welcome Manager :D");
 		lblWelcome.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_lblWelcome = new GridBagConstraints();
-		gbc_lblWelcome.gridwidth = 5;
+		gbc_lblWelcome.gridwidth = 2;
 		gbc_lblWelcome.insets = new Insets(0, 0, 5, 5);
 		gbc_lblWelcome.gridx = 1;
 		gbc_lblWelcome.gridy = 0;
@@ -79,6 +79,8 @@ public class ManagerPanel extends JPanel{
 				TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
 			}
 		});
+		
+		
 		btnShowShortlisted.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnShowShortlisted = new GridBagConstraints();
 		gbc_btnShowShortlisted.insets = new Insets(0, 0, 5, 5);
@@ -176,6 +178,20 @@ public class ManagerPanel extends JPanel{
 		gbc_btnShowBoth.gridx = 1;
 		gbc_btnShowBoth.gridy = 2;
 		add(btnShowBoth, gbc_btnShowBoth);
+		
+		JButton btnRefresh = new JButton("Show All");
+		btnRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showManagerPanel();
+			}
+		});
+		btnRefresh.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_btnRefresh = new GridBagConstraints();
+		gbc_btnRefresh.gridwidth = 2;
+		gbc_btnRefresh.insets = new Insets(0, 0, 5, 5);
+		gbc_btnRefresh.gridx = 3;
+		gbc_btnRefresh.gridy = 2;
+		add(btnRefresh, gbc_btnRefresh);
 		
 		this.lblCount = new JLabel("Count");
 		lblCount.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -321,22 +337,8 @@ public class ManagerPanel extends JPanel{
 		gbc_btnJobOffer.gridy = 7;
 		add(btnJobOffer, gbc_btnJobOffer);
 		
-		JButton btnRefresh = new JButton("Refresh");
-		btnRefresh.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				main.showManagerPanel();
-			}
-		});
-		btnRefresh.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_btnRefresh = new GridBagConstraints();
-		gbc_btnRefresh.gridwidth = 2;
-		gbc_btnRefresh.insets = new Insets(0, 0, 0, 5);
-		gbc_btnRefresh.gridx = 3;
-		gbc_btnRefresh.gridy = 7;
-		add(btnRefresh, gbc_btnRefresh);
-		
 
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton("Logout");
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
 		gbc_btnBack.insets = new Insets(0, 0, 0, 5);

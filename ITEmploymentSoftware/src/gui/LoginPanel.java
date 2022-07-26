@@ -92,12 +92,6 @@ public class LoginPanel extends JPanel{
 		passwordField.setColumns(10);
 		passwordField.setEchoChar('*');
 		
-		this.registerButton = new JButton("Register");
-		registerButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				main.showRegisterPanel();
-			}
-		});
 		
 		btnShow = new JButton("Show");
 		btnShow.addActionListener(new ActionListener() {
@@ -124,14 +118,6 @@ public class LoginPanel extends JPanel{
 		gbc_btnHide.gridx = 5;
 		gbc_btnHide.gridy = 3;
 		add(btnHide, gbc_btnHide);
-		
-		registerButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_registerButton = new GridBagConstraints();
-		gbc_registerButton.gridwidth = 2;
-		gbc_registerButton.insets = new Insets(0, 0, 5, 5);
-		gbc_registerButton.gridx = 2;
-		gbc_registerButton.gridy = 6;
-		add(registerButton, gbc_registerButton);
 		
 		lblPosition = new JLabel("Position:");
 		lblPosition.setFont(new Font("Tahoma", Font.PLAIN, 30));
