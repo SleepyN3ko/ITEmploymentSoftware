@@ -144,7 +144,7 @@ public class DataStorage {
 		}
 		return null;
 	}
-	public boolean ApplicantExists(String applicantID) {
+	public boolean applicantExists(String applicantID) {
 		//check if applicant with this specific id exists
 		for (int index = 0;index<applicantVector.size();index++){
 			if (applicantVector.get(index).getApplicantID().equals(applicantID)){

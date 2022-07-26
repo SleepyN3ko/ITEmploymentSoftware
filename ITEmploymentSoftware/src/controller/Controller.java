@@ -217,8 +217,8 @@ public class Controller {
 		return data;
 	}
 	
-	public boolean ApplicantExists(String ApplicantID){
-		return this.ds.ApplicantExists(ApplicantID);
+	public boolean applicantExists(String ApplicantID){
+		return this.ds.applicantExists(ApplicantID);
 	}
 	public Applicant getApplicant(String ApplicantID){
 		return this.ds.getApplicant(ApplicantID);

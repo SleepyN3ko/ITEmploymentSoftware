@@ -10,6 +10,14 @@
     <packagedElement xmi:type="uml:Package" xmi:id="_dxyEoAwuEe2ltseQyCJiWg" name="Final Class Diagram">
       <packagedElement xmi:type="uml:Class" xmi:id="_xOLL4AwuEe2ltseQyCJiWg" name="MainFrame">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_6OxCoAwuEe2ltseQyCJiWg" name="cont"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_5tOwUgyFEe2yZ-54mMKRfg" name="controller" type="__edlMAwvEe2ltseQyCJiWg" aggregation="shared" association="_5tOJQAyFEe2yZ-54mMKRfg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_JaEcogyGEe2yZ-54mMKRfg" name="addupdateapplicantpanel" type="_9A-VcAw3Ee2ltseQyCJiWg" association="_JaD1kAyGEe2yZ-54mMKRfg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_J-uB0wyGEe2yZ-54mMKRfg" name="infostaffpanel" type="_9mp1YAw3Ee2ltseQyCJiWg" association="_J-uB0AyGEe2yZ-54mMKRfg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_KYKckwyGEe2yZ-54mMKRfg" name="loginpanel" type="_95YkIAw3Ee2ltseQyCJiWg" association="_KYKckAyGEe2yZ-54mMKRfg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Ktw5IwyGEe2yZ-54mMKRfg" name="registerpanel" type="_-Y-qMAw3Ee2ltseQyCJiWg" association="_Ktw5IAyGEe2yZ-54mMKRfg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_LFyXkQyGEe2yZ-54mMKRfg" name="managerpanel" type="_-1BF8Aw3Ee2ltseQyCJiWg" association="_LFxwgAyGEe2yZ-54mMKRfg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Lc3a0wyGEe2yZ-54mMKRfg" name="staffpanel" type="__Ucz8Aw3Ee2ltseQyCJiWg" association="_Lc3a0AyGEe2yZ-54mMKRfg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_LwwAIgyGEe2yZ-54mMKRfg" name="viewapplicantpanel" type="__jk1EAw3Ee2ltseQyCJiWg" association="_LwvZEAyGEe2yZ-54mMKRfg"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_cia5EAwvEe2ltseQyCJiWg" name="showLoginPanel"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_cqiTQAwvEe2ltseQyCJiWg" name="showRegisterPanel"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_d_WxIAwvEe2ltseQyCJiWg" name="showStaffPanel"/>
@@ -19,6 +27,7 @@
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="__edlMAwvEe2ltseQyCJiWg" name="Controller">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_OSJb8AwwEe2ltseQyCJiWg" name="ds"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ubTwIAyFEe2yZ-54mMKRfg" name="data storage" type="_M2NFkAw0Ee2ltseQyCJiWg" aggregation="shared" association="_ubJYEAyFEe2yZ-54mMKRfg"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_TVc9wAwwEe2ltseQyCJiWg" name="verifyStaff">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_am6jwAwxEe2ltseQyCJiWg" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -41,9 +50,42 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_U7j_8AwwEe2ltseQyCJiWg" name="staffExists"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_mzex0AwyEe2ltseQyCJiWg" name="verifyManager"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_nLH1wAwyEe2ltseQyCJiWg" name="managerExists"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_U7j_8AwwEe2ltseQyCJiWg" name="staffExists">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_85Y1MAyDEe2yZ-54mMKRfg" name="username">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-pYMIAyDEe2yZ-54mMKRfg" name="password">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_BQRV4AyEEe2yZ-54mMKRfg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_mzex0AwyEe2ltseQyCJiWg" name="verifyManager">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_T0uIgAyEEe2yZ-54mMKRfg" name="username">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_VXUjsAyEEe2yZ-54mMKRfg" name="password">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZiducAyEEe2yZ-54mMKRfg" name="flag">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ciV_8AyEEe2yZ-54mMKRfg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_nLH1wAwyEe2ltseQyCJiWg" name="managerExists">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_gBHM4AyEEe2yZ-54mMKRfg" name="username">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_hvlg4AyEEe2yZ-54mMKRfg" name="password">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_j0jCQAyEEe2yZ-54mMKRfg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_onY_cAwyEe2ltseQyCJiWg" name="registerManager"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_oymw8AwyEe2ltseQyCJiWg" name="managerLoginFailed"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_o7iDcAwyEe2ltseQyCJiWg" name="staffLoginFailed"/>
@@ -138,19 +180,73 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_9A-VcAw3Ee2ltseQyCJiWg" name="Class1"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_9mp1YAw3Ee2ltseQyCJiWg" name="Class2"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_95YkIAw3Ee2ltseQyCJiWg" name="Class3"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_-Y-qMAw3Ee2ltseQyCJiWg" name="Class4"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_-1BF8Aw3Ee2ltseQyCJiWg" name="Class5"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="__Ucz8Aw3Ee2ltseQyCJiWg" name="Class6"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="__jk1EAw3Ee2ltseQyCJiWg" name="Class7"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_9A-VcAw3Ee2ltseQyCJiWg" name="AddUpdateApplicantPanel"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_9mp1YAw3Ee2ltseQyCJiWg" name="InfoStaffPanel"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_95YkIAw3Ee2ltseQyCJiWg" name="LoginPanel"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_-Y-qMAw3Ee2ltseQyCJiWg" name="RegisterPanel"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_-1BF8Aw3Ee2ltseQyCJiWg" name="ManagerPanel"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="__Ucz8Aw3Ee2ltseQyCJiWg" name="StaffPanel"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="__jk1EAw3Ee2ltseQyCJiWg" name="ViewApplicantPanel"/>
       <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_KWga4AwyEe2ltseQyCJiWg">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KWhB8AwyEe2ltseQyCJiWg" source="http://www.eclipse.org/uml2/2.0.0/UML">
           <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/JAVA/1#/"/>
         </eAnnotations>
         <appliedProfile xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
       </profileApplication>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_ubJYEAyFEe2yZ-54mMKRfg" memberEnd="_ubTwIAyFEe2yZ-54mMKRfg _ubUXMAyFEe2yZ-54mMKRfg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ubNpgAyFEe2yZ-54mMKRfg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ubOQkAyFEe2yZ-54mMKRfg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_ubUXMAyFEe2yZ-54mMKRfg" name="controller" type="__edlMAwvEe2ltseQyCJiWg" association="_ubJYEAyFEe2yZ-54mMKRfg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_5tOJQAyFEe2yZ-54mMKRfg" memberEnd="_5tOwUgyFEe2yZ-54mMKRfg _5tOwUwyFEe2yZ-54mMKRfg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_5tOwUAyFEe2yZ-54mMKRfg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5tOwUQyFEe2yZ-54mMKRfg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_5tOwUwyFEe2yZ-54mMKRfg" name="mainframe" type="_xOLL4AwuEe2ltseQyCJiWg" association="_5tOJQAyFEe2yZ-54mMKRfg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_JaD1kAyGEe2yZ-54mMKRfg" memberEnd="_JaEcogyGEe2yZ-54mMKRfg _JaEcowyGEe2yZ-54mMKRfg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JaEcoAyGEe2yZ-54mMKRfg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JaEcoQyGEe2yZ-54mMKRfg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_JaEcowyGEe2yZ-54mMKRfg" name="mainframe" type="_xOLL4AwuEe2ltseQyCJiWg" association="_JaD1kAyGEe2yZ-54mMKRfg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_J-uB0AyGEe2yZ-54mMKRfg" memberEnd="_J-uB0wyGEe2yZ-54mMKRfg _J-uB1AyGEe2yZ-54mMKRfg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_J-uB0QyGEe2yZ-54mMKRfg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_J-uB0gyGEe2yZ-54mMKRfg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_J-uB1AyGEe2yZ-54mMKRfg" name="mainframe" type="_xOLL4AwuEe2ltseQyCJiWg" association="_J-uB0AyGEe2yZ-54mMKRfg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_KYKckAyGEe2yZ-54mMKRfg" memberEnd="_KYKckwyGEe2yZ-54mMKRfg _KYLDoAyGEe2yZ-54mMKRfg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KYKckQyGEe2yZ-54mMKRfg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KYKckgyGEe2yZ-54mMKRfg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_KYLDoAyGEe2yZ-54mMKRfg" name="mainframe" type="_xOLL4AwuEe2ltseQyCJiWg" association="_KYKckAyGEe2yZ-54mMKRfg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Ktw5IAyGEe2yZ-54mMKRfg" memberEnd="_Ktw5IwyGEe2yZ-54mMKRfg _Ktw5JAyGEe2yZ-54mMKRfg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Ktw5IQyGEe2yZ-54mMKRfg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Ktw5IgyGEe2yZ-54mMKRfg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_Ktw5JAyGEe2yZ-54mMKRfg" name="mainframe" type="_xOLL4AwuEe2ltseQyCJiWg" association="_Ktw5IAyGEe2yZ-54mMKRfg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_LFxwgAyGEe2yZ-54mMKRfg" memberEnd="_LFyXkQyGEe2yZ-54mMKRfg _LFyXkgyGEe2yZ-54mMKRfg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LFxwgQyGEe2yZ-54mMKRfg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LFyXkAyGEe2yZ-54mMKRfg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_LFyXkgyGEe2yZ-54mMKRfg" name="mainframe" type="_xOLL4AwuEe2ltseQyCJiWg" association="_LFxwgAyGEe2yZ-54mMKRfg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Lc3a0AyGEe2yZ-54mMKRfg" memberEnd="_Lc3a0wyGEe2yZ-54mMKRfg _Lc4B4AyGEe2yZ-54mMKRfg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Lc3a0QyGEe2yZ-54mMKRfg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Lc3a0gyGEe2yZ-54mMKRfg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_Lc4B4AyGEe2yZ-54mMKRfg" name="mainframe" type="_xOLL4AwuEe2ltseQyCJiWg" association="_Lc3a0AyGEe2yZ-54mMKRfg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_LwvZEAyGEe2yZ-54mMKRfg" memberEnd="_LwwAIgyGEe2yZ-54mMKRfg _LwwAIwyGEe2yZ-54mMKRfg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LwwAIAyGEe2yZ-54mMKRfg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LwwAIQyGEe2yZ-54mMKRfg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_LwwAIwyGEe2yZ-54mMKRfg" name="mainframe" type="_xOLL4AwuEe2ltseQyCJiWg" association="_LwvZEAyGEe2yZ-54mMKRfg"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lrsnMAwuEe2ltseQyCJiWg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lrucYAwuEe2ltseQyCJiWg" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -231,4 +327,11 @@
   <java:JavaProperty xmi:id="_zp5RUAw3Ee2ltseQyCJiWg" base_Property="_gXFj4Aw3Ee2ltseQyCJiWg"/>
   <java:JavaProperty xmi:id="_2q49IAw3Ee2ltseQyCJiWg" base_Property="_gMjH0Aw3Ee2ltseQyCJiWg"/>
   <java:JavaProperty xmi:id="_3S2VAAw3Ee2ltseQyCJiWg" base_Property="_gEXcMAw3Ee2ltseQyCJiWg"/>
+  <java:JavaClass xmi:id="_qyEf8AyCEe2yZ-54mMKRfg" base_Classifier="_9A-VcAw3Ee2ltseQyCJiWg"/>
+  <java:JavaClass xmi:id="_wdSWUAyCEe2yZ-54mMKRfg" base_Classifier="_9mp1YAw3Ee2ltseQyCJiWg"/>
+  <java:JavaClass xmi:id="_Zj5HQAyDEe2yZ-54mMKRfg" base_Classifier="_95YkIAw3Ee2ltseQyCJiWg"/>
+  <java:JavaClass xmi:id="_aRt2kAyDEe2yZ-54mMKRfg" base_Classifier="_-Y-qMAw3Ee2ltseQyCJiWg"/>
+  <java:JavaClass xmi:id="_djdUIAyDEe2yZ-54mMKRfg" base_Classifier="_-1BF8Aw3Ee2ltseQyCJiWg"/>
+  <java:JavaClass xmi:id="_eF2PgAyDEe2yZ-54mMKRfg" base_Classifier="__Ucz8Aw3Ee2ltseQyCJiWg"/>
+  <java:JavaClass xmi:id="_vNiJMAyDEe2yZ-54mMKRfg" base_Classifier="__jk1EAw3Ee2ltseQyCJiWg"/>
 </xmi:XMI>
