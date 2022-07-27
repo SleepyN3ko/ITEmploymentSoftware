@@ -8,6 +8,8 @@ import controller.MainFrame;
 import data.Applicant;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -74,10 +76,13 @@ public class InfoStaffPanel extends JPanel{
 		{
 		    public void actionPerformed(ActionEvent e)
 		    {
-		        int modelRow = Integer.valueOf(e.getActionCommand());
-		        String selectedUsername = rows[modelRow][0].toString();
-		        main.getController().deleteStaff(selectedUsername);
-		        main.showInfoStaffPanel();
+		    	int result = JOptionPane.showConfirmDialog(null, "Confirm to delete Staff?", "Confirmation", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+		        if (result==0){
+			    	int modelRow = Integer.valueOf(e.getActionCommand());
+			        String selectedUsername = rows[modelRow][0].toString();
+			        main.getController().deleteStaff(selectedUsername);
+			        main.showInfoStaffPanel();
+		        }
 		    }
 		};
 		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,2);
