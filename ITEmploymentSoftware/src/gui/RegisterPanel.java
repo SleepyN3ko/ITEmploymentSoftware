@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import javax.swing.SwingConstants;
 public class RegisterPanel extends JPanel {
 	private MainFrame main;
 	
@@ -27,7 +28,6 @@ public class RegisterPanel extends JPanel {
 	private JButton backButton;
 	private JComboBox roleCombo;
 	private JLabel roleLabel;
-	private JLabel lblManager;
 	public RegisterPanel(MainFrame main) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20,20};
@@ -36,20 +36,12 @@ public class RegisterPanel extends JPanel {
 		gridBagLayout.rowWeights = new double[]{1,1,1,1,1,1};
 		setLayout(gridBagLayout);
 		
-		lblManager = new JLabel("Manager");
-		lblManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_lblManager = new GridBagConstraints();
-		gbc_lblManager.insets = new Insets(0, 0, 5, 5);
-		gbc_lblManager.gridx = 0;
-		gbc_lblManager.gridy = 0;
-		add(lblManager, gbc_lblManager);
-		
-		this.panelTitle = new JLabel("Register Page");
-		panelTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		this.panelTitle = new JLabel("Manager Add Employee");
+		panelTitle.setFont(new Font("Tahoma", Font.BOLD, 35));
 		GridBagConstraints gbc_panelTitle = new GridBagConstraints();
-		gbc_panelTitle.gridwidth = 3;
+		gbc_panelTitle.gridwidth = 4;
 		gbc_panelTitle.insets = new Insets(0, 0, 5, 5);
-		gbc_panelTitle.gridx = 2;
+		gbc_panelTitle.gridx = 1;
 		gbc_panelTitle.gridy = 0;
 		add(panelTitle, gbc_panelTitle);
 		
@@ -111,7 +103,7 @@ public class RegisterPanel extends JPanel {
 		gbc_roleCombo.gridy = 3;
 		add(roleCombo, gbc_roleCombo);
 		
-		this.registerButton = new JButton("Register");
+		this.registerButton = new JButton("Add");
 		registerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username = usernameField.getText();

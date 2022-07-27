@@ -29,7 +29,7 @@ public class ButtonColumn extends AbstractCellEditor
 	private Border focusBorder;
 
 	private JButton renderButton;
-	private JButton editButton;
+    private JButton editButton;
 	private Object editorValue;
 	private boolean isButtonColumnEditor;
 

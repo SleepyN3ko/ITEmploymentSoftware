@@ -24,21 +24,24 @@ import javax.swing.Action;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class InfoStaffPanel extends JPanel{
 	private MainFrame main;
 	private JTable table;
 	
 	public InfoStaffPanel(MainFrame main){
+		setBackground(Color.WHITE);
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20, 0,20, 0,20};
+		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20, 0,20, 0, 0,20};
 		gridBagLayout.rowHeights = new int[]{20, 0, 0, 20, 20, 20,20,20};
-		gridBagLayout.columnWeights = new double[]{1,1.0,1.0,1, 0.0,1, 0.0,1};
+		gridBagLayout.columnWeights = new double[]{1,1.0,1.0,1, 0.0,1, 0.0, 0.0,1};
 		gridBagLayout.rowWeights = new double[]{1, 1.0, 0.0,1.0,1,1,1,1};
 		setLayout(gridBagLayout);
-		JLabel lblStaffInfoLabel = new JLabel("Showing Staffs Info");
-		lblStaffInfoLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		JLabel lblStaffInfoLabel = new JLabel("Manager Employee Control Panel");
+		lblStaffInfoLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		GridBagConstraints gbc_lblStaffInfoLabel = new GridBagConstraints();
 		gbc_lblStaffInfoLabel.gridwidth = 5;
 		gbc_lblStaffInfoLabel.insets = new Insets(0, 0, 5, 5);
@@ -46,10 +49,24 @@ public class InfoStaffPanel extends JPanel{
 		gbc_lblStaffInfoLabel.gridy = 0;
 		add(lblStaffInfoLabel, gbc_lblStaffInfoLabel);
 		
+		JButton button = new JButton("Logout");
+		button.setFont(new Font("Tahoma", Font.BOLD, 30));
+		button.setBackground(Color.RED);
+		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.insets = new Insets(0, 0, 5, 5);
+		gbc_button.gridx = 6;
+		gbc_button.gridy = 0;
+		add(button, gbc_button);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showLoginPanel();
+			}
+		});
+		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridheight = 6;
-		gbc_scrollPane.gridwidth = 5;
+		gbc_scrollPane.gridwidth = 7;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 1;
@@ -57,6 +74,8 @@ public class InfoStaffPanel extends JPanel{
 		add(scrollPane, gbc_scrollPane);
 		
 		this.table = new JTable();
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table.setBackground(Color.WHITE);
 		table.setRowHeight(table.getRowHeight()+30);
 		Object[][] rows = this.main.getController().getStaffs();
 		String[] columns = {
@@ -83,7 +102,8 @@ public class InfoStaffPanel extends JPanel{
 		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,2);
 		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		JButton btnRegisterStaffmanager = new JButton("Register Staff/Manager");
+		JButton btnRegisterStaffmanager = new JButton("Add Staff/Manager");
+		btnRegisterStaffmanager.setBackground(Color.GREEN);
 		btnRegisterStaffmanager.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.showRegisterPanel();
@@ -98,9 +118,10 @@ public class InfoStaffPanel extends JPanel{
 		add(btnRegisterStaffmanager, gbc_btnRegisterStaffmanager);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.setBackground(new Color(255,204,203));
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
-		gbc_btnBack.gridwidth = 2;
+		gbc_btnBack.gridwidth = 4;
 		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
 		gbc_btnBack.gridx = 4;
 		gbc_btnBack.gridy = 7;
