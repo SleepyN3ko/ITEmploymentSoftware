@@ -3,6 +3,7 @@ import controller.MainFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.Image;
 
 import javax.swing.JPanel;
@@ -37,7 +38,7 @@ public class LoginPanel extends JPanel{
 	private JLabel lblNewLabel;
 	private JRadioButton rdbtnManager;
 	private JRadioButton rdbtnStaff;
-	
+	private Image loginImage;
 	
 	public LoginPanel(MainFrame main) {
 		setForeground(Color.WHITE);
@@ -73,18 +74,22 @@ public class LoginPanel extends JPanel{
 		add(panelTitle, gbc_panelTitle);
 		
 		
+		try {
+			loginImage = this.main.getController().getImage("images/loginIcon.png");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
-		ImageIcon i1 = loginIconImage();	
-		JLabel lblNewLabel = new JLabel(i1);
-		
-		
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.gridwidth = 6;
-		gbc_lblNewLabel.gridheight = 5;
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 1;
-		add(lblNewLabel, gbc_lblNewLabel);
+		BackgroundPanel imagePanel = new BackgroundPanel(loginImage);
+		GridBagConstraints gbc_imagePanel = new GridBagConstraints();
+		gbc_imagePanel.gridwidth = 6;
+		gbc_imagePanel.gridheight = 5;
+		gbc_imagePanel.fill = GridBagConstraints.BOTH;
+		gbc_imagePanel.insets = new Insets(0, 0, 5, 5);
+		gbc_imagePanel.gridx = 0;
+		gbc_imagePanel.gridy = 1;
+		add(imagePanel, gbc_imagePanel);
 		
 		this.usernameLabel = new JLabel("Username: ");
 		usernameLabel.setForeground(Color.BLACK);
@@ -264,9 +269,5 @@ public class LoginPanel extends JPanel{
 			}
 		}			
 	}
-	
-	private ImageIcon loginIconImage()
-	{ImageIcon i1 = new ImageIcon("images/loginIcon.png");
-        return i1;}
 	
 }
