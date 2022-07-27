@@ -27,7 +27,8 @@ public class ViewApplicantPanel extends JPanel{
 	private JTable table;
 	private Applicant currentApplicant;
 	private JLabel lblRole;
-	
+	private BackgroundPanel imagePanel;
+	private Image emptyImage;
 	public ViewApplicantPanel(MainFrame main, String ApplicantID, String parentPanelName){
 		setBackground(Color.WHITE);
 		this.main = main;
@@ -74,29 +75,32 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_namePane.gridy = 6;
 		add(namePane, gbc_namePane);
 		namePane.setText(currentApplicant.getName());
-		
-		JLabel imageLabel = new JLabel("");
-		GridBagConstraints gbc_imageLabel = new GridBagConstraints();
-		gbc_imageLabel.gridheight = 4;
-		gbc_imageLabel.gridwidth = 3;
-		gbc_imageLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_imageLabel.gridx = 4;
-		gbc_imageLabel.gridy = 6;
-		add(imageLabel, gbc_imageLabel);
+		try {
+			Image emptyImage = this.main.getController().getImage("noImage.png");
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		this.imagePanel = new BackgroundPanel(emptyImage);
+		GridBagConstraints gbc_imagePanel = new GridBagConstraints();
+		gbc_imagePanel.gridheight = 4;
+		gbc_imagePanel.gridwidth = 3;
+		gbc_imagePanel.insets = new Insets(0, 0, 5, 5);
+		gbc_imagePanel.gridx = 4;
+		gbc_imagePanel.gridy = 6;
+		add(imagePanel, gbc_imagePanel);
 		try {
 			String imagePath = currentApplicant.getImage();
 			BufferedImage profilePicture = this.main.getController().getImage(imagePath);
 			//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
-			Image resizedPicture = profilePicture.getScaledInstance(200,200, Image.SCALE_SMOOTH);
-			imageLabel.setIcon(new ImageIcon(resizedPicture));
+			imagePanel.setImage(profilePicture);
 		}
 		catch (Exception e){
 			try {
 				BufferedImage profilePicture;
 				profilePicture = this.main.getController().getImage("noImage.png");
 				//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
-				Image resizedPicture = profilePicture.getScaledInstance(200,200, Image.SCALE_SMOOTH);
-				imageLabel.setIcon(new ImageIcon(resizedPicture));
+				imagePanel.setImage(profilePicture);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

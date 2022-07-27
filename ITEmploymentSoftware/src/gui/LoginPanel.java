@@ -128,6 +128,12 @@ public class LoginPanel extends JPanel{
 		passwordField.setColumns(10);
 		passwordField.setEchoChar('*');
 		
+		this.registerButton = new JButton("Register");
+		registerButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showRegisterPanel();
+			}
+		});
 		
 		btnShow = new JButton("Show");
 		btnShow.setBackground(Color.LIGHT_GRAY);
@@ -157,6 +163,7 @@ public class LoginPanel extends JPanel{
 		gbc_btnHide.gridy = 4;
 		add(btnHide, gbc_btnHide);
 		
+
 		lblPosition = new JLabel("Login as:");
 		lblPosition.setForeground(Color.BLACK);
 		lblPosition.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -224,12 +231,8 @@ public class LoginPanel extends JPanel{
 					}
 				}
 			}
+
 		});
-				
-				
-				
-				
-				
 		loginButton.setFont(new Font("Tahoma", Font.BOLD, 35));
 		GridBagConstraints gbc_loginButton = new GridBagConstraints();
 		gbc_loginButton.gridwidth = 2;

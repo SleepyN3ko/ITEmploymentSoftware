@@ -209,11 +209,13 @@ public class DataStorage {
 		//remove specific applicant from vector
 		for (int index=0;index<applicantVector.size();index++){
 			if (applicantVector.get(index).getApplicantID().equals(selectedApplicantID)){
+				File applicantImage = new File(applicantVector.get(index).getImage());
+				applicantImage.delete();
 				applicantVector.remove(index);
 				break;
 			}
 		}
-		//remove selected applicant from file
+		//remove selected applicant from file along with associated image
 		try {
 			BufferedWriter fw = new BufferedWriter(new FileWriter("applicantProfiles.csv",false));
 			for (int index=0;index<applicantVector.size();index++){
@@ -247,4 +249,5 @@ public class DataStorage {
 		}
 	}
 
+	
 }

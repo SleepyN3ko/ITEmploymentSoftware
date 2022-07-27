@@ -40,6 +40,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 	private JTextField achievementsField;
 	private Image newImage;
 	private boolean imageUpdated;
+	private Image emptyImage;
 	protected JFileChooser fileChooser;
 	public AddUpdateApplicantPanel(MainFrame main,String ApplicantID){
 		setBackground(Color.WHITE);
@@ -47,8 +48,8 @@ public class AddUpdateApplicantPanel extends JPanel{
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20,20,20,20};
 		gridBagLayout.rowHeights = new int[]{20, 20, 20, 20,20,20,20,20};
-		gridBagLayout.columnWeights = new double[]{1,1,1,1,1,1,1,1};
-		gridBagLayout.rowWeights = new double[]{1,1,1,1,1,1,1,1};
+		gridBagLayout.columnWeights = new double[]{1,1,1,1,1,1,1.0,1};
+		gridBagLayout.rowWeights = new double[]{1,1.0,1,1,1,1,1,1};
 		setLayout(gridBagLayout);
 		this.panelTitle = new JLabel("");
 		panelTitle.setFont(new Font("Tahoma", Font.BOLD, 35));
@@ -97,16 +98,21 @@ public class AddUpdateApplicantPanel extends JPanel{
 		add(genericSkillField, gbc_genericSkillField);
 		genericSkillField.setColumns(10);
 		
-		JLabel imageLabel = new JLabel("");
-		imageLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_imageLabel = new GridBagConstraints();
-		gbc_imageLabel.fill = GridBagConstraints.VERTICAL;
-		gbc_imageLabel.gridheight = 3;
-		gbc_imageLabel.gridwidth = 4;
-		gbc_imageLabel.insets = new Insets(0, 0, 5, 0);
-		gbc_imageLabel.gridx = 4;
-		gbc_imageLabel.gridy = 1;
-		add(imageLabel, gbc_imageLabel);
+		try {
+			emptyImage = this.main.getController().getImage("noImage.png");
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		BackgroundPanel imagePanel = new BackgroundPanel(emptyImage);
+		GridBagConstraints gbc_imagePanel = new GridBagConstraints();
+		gbc_imagePanel.gridwidth = 3;
+		gbc_imagePanel.gridheight = 3;
+		gbc_imagePanel.insets = new Insets(0, 0, 5, 5);
+		gbc_imagePanel.fill = GridBagConstraints.BOTH;
+		gbc_imagePanel.gridx = 5;
+		gbc_imagePanel.gridy = 1;
+		add(imagePanel, gbc_imagePanel);
 		
 		JLabel phoneNumberLabel = new JLabel("Phone Number: ");
 		phoneNumberLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -235,8 +241,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 		            File file = selectImageFile.getSelectedFile();
 		            try {
 						newImage = ImageIO.read(file);
-						Image resizedPicture = newImage.getScaledInstance(200,200, Image.SCALE_SMOOTH);
-						imageLabel.setIcon(new ImageIcon(resizedPicture));
+						imagePanel.setImage(newImage);
 						imageUpdated = true;
 					} catch (IOException e1) {
 						System.out.println("problem accessing file"+file.getAbsolutePath());
@@ -250,9 +255,9 @@ public class AddUpdateApplicantPanel extends JPanel{
 			}
 		});
 		GridBagConstraints gbc_selectImageButton = new GridBagConstraints();
-		gbc_selectImageButton.gridwidth = 4;
+		gbc_selectImageButton.gridwidth = 3;
 		gbc_selectImageButton.insets = new Insets(0, 0, 5, 0);
-		gbc_selectImageButton.gridx = 4;
+		gbc_selectImageButton.gridx = 5;
 		gbc_selectImageButton.gridy = 4;
 		add(selectImageButton, gbc_selectImageButton);
 		
@@ -330,16 +335,14 @@ public class AddUpdateApplicantPanel extends JPanel{
 				String imagePath = currentApplicant.getImage();
 				BufferedImage profilePicture = this.main.getController().getImage(imagePath);
 				//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
-				Image resizedPicture = profilePicture.getScaledInstance(200,200, Image.SCALE_SMOOTH);
-				imageLabel.setIcon(new ImageIcon(resizedPicture));
+				imagePanel.setImage(profilePicture);
 			}
 			catch (Exception e){
 				try {
 					BufferedImage profilePicture;
 					profilePicture = this.main.getController().getImage("noImage.png");
 					//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
-					Image resizedPicture = profilePicture.getScaledInstance(200,200, Image.SCALE_SMOOTH);
-					imageLabel.setIcon(new ImageIcon(resizedPicture));
+					imagePanel.setImage(profilePicture);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

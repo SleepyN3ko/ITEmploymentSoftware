@@ -237,10 +237,13 @@ public class StaffPanel extends JPanel{
 		{
 		    public void actionPerformed(ActionEvent e)
 		    {
-		        int modelRow = Integer.valueOf(e.getActionCommand());
-		        String selectedApplicantID = rows[modelRow][0].toString();
-		        main.getController().deleteApplicant(selectedApplicantID);
-		        main.showStaffPanel();
+		    	int result = JOptionPane.showConfirmDialog(null, "Confirm to delete applicant?", "Confirmation", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+		    	if (result==0){
+			    	int modelRow = Integer.valueOf(e.getActionCommand());
+			        String selectedApplicantID = rows[modelRow][0].toString();
+			        main.getController().deleteApplicant(selectedApplicantID);
+			        main.showStaffPanel();
+		    	}
 		    }
 		};
 		ButtonColumn viewColumn = new ButtonColumn(this.table,view,2);
@@ -305,10 +308,13 @@ public class StaffPanel extends JPanel{
 			{
 			    public void actionPerformed(ActionEvent e)
 			    {
-			        int modelRow = Integer.valueOf(e.getActionCommand());
-			        String selectedApplicantID = rows[modelRow][0].toString();
-			        main.getController().deleteApplicant(selectedApplicantID);
-			        main.showStaffPanel();
+			    	int result = JOptionPane.showConfirmDialog(null, "Confirm to delete applicant?", "Confirmation", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+			    	if (result==0){
+				    	int modelRow = Integer.valueOf(e.getActionCommand());
+				        String selectedApplicantID = rows[modelRow][0].toString();
+				        main.getController().deleteApplicant(selectedApplicantID);
+				        main.showStaffPanel();
+			    	}
 			    }
 			};
 			ButtonColumn viewColumn = new ButtonColumn(table,view,2);
