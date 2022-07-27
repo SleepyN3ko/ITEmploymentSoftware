@@ -3,12 +3,14 @@ import controller.MainFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Image;
 
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 
 
 import javax.swing.JLabel;
@@ -20,6 +22,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JRadioButton;
+import java.awt.Color;
 
 public class LoginPanel extends JPanel{
 	private MainFrame main;
@@ -31,33 +34,65 @@ public class LoginPanel extends JPanel{
 	private JLabel usernameLabel;
 	private JLabel passwordLabel;
 	private JLabel lblPosition;
+	private JLabel lblNewLabel;
 	private JRadioButton rdbtnManager;
 	private JRadioButton rdbtnStaff;
 	
+	
 	public LoginPanel(MainFrame main) {
+		setForeground(Color.WHITE);
+		setBackground(Color.WHITE);
+		
+		
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20, 0,20,20};
-		gridBagLayout.rowHeights = new int[]{20, 20, 20, 0, 20,20, 0,20};
-		gridBagLayout.columnWeights = new double[]{1.0,1,1.0,1, 0.0,1,1};
-		gridBagLayout.rowWeights = new double[]{1,1,1, 0.0,1,1, 0.0,1};
+		gridBagLayout.columnWidths = new int[]{20, 0, 0, 0, 0, 0, 20, 20, 20, 0,20,20};
+		gridBagLayout.rowHeights = new int[]{20, 0, 20, 20, 0, 20,20, 0,20};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0,1,1.0,1, 0.0,1,1};
+		gridBagLayout.rowWeights = new double[]{1, 0.0,1,1, 0.0,1,1, 0.0,1};
 		setLayout(gridBagLayout);
 		
+		lblItEmployment = new JLabel("IT EMPLOYMENT SOFTWARE");
+		lblItEmployment.setForeground(Color.BLACK);
+		lblItEmployment.setFont(new Font("Yu Gothic", Font.BOLD, 30));
+		GridBagConstraints gbc_lblItEmployment = new GridBagConstraints();
+		gbc_lblItEmployment.gridwidth = 12;
+		gbc_lblItEmployment.insets = new Insets(0, 0, 5, 5);
+		gbc_lblItEmployment.gridx = 0;
+		gbc_lblItEmployment.gridy = 0;
+		add(lblItEmployment, gbc_lblItEmployment);
+		
 		this.panelTitle = new JLabel("Login Page");
+		panelTitle.setForeground(Color.BLACK);
 		panelTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_panelTitle = new GridBagConstraints();
 		gbc_panelTitle.gridwidth = 5;
 		gbc_panelTitle.insets = new Insets(0, 0, 5, 5);
-		gbc_panelTitle.gridx = 1;
-		gbc_panelTitle.gridy = 0;
+		gbc_panelTitle.gridx = 6;
+		gbc_panelTitle.gridy = 1;
 		add(panelTitle, gbc_panelTitle);
 		
+		
+		
+		ImageIcon i1 = loginIconImage();	
+		JLabel lblNewLabel = new JLabel(i1);
+		
+		
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.gridwidth = 6;
+		gbc_lblNewLabel.gridheight = 5;
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 0;
+		gbc_lblNewLabel.gridy = 1;
+		add(lblNewLabel, gbc_lblNewLabel);
+		
 		this.usernameLabel = new JLabel("Username: ");
+		usernameLabel.setForeground(Color.BLACK);
 		usernameLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_usernameLabel = new GridBagConstraints();
 		gbc_usernameLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_usernameLabel.gridx = 1;
-		gbc_usernameLabel.gridy = 1;
+		gbc_usernameLabel.gridx = 6;
+		gbc_usernameLabel.gridy = 2;
 		add(usernameLabel, gbc_usernameLabel);
 		
 		this.usernameField = new JTextField();
@@ -66,17 +101,18 @@ public class LoginPanel extends JPanel{
 		gbc_usernameField.gridwidth = 4;
 		gbc_usernameField.insets = new Insets(0, 0, 5, 5);
 		gbc_usernameField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_usernameField.gridx = 2;
-		gbc_usernameField.gridy = 1;
+		gbc_usernameField.gridx = 7;
+		gbc_usernameField.gridy = 2;
 		add(usernameField, gbc_usernameField);
 		usernameField.setColumns(10);
 		
 		this.passwordLabel = new JLabel("Password: ");
+		passwordLabel.setForeground(Color.BLACK);
 		passwordLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_passwordLabel = new GridBagConstraints();
 		gbc_passwordLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_passwordLabel.gridx = 1;
-		gbc_passwordLabel.gridy = 2;
+		gbc_passwordLabel.gridx = 6;
+		gbc_passwordLabel.gridy = 3;
 		add(passwordLabel, gbc_passwordLabel);
 		
 		
@@ -86,8 +122,8 @@ public class LoginPanel extends JPanel{
 		gbc_passwordField.gridwidth = 4;
 		gbc_passwordField.insets = new Insets(0, 0, 5, 5);
 		gbc_passwordField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_passwordField.gridx = 2;
-		gbc_passwordField.gridy = 2;
+		gbc_passwordField.gridx = 7;
+		gbc_passwordField.gridy = 3;
 		add(passwordField, gbc_passwordField);
 		passwordField.setColumns(10);
 		passwordField.setEchoChar('*');
@@ -100,6 +136,7 @@ public class LoginPanel extends JPanel{
 		});
 		
 		btnShow = new JButton("Show");
+		btnShow.setBackground(Color.LIGHT_GRAY);
 		btnShow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 					passwordField.setEchoChar((char)0);
@@ -108,11 +145,12 @@ public class LoginPanel extends JPanel{
 		btnShow.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		GridBagConstraints gbc_btnShow = new GridBagConstraints();
 		gbc_btnShow.insets = new Insets(0, 0, 5, 5);
-		gbc_btnShow.gridx = 4;
-		gbc_btnShow.gridy = 3;
+		gbc_btnShow.gridx = 9;
+		gbc_btnShow.gridy = 4;
 		add(btnShow, gbc_btnShow);
 		
 		btnHide = new JButton("Hide");
+		btnHide.setBackground(Color.LIGHT_GRAY);
 		btnHide.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 					passwordField.setEchoChar('*');
@@ -121,49 +159,49 @@ public class LoginPanel extends JPanel{
 		btnHide.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		GridBagConstraints gbc_btnHide = new GridBagConstraints();
 		gbc_btnHide.insets = new Insets(0, 0, 5, 5);
-		gbc_btnHide.gridx = 5;
-		gbc_btnHide.gridy = 3;
+		gbc_btnHide.gridx = 10;
+		gbc_btnHide.gridy = 4;
 		add(btnHide, gbc_btnHide);
 		
-		registerButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_registerButton = new GridBagConstraints();
-		gbc_registerButton.gridwidth = 2;
-		gbc_registerButton.insets = new Insets(0, 0, 5, 5);
-		gbc_registerButton.gridx = 2;
-		gbc_registerButton.gridy = 6;
-		add(registerButton, gbc_registerButton);
-		
-		lblPosition = new JLabel("Position:");
+
+		lblPosition = new JLabel("Login as:");
+		lblPosition.setForeground(Color.BLACK);
 		lblPosition.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_lblPosition = new GridBagConstraints();
 		gbc_lblPosition.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPosition.gridx = 1;
-		gbc_lblPosition.gridy = 4;
+		gbc_lblPosition.gridx = 6;
+		gbc_lblPosition.gridy = 5;
 		add(lblPosition, gbc_lblPosition);
 		
 		ButtonGroup btnRoleGroup = new ButtonGroup();
 		rdbtnManager = new JRadioButton("Manager");
+		rdbtnManager.setForeground(Color.BLACK);
+		rdbtnManager.setBackground(Color.WHITE);
 		rdbtnManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_rdbtnManager = new GridBagConstraints();
 		gbc_rdbtnManager.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnManager.gridx = 2;
-		gbc_rdbtnManager.gridy = 4;
+		gbc_rdbtnManager.gridx = 7;
+		gbc_rdbtnManager.gridy = 5;
 		add(rdbtnManager, gbc_rdbtnManager);
 		btnRoleGroup.add(rdbtnManager);
 		this.rdbtnManager.addActionListener(new RadioButtonListener());
 		
 		rdbtnStaff = new JRadioButton("HR Staff");
+		rdbtnStaff.setForeground(Color.BLACK);
+		rdbtnStaff.setBackground(Color.WHITE);
 		rdbtnStaff.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_rdbtnStaff = new GridBagConstraints();
 		gbc_rdbtnStaff.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnStaff.gridx = 3;
-		gbc_rdbtnStaff.gridy = 4;
+		gbc_rdbtnStaff.gridx = 8;
+		gbc_rdbtnStaff.gridy = 5;
 		add(rdbtnStaff, gbc_rdbtnStaff);
 		btnRoleGroup.add(rdbtnStaff);
 		this.rdbtnStaff.addActionListener(new RadioButtonListener());
 		
 		
 		this.loginButton = new JButton("Login");
+		loginButton.setForeground(Color.BLACK);
+		loginButton.setBackground(Color.GREEN);
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username = usernameField.getText();
@@ -193,13 +231,14 @@ public class LoginPanel extends JPanel{
 					}
 				}
 			}
-		});	
-		loginButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+
+		});
+		loginButton.setFont(new Font("Tahoma", Font.BOLD, 35));
 		GridBagConstraints gbc_loginButton = new GridBagConstraints();
 		gbc_loginButton.gridwidth = 2;
 		gbc_loginButton.insets = new Insets(0, 0, 5, 5);
-		gbc_loginButton.gridx = 2;
-		gbc_loginButton.gridy = 5;
+		gbc_loginButton.gridx = 7;
+		gbc_loginButton.gridy = 6;
 		add(loginButton, gbc_loginButton);
 		
 
@@ -208,6 +247,8 @@ public class LoginPanel extends JPanel{
 	private String RoleButton = "";	
 	private JButton btnShow;
 	private JButton btnHide;
+	private JLabel lblItEmployment;
+
 	
 	private class RadioButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent f)
@@ -223,4 +264,9 @@ public class LoginPanel extends JPanel{
 			}
 		}			
 	}
+	
+	private ImageIcon loginIconImage()
+	{ImageIcon i1 = new ImageIcon("images/loginIcon.png");
+        return i1;}
+	
 }

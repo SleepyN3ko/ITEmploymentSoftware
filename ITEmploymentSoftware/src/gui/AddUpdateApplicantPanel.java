@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Button;
+import java.awt.Color;
 
 public class AddUpdateApplicantPanel extends JPanel{
 	private MainFrame main;
@@ -42,6 +43,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 	private Image emptyImage;
 	protected JFileChooser fileChooser;
 	public AddUpdateApplicantPanel(MainFrame main,String ApplicantID){
+		setBackground(Color.WHITE);
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20,20,20,20};
@@ -49,16 +51,8 @@ public class AddUpdateApplicantPanel extends JPanel{
 		gridBagLayout.columnWeights = new double[]{1,1,1,1,1,1,1.0,1};
 		gridBagLayout.rowWeights = new double[]{1,1.0,1,1,1,1,1,1};
 		setLayout(gridBagLayout);
-		
-		JLabel lblStaff = new JLabel("Staff");
-		lblStaff.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_lblStaff = new GridBagConstraints();
-		gbc_lblStaff.insets = new Insets(0, 0, 5, 5);
-		gbc_lblStaff.gridx = 0;
-		gbc_lblStaff.gridy = 0;
-		add(lblStaff, gbc_lblStaff);
 		this.panelTitle = new JLabel("");
-		panelTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		panelTitle.setFont(new Font("Tahoma", Font.BOLD, 35));
 		GridBagConstraints gbc_panelTitle = new GridBagConstraints();
 		gbc_panelTitle.gridwidth = 5;
 		gbc_panelTitle.insets = new Insets(0, 0, 5, 5);
@@ -238,6 +232,7 @@ public class AddUpdateApplicantPanel extends JPanel{
         selectImageFile.setAcceptAllFileFilterUsed(false);
 		selectImageFile.addChoosableFileFilter(new FileNameExtensionFilter("Image","png","jpg","jpeg","bmp"));
 		JButton selectImageButton = new JButton("Select Image");
+		selectImageButton.setBackground(Color.ORANGE);
 		selectImageButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		selectImageButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -267,6 +262,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 		add(selectImageButton, gbc_selectImageButton);
 		
 		JButton addUpdateButton = new JButton("");
+		addUpdateButton.setBackground(Color.GREEN);
 		addUpdateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//add/update button to add/update an applicant
@@ -308,6 +304,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 			}
 		});
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		backButton.setBackground(new Color(255,204,203));
 		GridBagConstraints gbc_backButton = new GridBagConstraints();
 		gbc_backButton.gridwidth = 4;
 		gbc_backButton.insets = new Insets(0, 0, 5, 0);
@@ -318,7 +315,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 		if (ApplicantID.equals("new")){
 			//generates form for creating new applicant
 			currentApplicant = new Applicant();
-			this.panelTitle.setText("Create New Applicant");
+			this.panelTitle.setText("Staff Create New Applicant");
 			addUpdateButton.setText("Create");
 		}
 		else{
@@ -333,7 +330,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 			achievementsField.setText(currentApplicant.getAchievement());
 			genderCombo.setSelectedItem(currentApplicant.getGender());
 			technicalSkillCombo.setSelectedItem(currentApplicant.getTechnicalSkill());
-			this.panelTitle.setText("Update Applicant");
+			this.panelTitle.setText("Staff Update Applicant");
 			try {
 				String imagePath = currentApplicant.getImage();
 				BufferedImage profilePicture = this.main.getController().getImage(imagePath);

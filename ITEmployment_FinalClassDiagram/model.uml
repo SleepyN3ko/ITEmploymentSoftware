@@ -24,6 +24,7 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_eTspcAwvEe2ltseQyCJiWg" name="showViewApplicantPanel"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_efMu0AwvEe2ltseQyCJiWg" name="showAddUpdateApplicantPanel"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_e4k4IAwvEe2ltseQyCJiWg" name="showInfoStaffPanel"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_eJu1IAwvEe2ltseQyCJiWg" name="showManagerPanel"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="__edlMAwvEe2ltseQyCJiWg" name="Controller">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_OSJb8AwwEe2ltseQyCJiWg" name="ds"/>
@@ -86,9 +87,36 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_onY_cAwyEe2ltseQyCJiWg" name="registerManager"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_oymw8AwyEe2ltseQyCJiWg" name="managerLoginFailed"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_o7iDcAwyEe2ltseQyCJiWg" name="staffLoginFailed"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_onY_cAwyEe2ltseQyCJiWg" name="registerManager">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_zN11kAyGEe2yZ-54mMKRfg" name="username">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_0fiG8AyGEe2yZ-54mMKRfg" name="password">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_oymw8AwyEe2ltseQyCJiWg" name="managerLoginFailed">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_4kysIAyGEe2yZ-54mMKRfg" name="username">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_505CEAyGEe2yZ-54mMKRfg" name="password">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_6n-E0AyGEe2yZ-54mMKRfg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_o7iDcAwyEe2ltseQyCJiWg" name="staffLoginFailed">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_9ii_kAyGEe2yZ-54mMKRfg" name="username">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-jthoAyGEe2yZ-54mMKRfg" name="password">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="__rvgsAyGEe2yZ-54mMKRfg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_pFepoAwyEe2ltseQyCJiWg" name="getStaffs"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_pOCIsAwyEe2ltseQyCJiWg" name="getApplicants"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_pXdKcAwyEe2ltseQyCJiWg" name="getApplicantsManager"/>
@@ -96,37 +124,119 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_poUQ8AwyEe2ltseQyCJiWg" name="getShortlistApplicants"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_pvaXcAwyEe2ltseQyCJiWg" name="getJobOfferedApplicants"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_p3zecAwyEe2ltseQyCJiWg" name="getBothApplicants"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_qBQ8cAwyEe2ltseQyCJiWg" name="applicantsExists"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_SzagUAwzEe2ltseQyCJiWg" name="getApplicant"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_S8rKAAwzEe2ltseQyCJiWg" name="getStaff"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TGwTEAwzEe2ltseQyCJiWg" name="addApplicant"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TQCx8AwzEe2ltseQyCJiWg" name="addStaff"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TYUkMAwzEe2ltseQyCJiWg" name="getImage"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_qBQ8cAwyEe2ltseQyCJiWg" name="applicantsExists">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ea27MAyHEe2yZ-54mMKRfg" name="ApplicantID">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_FdljgAyHEe2yZ-54mMKRfg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_SzagUAwzEe2ltseQyCJiWg" name="getApplicant">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_IKTocAyHEe2yZ-54mMKRfg" name="applicantID">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_LrMVQAyHEe2yZ-54mMKRfg" type="_CtYwkAw2Ee2ltseQyCJiWg" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_S8rKAAwzEe2ltseQyCJiWg" name="getStaff">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Z-0L4AyHEe2yZ-54mMKRfg" name="username">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_eBHjsAyHEe2yZ-54mMKRfg" type="_DeigsAw2Ee2ltseQyCJiWg" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_TGwTEAwzEe2ltseQyCJiWg" name="addApplicant">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_hzQ_oAyHEe2yZ-54mMKRfg" name="currentApplicant" type="_CtYwkAw2Ee2ltseQyCJiWg"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_TQCx8AwzEe2ltseQyCJiWg" name="addStaff">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_kEBhUAyHEe2yZ-54mMKRfg" name="currentStaff" type="_DeigsAw2Ee2ltseQyCJiWg"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_TYUkMAwzEe2ltseQyCJiWg" name="getImage">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ob6HkAyHEe2yZ-54mMKRfg" name="imagePath">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ThSS8AwzEe2ltseQyCJiWg" name="saveImage"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TrKnsAwzEe2ltseQyCJiWg" name="updateApplicant"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_T1irsAwzEe2ltseQyCJiWg" name="updateStaff"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_AAzgcAw0Ee2ltseQyCJiWg" name="deleteApplicant"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_AJuy8Aw0Ee2ltseQyCJiWg" name="deleteStaff"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_eJu1IAwvEe2ltseQyCJiWg" name="showManagerPanel"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_TrKnsAwzEe2ltseQyCJiWg" name="updateApplicant">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_8ncz0AyHEe2yZ-54mMKRfg" name="currentApplicant" type="_CtYwkAw2Ee2ltseQyCJiWg"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_T1irsAwzEe2ltseQyCJiWg" name="updateStaff">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-KNAAAyHEe2yZ-54mMKRfg" name="currentStaff" type="_DeigsAw2Ee2ltseQyCJiWg"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_AAzgcAw0Ee2ltseQyCJiWg" name="deleteApplicant">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ACQt0AyIEe2yZ-54mMKRfg" name="selectedApplicantID">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_AJuy8Aw0Ee2ltseQyCJiWg" name="deleteStaff">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_I_r70AyIEe2yZ-54mMKRfg" name="selectedUsername">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_M2NFkAw0Ee2ltseQyCJiWg" name="Data Storage">
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_r62pYAw0Ee2ltseQyCJiWg" name="addStaff"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_sAjowAw0Ee2ltseQyCJiWg" name="getStaffVector"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_sGjjEAw0Ee2ltseQyCJiWg" name="getManagerVector"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_sL_csAw0Ee2ltseQyCJiWg" name="addManager"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_sR-v8Aw0Ee2ltseQyCJiWg" name="addApplicant"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_sYuRIAw0Ee2ltseQyCJiWg" name="getApplicants"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_seUi0Aw0Ee2ltseQyCJiWg" name="getImageFromStorage"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_sj60gAw0Ee2ltseQyCJiWg" name="getApplicant"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_spvIoAw0Ee2ltseQyCJiWg" name="getStaff"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_sw_nMAw0Ee2ltseQyCJiWg" name="applicantExists"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_s26pAAw0Ee2ltseQyCJiWg" name="saveImageDS"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_tEoU4Aw0Ee2ltseQyCJiWg" name="updateApplicantDS"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_tLEUEAw0Ee2ltseQyCJiWg" name="updateStaffDS"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_fja9MAw1Ee2ltseQyCJiWg" name="deleteApplicantDS"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_gfnfsAw1Ee2ltseQyCJiWg" name="deleteStaffDS"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_r62pYAw0Ee2ltseQyCJiWg" name="addStaff">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_QdlQwAyIEe2yZ-54mMKRfg" name="newStaff" type="_DeigsAw2Ee2ltseQyCJiWg"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sAjowAw0Ee2ltseQyCJiWg" name="getStaffVector">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sm_NQAyIEe2yZ-54mMKRfg" type="_DeigsAw2Ee2ltseQyCJiWg" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sGjjEAw0Ee2ltseQyCJiWg" name="getManagerVector">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_X_e78AyIEe2yZ-54mMKRfg" type="_DFOBwAw2Ee2ltseQyCJiWg" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sL_csAw0Ee2ltseQyCJiWg" name="addManager">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_aq0g0AyIEe2yZ-54mMKRfg" name="newManager" type="_DFOBwAw2Ee2ltseQyCJiWg"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sR-v8Aw0Ee2ltseQyCJiWg" name="addApplicant">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_cU6rIAyIEe2yZ-54mMKRfg" name="newApplicant" type="_CtYwkAw2Ee2ltseQyCJiWg"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sYuRIAw0Ee2ltseQyCJiWg" name="getApplicants">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ecFL8AyIEe2yZ-54mMKRfg" type="_CtYwkAw2Ee2ltseQyCJiWg" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_seUi0Aw0Ee2ltseQyCJiWg" name="getImageFromStorage">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_h_VQQAyIEe2yZ-54mMKRfg" name="imagePath">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sj60gAw0Ee2ltseQyCJiWg" name="getApplicant">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_kMN-kAyIEe2yZ-54mMKRfg" name="applicantID">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_spvIoAw0Ee2ltseQyCJiWg" name="getStaff">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_mdv8UAyIEe2yZ-54mMKRfg" name="username">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_nlV2gAyIEe2yZ-54mMKRfg" type="_DeigsAw2Ee2ltseQyCJiWg" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_sw_nMAw0Ee2ltseQyCJiWg" name="applicantExists">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_pTmvIAyIEe2yZ-54mMKRfg" name="applicantID">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qjrP4AyIEe2yZ-54mMKRfg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_s26pAAw0Ee2ltseQyCJiWg" name="saveImageDS">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_uJTSwAyIEe2yZ-54mMKRfg" name="imagePath">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tEoU4Aw0Ee2ltseQyCJiWg" name="updateApplicantDS">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_wRPPoAyIEe2yZ-54mMKRfg" name="currentApplicant" type="_CtYwkAw2Ee2ltseQyCJiWg"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tLEUEAw0Ee2ltseQyCJiWg" name="updateStaffDS">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_zO56oAyIEe2yZ-54mMKRfg" name="currentName" type="_DeigsAw2Ee2ltseQyCJiWg"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_fja9MAw1Ee2ltseQyCJiWg" name="deleteApplicantDS">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_2Lp_oAyIEe2yZ-54mMKRfg" name="selectedApplicantID">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_gfnfsAw1Ee2ltseQyCJiWg" name="deleteStaffDS">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_5C-yEAyIEe2yZ-54mMKRfg" name="selectedUsername" type="_DeigsAw2Ee2ltseQyCJiWg"/>
+        </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_CtYwkAw2Ee2ltseQyCJiWg" name="Applicants">
+      <packagedElement xmi:type="uml:Class" xmi:id="_CtYwkAw2Ee2ltseQyCJiWg" name="Applicant">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_LkyPEAw2Ee2ltseQyCJiWg" name="applicantID" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>

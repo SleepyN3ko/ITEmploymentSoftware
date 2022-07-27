@@ -18,7 +18,7 @@ public class MainFrame extends JFrame{
 
 	public MainFrame()
 	{
-		this.setTitle("Login");
+		this.setTitle("IT Employment System");
 		this.setSize(1600,800);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

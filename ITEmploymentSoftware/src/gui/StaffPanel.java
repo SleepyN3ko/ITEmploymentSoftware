@@ -34,6 +34,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class StaffPanel extends JPanel{
 	private MainFrame main;
@@ -56,22 +58,37 @@ public class StaffPanel extends JPanel{
 	private JComboBox shortlistFilter;
 	
 	public StaffPanel(MainFrame main){
+		setBackground(Color.WHITE);
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20, 0,20,20, 20, 20, 20,20,20};
+		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20, 0,20, 0,20, 0, 20, 20, 20, 0,20,20};
 		gridBagLayout.rowHeights = new int[]{20, 20, 20, 20,20,20,20, 20, 20, 20,20,20};
-		gridBagLayout.columnWeights = new double[]{1.0,1.0,1.0, 1.0,1.0, 1.0,1.0, 1.0,1.0,1.0, 1.0,1.0,1.0};
+		gridBagLayout.columnWeights = new double[]{1.0,1.0,1.0, 1.0,1.0, 1.0,1.0, 0.0, 1.0, 0.0,1.0,1.0, 1.0, 0.0,1.0,1.0};
 		gridBagLayout.rowWeights = new double[]{1.0,1.0,1.0, 1.0,1.0,1.0, 1.0,1.0,1.0, 1.0,1.0,1.0};
 		setLayout(gridBagLayout);
 		
-		this.welcomeLabel = new JLabel("Welcome HR Staff :)");
-		welcomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		this.welcomeLabel = new JLabel("Staff's Applicant Control Panel");
+		welcomeLabel.setBackground(Color.WHITE);
+		welcomeLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		GridBagConstraints gbc_welcomeLabel = new GridBagConstraints();
-		gbc_welcomeLabel.gridwidth = 11;
+		gbc_welcomeLabel.gridwidth = 9;
 		gbc_welcomeLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_welcomeLabel.gridx = 1;
 		gbc_welcomeLabel.gridy = 0;
 		add(welcomeLabel, gbc_welcomeLabel);
+		btnBack = new JButton("Logout");
+		btnBack.setBackground(Color.RED);
+		btnBack.setFont(new Font("Tahoma", Font.BOLD, 30));
+		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
+		gbc_btnBack.gridx = 10;
+		gbc_btnBack.gridy = 0;
+		add(btnBack, gbc_btnBack);
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showLoginPanel();
+			}
+		});
 		
 		lblGender = new JLabel("Gender: ");
 		lblGender.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -153,13 +170,27 @@ public class StaffPanel extends JPanel{
 		gbc_shortlistFilter.gridx = 5;
 		gbc_shortlistFilter.gridy = 2;
 		add(shortlistFilter, gbc_shortlistFilter);
+		this.addApplicantButton = new JButton("Add New Applicant");
+		addApplicantButton.setBackground(Color.GREEN);
+		addApplicantButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showAddUpdateApplicantPanel("new");
+			}
+		});
+		addApplicantButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_addApplicantButton = new GridBagConstraints();
+		gbc_addApplicantButton.gridwidth = 4;
+		gbc_addApplicantButton.insets = new Insets(0, 0, 5, 5);
+		gbc_addApplicantButton.gridx = 7;
+		gbc_addApplicantButton.gridy = 2;
+		add(addApplicantButton, gbc_addApplicantButton);
 		
 		
 		scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridwidth = 11;
+		gbc_scrollPane.gridwidth = 14;
 		gbc_scrollPane.gridheight = 7;
 		gbc_scrollPane.gridx = 1;
 		gbc_scrollPane.gridy = 4;
@@ -167,6 +198,7 @@ public class StaffPanel extends JPanel{
 		
 		
 		this.table = new JTable();
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table.setRowHeight(table.getRowHeight()+30);
 		
 		Object[][] rows = this.main.getController().getApplicants();
@@ -221,32 +253,6 @@ public class StaffPanel extends JPanel{
 		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		this.table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(this.table);
-				this.addApplicantButton = new JButton("Add New Applicant");
-				addApplicantButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						main.showAddUpdateApplicantPanel("new");
-					}
-				});
-				addApplicantButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-				GridBagConstraints gbc_addApplicantButton = new GridBagConstraints();
-				gbc_addApplicantButton.gridwidth = 4;
-				gbc_addApplicantButton.insets = new Insets(0, 0, 0, 5);
-				gbc_addApplicantButton.gridx = 1;
-				gbc_addApplicantButton.gridy = 11;
-				add(addApplicantButton, gbc_addApplicantButton);
-				btnBack = new JButton("Logout");
-				btnBack.setFont(new Font("Tahoma", Font.PLAIN, 30));
-				GridBagConstraints gbc_btnBack = new GridBagConstraints();
-				gbc_btnBack.gridwidth = 5;
-				gbc_btnBack.insets = new Insets(0, 0, 0, 5);
-				gbc_btnBack.gridx = 5;
-				gbc_btnBack.gridy = 11;
-				add(btnBack, gbc_btnBack);
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				main.showLoginPanel();
-			}
-		});
 		
 	}
 	private class filterSelection implements ActionListener {
