@@ -24,6 +24,8 @@ import javax.swing.Action;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class ManagerPanel extends JPanel{
 	private MainFrame main;
@@ -31,107 +33,56 @@ public class ManagerPanel extends JPanel{
 	private JLabel lblCount;
 
 	public ManagerPanel(MainFrame main){
+		setBackground(Color.WHITE);
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20, 0,20,20};
-		gridBagLayout.rowHeights = new int[]{20, 0, 0, 20, 20, 20,20,20};
-		gridBagLayout.columnWeights = new double[]{1,1.0,1.0,1, 0.0,1,1};
-		gridBagLayout.rowWeights = new double[]{1, 0.0, 0.0,1.0,1,1,1,1};
+		gridBagLayout.columnWidths = new int[]{20, 0, 0, 0, 20, 20, 20, 0,20,20};
+		gridBagLayout.rowHeights = new int[]{20, 0, 0, 20, 0, 20, 20,20,20};
+		gridBagLayout.columnWeights = new double[]{1, 0.0, 0.0, 0.0,1.0,1.0,1, 0.0,1,1};
+		gridBagLayout.rowWeights = new double[]{1, 0.0, 0.0,1.0, 0.0,1,1,1,1};
 		setLayout(gridBagLayout);
 		
-		JLabel lblWelcome = new JLabel("Welcome Manager :D");
-		lblWelcome.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		JLabel lblWelcome = new JLabel("Manager Main Panel");
+		lblWelcome.setFont(new Font("Tahoma", Font.BOLD, 35));
 		GridBagConstraints gbc_lblWelcome = new GridBagConstraints();
-		gbc_lblWelcome.gridwidth = 2;
+		gbc_lblWelcome.gridheight = 2;
+		gbc_lblWelcome.gridwidth = 7;
 		gbc_lblWelcome.insets = new Insets(0, 0, 5, 5);
 		gbc_lblWelcome.gridx = 1;
 		gbc_lblWelcome.gridy = 0;
 		add(lblWelcome, gbc_lblWelcome);
 		
-		JButton btnShowShortlisted = new JButton("Show Shortlisted");
-		btnShowShortlisted.addActionListener(new ActionListener() {
+
+		JButton btnBack = new JButton("Logout");
+		btnBack.setBackground(Color.RED);
+		btnBack.setFont(new Font("Tahoma", Font.BOLD, 30));
+		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.gridheight = 2;
+		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
+		gbc_btnBack.gridx = 8;
+		gbc_btnBack.gridy = 0;
+		add(btnBack, gbc_btnBack);
+		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Object[][] rows = main.getController().getShortlistApplicants();
-				lblCount.setText("Count: "+rows.length);
-				String[] columns = {
-						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
-				};
-				table.setModel(new DefaultTableModel(rows,columns) {
-					@Override
-					public boolean isCellEditable(int row,int column){
-						if (column==4){
-							return true;
-						}
-						return false;
-					}
-				});
-				Action view = new AbstractAction()
-				{
-				    public void actionPerformed(ActionEvent e)
-				    {
-				        int modelRow = Integer.valueOf(e.getActionCommand());
-				        String selectedApplicantID = rows[modelRow][0].toString();
-				        main.showViewApplicantPanel(selectedApplicantID,"manager");
-				    }
-				};
-				ButtonColumn viewColumn = new ButtonColumn(table,view,4);
-				TableColumn shortListColumn = table.getColumnModel().getColumn(2);
-				TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
+				main.showLoginPanel();
 			}
 		});
 		
+		this.lblCount = new JLabel("Number of Applicants");
+		lblCount.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_lblCount = new GridBagConstraints();
+		gbc_lblCount.insets = new Insets(0, 0, 5, 5);
+		gbc_lblCount.gridx = 8;
+		gbc_lblCount.gridy = 2;
+		add(lblCount, gbc_lblCount);
 		
-		btnShowShortlisted.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_btnShowShortlisted = new GridBagConstraints();
-		gbc_btnShowShortlisted.insets = new Insets(0, 0, 5, 5);
-		gbc_btnShowShortlisted.gridx = 1;
-		gbc_btnShowShortlisted.gridy = 1;
-		add(btnShowShortlisted, gbc_btnShowShortlisted);
-		
-		JButton btnShowJobOffered = new JButton("Show Job Offered");
-		btnShowJobOffered.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Object[][] rows = main.getController().getJobOfferedApplicants();
-				lblCount.setText("Count: "+rows.length);
-				String[] columns = {
-						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
-				};
-				table.setModel(new DefaultTableModel(rows,columns) {
-					@Override
-					public boolean isCellEditable(int row,int column){
-						if (column==4){
-							return true;
-						}
-						return false;
-					}
-				});
-				Action view = new AbstractAction()
-				{
-				    public void actionPerformed(ActionEvent e)
-				    {
-				        int modelRow = Integer.valueOf(e.getActionCommand());
-				        String selectedApplicantID = rows[modelRow][0].toString();
-				        main.showViewApplicantPanel(selectedApplicantID,"manager");
-				    }
-				};
-				ButtonColumn viewColumn = new ButtonColumn(table,view,4);
-				TableColumn shortListColumn = table.getColumnModel().getColumn(2);
-				TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
-			}
-		});
-		btnShowJobOffered.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_btnShowJobOffered = new GridBagConstraints();
-		gbc_btnShowJobOffered.insets = new Insets(0, 0, 5, 5);
-		gbc_btnShowJobOffered.gridx = 2;
-		gbc_btnShowJobOffered.gridy = 1;
-		add(btnShowJobOffered, gbc_btnShowJobOffered);
-		
-		JButton btnViewStaffInfo = new JButton("View Staffs Info");
+		JButton btnViewStaffInfo = new JButton("View Staffs / Add Employee");
+		btnViewStaffInfo.setBackground(Color.ORANGE);
 		btnViewStaffInfo.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnViewStaffInfo = new GridBagConstraints();
 		gbc_btnViewStaffInfo.insets = new Insets(0, 0, 5, 5);
-		gbc_btnViewStaffInfo.gridx = 5;
-		gbc_btnViewStaffInfo.gridy = 1;
+		gbc_btnViewStaffInfo.gridx = 0;
+		gbc_btnViewStaffInfo.gridy = 3;
 		add(btnViewStaffInfo, gbc_btnViewStaffInfo);
 		btnViewStaffInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -139,72 +90,10 @@ public class ManagerPanel extends JPanel{
 			}
 		});
 		
-		
-		JButton btnShowBoth = new JButton("Show Shortlisted and Job Offered");
-		btnShowBoth.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Object[][] rows = main.getController().getBothApplicants();
-				lblCount.setText("Count: "+rows.length);
-				String[] columns = {
-						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
-				};
-				table.setModel(new DefaultTableModel(rows,columns) {
-					@Override
-					public boolean isCellEditable(int row,int column){
-						if (column==4){
-							return true;
-						}
-						return false;
-					}
-				});
-				Action view = new AbstractAction()
-				{
-				    public void actionPerformed(ActionEvent e)
-				    {
-				        int modelRow = Integer.valueOf(e.getActionCommand());
-				        String selectedApplicantID = rows[modelRow][0].toString();
-				        main.showViewApplicantPanel(selectedApplicantID,"manager");
-				    }
-				};
-				ButtonColumn viewColumn = new ButtonColumn(table,view,4);
-				TableColumn shortListColumn = table.getColumnModel().getColumn(2);
-				TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
-			}
-		});
-		btnShowBoth.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_btnShowBoth = new GridBagConstraints();
-		gbc_btnShowBoth.gridwidth = 2;
-		gbc_btnShowBoth.insets = new Insets(0, 0, 5, 5);
-		gbc_btnShowBoth.gridx = 1;
-		gbc_btnShowBoth.gridy = 2;
-		add(btnShowBoth, gbc_btnShowBoth);
-		
-		JButton btnRefresh = new JButton("Show All");
-		btnRefresh.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				main.showManagerPanel();
-			}
-		});
-		btnRefresh.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_btnRefresh = new GridBagConstraints();
-		gbc_btnRefresh.gridwidth = 2;
-		gbc_btnRefresh.insets = new Insets(0, 0, 5, 5);
-		gbc_btnRefresh.gridx = 3;
-		gbc_btnRefresh.gridy = 2;
-		add(btnRefresh, gbc_btnRefresh);
-		
-		this.lblCount = new JLabel("Count");
-		lblCount.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_lblCount = new GridBagConstraints();
-		gbc_lblCount.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCount.gridx = 5;
-		gbc_lblCount.gridy = 2;
-		add(lblCount, gbc_lblCount);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.gridwidth = 5;
-		gbc_scrollPane.gridheight = 4;
+		gbc_scrollPane.gridwidth = 8;
+		gbc_scrollPane.gridheight = 5;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 1;
@@ -212,12 +101,13 @@ public class ManagerPanel extends JPanel{
 		add(scrollPane, gbc_scrollPane);
 		
 		this.table = new JTable();
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		table.setRowHeight(table.getRowHeight()+30);
 		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		
 		Object[][] rows = this.main.getController().getApplicantsManager();
-		lblCount.setText("Count: "+rows.length);
+		lblCount.setText("Number of Applicants: "+rows.length);
 		String[] columns = {
 				"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
 		};
@@ -299,56 +189,138 @@ public class ManagerPanel extends JPanel{
 		this.table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(this.table);
 		
-		JButton btnInterview = new JButton("Select Applicant For Interview");
-		btnInterview.addActionListener(new ActionListener() {
+		JButton btnShowJobOffered = new JButton("Show Job Offered");
+		btnShowJobOffered.setBackground(new Color(127, 255, 212));
+		btnShowJobOffered.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!(table.getSelectedRow()==-1)){
-					String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
-					Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);
-					selectedApplicant.setShortlistStatus(!selectedApplicant.getShortlistStatus());
-					main.getController().updateApplicant(selectedApplicant);
-					main.showManagerPanel();
-				}
+				Object[][] rows = main.getController().getJobOfferedApplicants();
+				lblCount.setText("Number of Applicants: "+rows.length);
+				String[] columns = {
+						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
+				};
+				table.setModel(new DefaultTableModel(rows,columns) {
+					@Override
+					public boolean isCellEditable(int row,int column){
+						if (column==4){
+							return true;
+						}
+						return false;
+					}
+				});
+				Action view = new AbstractAction()
+				{
+				    public void actionPerformed(ActionEvent e)
+				    {
+				        int modelRow = Integer.valueOf(e.getActionCommand());
+				        String selectedApplicantID = rows[modelRow][0].toString();
+				        main.showViewApplicantPanel(selectedApplicantID,"manager");
+				    }
+				};
+				ButtonColumn viewColumn = new ButtonColumn(table,view,4);
+				TableColumn shortListColumn = table.getColumnModel().getColumn(2);
+				TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
 			}
 		});
-		btnInterview.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_btnInterview = new GridBagConstraints();
-		gbc_btnInterview.insets = new Insets(0, 0, 0, 5);
-		gbc_btnInterview.gridx = 1;
-		gbc_btnInterview.gridy = 7;
-		add(btnInterview, gbc_btnInterview);
 		
-		JButton btnJobOffer = new JButton("Give Job Offer");
-		btnJobOffer.addActionListener(new ActionListener() {
+		JButton btnShowShortlisted = new JButton("Show Shortlisted");
+		btnShowShortlisted.setBackground(new Color(72, 209, 204));
+		btnShowShortlisted.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!(table.getSelectedRow()==-1)){
-					String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
-					Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);
-					selectedApplicant.setReceivedJobOffer(!selectedApplicant.getReceivedJobOffer());
-					main.getController().updateApplicant(selectedApplicant);
-					main.showManagerPanel();
-				}
+				Object[][] rows = main.getController().getShortlistApplicants();
+				lblCount.setText("Number of Applicants: "+rows.length);
+				String[] columns = {
+						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
+				};
+				table.setModel(new DefaultTableModel(rows,columns) {
+					@Override
+					public boolean isCellEditable(int row,int column){
+						if (column==4){
+							return true;
+						}
+						return false;
+					}
+				});
+				Action view = new AbstractAction()
+				{
+				    public void actionPerformed(ActionEvent e)
+				    {
+				        int modelRow = Integer.valueOf(e.getActionCommand());
+				        String selectedApplicantID = rows[modelRow][0].toString();
+				        main.showViewApplicantPanel(selectedApplicantID,"manager");
+				    }
+				};
+				ButtonColumn viewColumn = new ButtonColumn(table,view,4);
+				TableColumn shortListColumn = table.getColumnModel().getColumn(2);
+				TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
 			}
 		});
-		btnJobOffer.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_btnJobOffer = new GridBagConstraints();
-		gbc_btnJobOffer.insets = new Insets(0, 0, 0, 5);
-		gbc_btnJobOffer.gridx = 2;
-		gbc_btnJobOffer.gridy = 7;
-		add(btnJobOffer, gbc_btnJobOffer);
 		
-
-		JButton btnBack = new JButton("Logout");
-		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_btnBack = new GridBagConstraints();
-		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
-		gbc_btnBack.gridx = 5;
-		gbc_btnBack.gridy = 7;
-		add(btnBack, gbc_btnBack);
-		btnBack.addActionListener(new ActionListener() {
+		
+		btnShowShortlisted.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_btnShowShortlisted = new GridBagConstraints();
+		gbc_btnShowShortlisted.insets = new Insets(0, 0, 5, 5);
+		gbc_btnShowShortlisted.gridx = 0;
+		gbc_btnShowShortlisted.gridy = 4;
+		add(btnShowShortlisted, gbc_btnShowShortlisted);
+		btnShowJobOffered.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_btnShowJobOffered = new GridBagConstraints();
+		gbc_btnShowJobOffered.insets = new Insets(0, 0, 5, 5);
+		gbc_btnShowJobOffered.gridx = 0;
+		gbc_btnShowJobOffered.gridy = 5;
+		add(btnShowJobOffered, gbc_btnShowJobOffered);
+		
+		
+		JButton btnShowBoth = new JButton("Show Shortlisted & Job Offered");
+		btnShowBoth.setBackground(Color.CYAN);
+		btnShowBoth.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.showLoginPanel();
+				Object[][] rows = main.getController().getBothApplicants();
+				lblCount.setText("Number of Applicants: "+rows.length);
+				String[] columns = {
+						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
+				};
+				table.setModel(new DefaultTableModel(rows,columns) {
+					@Override
+					public boolean isCellEditable(int row,int column){
+						if (column==4){
+							return true;
+						}
+						return false;
+					}
+				});
+				Action view = new AbstractAction()
+				{
+				    public void actionPerformed(ActionEvent e)
+				    {
+				        int modelRow = Integer.valueOf(e.getActionCommand());
+				        String selectedApplicantID = rows[modelRow][0].toString();
+				        main.showViewApplicantPanel(selectedApplicantID,"manager");
+				    }
+				};
+				ButtonColumn viewColumn = new ButtonColumn(table,view,4);
+				TableColumn shortListColumn = table.getColumnModel().getColumn(2);
+				TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
 			}
 		});
+		btnShowBoth.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_btnShowBoth = new GridBagConstraints();
+		gbc_btnShowBoth.insets = new Insets(0, 0, 5, 5);
+		gbc_btnShowBoth.gridx = 0;
+		gbc_btnShowBoth.gridy = 6;
+		add(btnShowBoth, gbc_btnShowBoth);
+		
+		JButton btnRefresh = new JButton("Show All Applicants");
+		btnRefresh.setBackground(Color.GREEN);
+		btnRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showManagerPanel();
+			}
+		});
+		btnRefresh.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_btnRefresh = new GridBagConstraints();
+		gbc_btnRefresh.insets = new Insets(0, 0, 5, 5);
+		gbc_btnRefresh.gridx = 0;
+		gbc_btnRefresh.gridy = 7;
+		add(btnRefresh, gbc_btnRefresh);
 	}
 }

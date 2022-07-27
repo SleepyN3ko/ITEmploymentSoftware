@@ -20,6 +20,7 @@ import java.awt.Font;
 import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.Color;
 
 public class ViewApplicantPanel extends JPanel{
 	private MainFrame main;
@@ -28,6 +29,7 @@ public class ViewApplicantPanel extends JPanel{
 	private JLabel lblRole;
 	
 	public ViewApplicantPanel(MainFrame main, String ApplicantID, String parentPanelName){
+		setBackground(Color.WHITE);
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20, 0, 0,20};
@@ -39,25 +41,20 @@ public class ViewApplicantPanel extends JPanel{
 		currentApplicant = this.main.getController().getApplicant(ApplicantID);
 		
 		this.lblRole = new JLabel("");
-		lblRole.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblRole.setBackground(Color.WHITE);
+		lblRole.setFont(new Font("Tahoma", Font.BOLD, 35));
 		GridBagConstraints gbc_lblRole = new GridBagConstraints();
+		gbc_lblRole.gridwidth = 6;
 		gbc_lblRole.insets = new Insets(0, 0, 5, 5);
 		gbc_lblRole.gridx = 1;
 		gbc_lblRole.gridy = 1;
 		add(lblRole, gbc_lblRole);
 		if (parentPanelName=="manager"){
-			lblRole.setText("Manager");
+			lblRole.setText("Manager's Applicant Details View");
 		}
 		else if (parentPanelName=="staff"){
-			lblRole.setText("Staff");
+			lblRole.setText("Staff's Applicant Details View");
 		}
-		JLabel lblApplicantDetails = new JLabel("Applicant Details");
-		lblApplicantDetails.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_lblApplicantDetails = new GridBagConstraints();
-		gbc_lblApplicantDetails.insets = new Insets(0, 0, 5, 5);
-		gbc_lblApplicantDetails.gridx = 2;
-		gbc_lblApplicantDetails.gridy = 1;
-		add(lblApplicantDetails, gbc_lblApplicantDetails);
 		
 		JLabel lblName = new JLabel("Name:");
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -289,9 +286,10 @@ public class ViewApplicantPanel extends JPanel{
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnBack.setBackground(new Color(255,204,203));
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
-		gbc_btnBack.insets = new Insets(0, 0, 5, 0);
-		gbc_btnBack.gridx = 7;
+		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
+		gbc_btnBack.gridx = 6;
 		gbc_btnBack.gridy = 16;
 		add(btnBack, gbc_btnBack);
 		btnBack.addActionListener(new ActionListener() {
