@@ -61,8 +61,56 @@ public class ButtonColumn extends AbstractCellEditor
 		columnModel.getColumn(column).setCellEditor( this );
 		table.addMouseListener( this );
 	}
+	public ButtonColumn(JTable table, Action action, int column, Color color, String backorfore)
+	{
+		this.table = table;
+		this.action = action;
+		
+		renderButton = new JButton();
+		editButton = new JButton();
+		editButton.setFocusPainted( false );
+		editButton.addActionListener( this );
+		renderButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		editButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		if (backorfore.equals("background")){
+			renderButton.setBackground(color);
+			editButton.setBackground(color);
+		}
+		else if (backorfore.equals("foreground")){
+			renderButton.setForeground(color);
+			editButton.setForeground(color);
+		}
+		originalBorder = editButton.getBorder();
+		setFocusBorder( new LineBorder(Color.BLUE) );
 
+		TableColumnModel columnModel = table.getColumnModel();
+		columnModel.getColumn(column).setCellRenderer( this );
+		columnModel.getColumn(column).setCellEditor( this );
+		table.addMouseListener( this );
+	}
+	public ButtonColumn(JTable table, Action action, int column, Color foregroundcolor, Color backgroundcolor)
+	{
+		this.table = table;
+		this.action = action;
 
+		renderButton = new JButton();
+		editButton = new JButton();
+		editButton.setFocusPainted( false );
+		editButton.addActionListener( this );
+		renderButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		editButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		renderButton.setForeground(foregroundcolor);
+		editButton.setForeground(foregroundcolor);
+		renderButton.setBackground(backgroundcolor);
+		editButton.setBackground(backgroundcolor);
+		originalBorder = editButton.getBorder();
+		setFocusBorder( new LineBorder(Color.BLUE) );
+
+		TableColumnModel columnModel = table.getColumnModel();
+		columnModel.getColumn(column).setCellRenderer( this );
+		columnModel.getColumn(column).setCellEditor( this );
+		table.addMouseListener( this );
+	}
 	/**
 	 *  Get foreground color of the button when the cell has focus
 	 *
