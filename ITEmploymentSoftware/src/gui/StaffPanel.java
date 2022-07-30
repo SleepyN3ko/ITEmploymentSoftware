@@ -248,7 +248,7 @@ public class StaffPanel extends JPanel{
 		};
 		ButtonColumn viewColumn = new ButtonColumn(this.table,view,2);
 		ButtonColumn updateColumn = new ButtonColumn(this.table,update,3);
-		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,4);
+		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,4,Color.RED,"background");
 		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		this.table.setFillsViewportHeight(true);
@@ -319,7 +319,7 @@ public class StaffPanel extends JPanel{
 			};
 			ButtonColumn viewColumn = new ButtonColumn(table,view,2);
 			ButtonColumn updateColumn = new ButtonColumn(table,update,3);
-			ButtonColumn deleteColumn = new ButtonColumn(table,delete,4);
+			ButtonColumn deleteColumn = new ButtonColumn(table,delete,4,Color.RED,"background");
 		}
 	}
 	

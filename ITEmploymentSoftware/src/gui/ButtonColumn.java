@@ -55,7 +55,6 @@ public class ButtonColumn extends AbstractCellEditor
 		editButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		originalBorder = editButton.getBorder();
 		setFocusBorder( new LineBorder(Color.BLUE) );
-
 		TableColumnModel columnModel = table.getColumnModel();
 		columnModel.getColumn(column).setCellRenderer( this );
 		columnModel.getColumn(column).setCellEditor( this );
@@ -82,7 +81,7 @@ public class ButtonColumn extends AbstractCellEditor
 		}
 		originalBorder = editButton.getBorder();
 		setFocusBorder( new LineBorder(Color.BLUE) );
-
+		
 		TableColumnModel columnModel = table.getColumnModel();
 		columnModel.getColumn(column).setCellRenderer( this );
 		columnModel.getColumn(column).setCellEditor( this );
@@ -187,13 +186,13 @@ public class ButtonColumn extends AbstractCellEditor
 	{
 		if (isSelected)
 		{
-			renderButton.setForeground(table.getSelectionForeground());
-	 		renderButton.setBackground(table.getSelectionBackground());
+			renderButton.setForeground(renderButton.getForeground());
+			renderButton.setBackground(renderButton.getBackground());
 		}
 		else
 		{
-			renderButton.setForeground(table.getForeground());
-			renderButton.setBackground(UIManager.getColor("Button.background"));
+			renderButton.setForeground(renderButton.getForeground());
+			renderButton.setBackground(renderButton.getBackground());
 		}
 
 		if (hasFocus)
