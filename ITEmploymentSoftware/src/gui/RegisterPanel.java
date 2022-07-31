@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 public class RegisterPanel extends JPanel {
 	private MainFrame main;
 	
@@ -29,6 +30,7 @@ public class RegisterPanel extends JPanel {
 	private JComboBox roleCombo;
 	private JLabel roleLabel;
 	public RegisterPanel(MainFrame main) {
+		setBackground(Color.WHITE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20,20};
 		gridBagLayout.rowHeights = new int[]{20, 20, 20, 20,20,20};
@@ -94,6 +96,7 @@ public class RegisterPanel extends JPanel {
 		
 		String[] roles = {"Manager","HR Staff"};
 		this.roleCombo = new JComboBox(roles);
+		roleCombo.setBackground(Color.WHITE);
 		roleCombo.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_roleCombo = new GridBagConstraints();
 		gbc_roleCombo.gridwidth = 3;
@@ -104,6 +107,7 @@ public class RegisterPanel extends JPanel {
 		add(roleCombo, gbc_roleCombo);
 		
 		this.registerButton = new JButton("Add");
+		registerButton.setBackground(Color.GREEN);
 		registerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username = usernameField.getText();
@@ -145,6 +149,7 @@ public class RegisterPanel extends JPanel {
 		
 		this.backButton = new JButton("Back");
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		backButton.setBackground(new Color(255,204,203));
 		GridBagConstraints gbc_backButton = new GridBagConstraints();
 		gbc_backButton.gridwidth = 2;
 		gbc_backButton.gridx = 4;

@@ -104,7 +104,7 @@ public class InfoStaffPanel extends JPanel{
 		        }
 		    }
 		};
-		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,2);
+		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,2, Color.RED,"background");
 		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		JButton btnRegisterStaffmanager = new JButton("Add Staff/Manager");

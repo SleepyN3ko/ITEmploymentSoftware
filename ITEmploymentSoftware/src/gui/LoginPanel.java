@@ -57,9 +57,9 @@ public class LoginPanel extends JPanel{
 		lblItEmployment.setForeground(Color.BLACK);
 		lblItEmployment.setFont(new Font("Yu Gothic", Font.BOLD, 30));
 		GridBagConstraints gbc_lblItEmployment = new GridBagConstraints();
-		gbc_lblItEmployment.gridwidth = 12;
+		gbc_lblItEmployment.gridwidth = 6;
 		gbc_lblItEmployment.insets = new Insets(0, 0, 5, 5);
-		gbc_lblItEmployment.gridx = 0;
+		gbc_lblItEmployment.gridx = 6;
 		gbc_lblItEmployment.gridy = 0;
 		add(lblItEmployment, gbc_lblItEmployment);
 		
@@ -84,11 +84,11 @@ public class LoginPanel extends JPanel{
 		BackgroundPanel imagePanel = new BackgroundPanel(loginImage);
 		GridBagConstraints gbc_imagePanel = new GridBagConstraints();
 		gbc_imagePanel.gridwidth = 6;
-		gbc_imagePanel.gridheight = 5;
+		gbc_imagePanel.gridheight = 9;
 		gbc_imagePanel.fill = GridBagConstraints.BOTH;
 		gbc_imagePanel.insets = new Insets(0, 0, 5, 5);
 		gbc_imagePanel.gridx = 0;
-		gbc_imagePanel.gridy = 1;
+		gbc_imagePanel.gridy = 0;
 		add(imagePanel, gbc_imagePanel);
 		
 		this.usernameLabel = new JLabel("Username: ");

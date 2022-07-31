@@ -80,6 +80,7 @@ public class ManagerPanel extends JPanel{
 		btnViewStaffInfo.setBackground(Color.ORANGE);
 		btnViewStaffInfo.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnViewStaffInfo = new GridBagConstraints();
+		gbc_btnViewStaffInfo.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnViewStaffInfo.insets = new Insets(0, 0, 5, 5);
 		gbc_btnViewStaffInfo.gridx = 0;
 		gbc_btnViewStaffInfo.gridy = 3;
@@ -130,7 +131,7 @@ public class ManagerPanel extends JPanel{
 		        main.showViewApplicantPanel(selectedApplicantID,"manager");
 		    }
 		};
-		ButtonColumn viewColumn = new ButtonColumn(this.table,view,4);
+		ButtonColumn viewColumn = new ButtonColumn(this.table,view,4,Color.YELLOW,"background");
 		TableColumn shortListColumn = table.getColumnModel().getColumn(2);
 		TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
 		
@@ -216,7 +217,7 @@ public class ManagerPanel extends JPanel{
 				        main.showViewApplicantPanel(selectedApplicantID,"manager");
 				    }
 				};
-				ButtonColumn viewColumn = new ButtonColumn(table,view,4);
+				ButtonColumn viewColumn = new ButtonColumn(table,view,4, Color.YELLOW,"background");
 				TableColumn shortListColumn = table.getColumnModel().getColumn(2);
 				TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
 			}
@@ -249,7 +250,7 @@ public class ManagerPanel extends JPanel{
 				        main.showViewApplicantPanel(selectedApplicantID,"manager");
 				    }
 				};
-				ButtonColumn viewColumn = new ButtonColumn(table,view,4);
+				ButtonColumn viewColumn = new ButtonColumn(table,view,4, Color.YELLOW,"background");
 				TableColumn shortListColumn = table.getColumnModel().getColumn(2);
 				TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
 			}
@@ -258,12 +259,14 @@ public class ManagerPanel extends JPanel{
 		
 		btnShowShortlisted.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnShowShortlisted = new GridBagConstraints();
+		gbc_btnShowShortlisted.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnShowShortlisted.insets = new Insets(0, 0, 5, 5);
 		gbc_btnShowShortlisted.gridx = 0;
 		gbc_btnShowShortlisted.gridy = 4;
 		add(btnShowShortlisted, gbc_btnShowShortlisted);
 		btnShowJobOffered.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnShowJobOffered = new GridBagConstraints();
+		gbc_btnShowJobOffered.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnShowJobOffered.insets = new Insets(0, 0, 5, 5);
 		gbc_btnShowJobOffered.gridx = 0;
 		gbc_btnShowJobOffered.gridy = 5;
@@ -297,13 +300,14 @@ public class ManagerPanel extends JPanel{
 				        main.showViewApplicantPanel(selectedApplicantID,"manager");
 				    }
 				};
-				ButtonColumn viewColumn = new ButtonColumn(table,view,4);
+				ButtonColumn viewColumn = new ButtonColumn(table,view,4, Color.YELLOW,"background");
 				TableColumn shortListColumn = table.getColumnModel().getColumn(2);
 				TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
 			}
 		});
 		btnShowBoth.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnShowBoth = new GridBagConstraints();
+		gbc_btnShowBoth.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnShowBoth.insets = new Insets(0, 0, 5, 5);
 		gbc_btnShowBoth.gridx = 0;
 		gbc_btnShowBoth.gridy = 6;
@@ -318,6 +322,7 @@ public class ManagerPanel extends JPanel{
 		});
 		btnRefresh.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnRefresh = new GridBagConstraints();
+		gbc_btnRefresh.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnRefresh.insets = new Insets(0, 0, 5, 5);
 		gbc_btnRefresh.gridx = 0;
 		gbc_btnRefresh.gridy = 7;

@@ -246,8 +246,8 @@ public class StaffPanel extends JPanel{
 		    	}
 		    }
 		};
-		ButtonColumn viewColumn = new ButtonColumn(this.table,view,2);
-		ButtonColumn updateColumn = new ButtonColumn(this.table,update,3);
+		ButtonColumn viewColumn = new ButtonColumn(this.table,view,2,Color.YELLOW,"background");
+		ButtonColumn updateColumn = new ButtonColumn(this.table,update,3,Color.GREEN,"background");
 		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,4,Color.RED,"background");
 		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
