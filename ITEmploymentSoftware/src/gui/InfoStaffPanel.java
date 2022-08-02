@@ -34,7 +34,7 @@ public class InfoStaffPanel extends JPanel{
 	private JTable table;
 	
 	public InfoStaffPanel(MainFrame main){
-		setBackground(Color.WHITE);
+		setBackground(new Color(135, 206, 250));
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20, 0,20, 0, 0,20};

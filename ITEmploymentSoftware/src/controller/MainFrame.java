@@ -19,7 +19,7 @@ public class MainFrame extends JFrame{
 	public MainFrame()
 	{
 		this.setTitle("IT Employment System");
-		this.setSize(1980,1080);
+		this.setSize(1600,800);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.card = new CardLayout();

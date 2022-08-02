@@ -30,7 +30,7 @@ public class RegisterPanel extends JPanel {
 	private JComboBox roleCombo;
 	private JLabel roleLabel;
 	public RegisterPanel(MainFrame main) {
-		setBackground(Color.WHITE);
+		setBackground(new Color(135, 206, 250));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20,20};
 		gridBagLayout.rowHeights = new int[]{20, 20, 20, 20,20,20};

@@ -33,13 +33,13 @@ public class ManagerPanel extends JPanel{
 	private JLabel lblCount;
 
 	public ManagerPanel(MainFrame main){
-		setBackground(Color.WHITE);
+		setBackground(new Color(135, 206, 250));
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{20, 0, 0, 0, 0, 0, 0, 20, 20, 20, 0, 0,20,20};
-		gridBagLayout.rowHeights = new int[]{20, 0, 0, 20, 0, 20, 20, 0,20, 0,20};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,1.0,1.0,1, 0.0, 0.0,1,1};
-		gridBagLayout.rowWeights = new double[]{1, 0.0, 0.0,1.0, 0.0,0.0,0.0, 0.0,0.0, 0.0,1};
+		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20,20,20};
+		gridBagLayout.rowHeights = new int[]{20, 0, 0, 20, 20, 20, 20, 20,20, 20,20};
+		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,1.0,1.0,1, 1.0, 1.0,1,1};
+		gridBagLayout.rowWeights = new double[]{1, 0, 0,1.0, 1.0,1.0,1.0, 1.0,1.0, 1.0,1};
 		setLayout(gridBagLayout);
 		
 		JLabel lblWelcome = new JLabel("Manager Main Panel");
@@ -119,7 +119,7 @@ public class ManagerPanel extends JPanel{
 		
 		btnShowShortlisted.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnShowShortlisted = new GridBagConstraints();
-		gbc_btnShowShortlisted.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnShowShortlisted.fill = GridBagConstraints.BOTH;
 		gbc_btnShowShortlisted.insets = new Insets(0, 0, 5, 5);
 		gbc_btnShowShortlisted.gridx = 5;
 		gbc_btnShowShortlisted.gridy = 1;
@@ -193,14 +193,14 @@ public class ManagerPanel extends JPanel{
 		});
 		btnShowJobOffered.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnShowJobOffered = new GridBagConstraints();
-		gbc_btnShowJobOffered.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnShowJobOffered.fill = GridBagConstraints.BOTH;
 		gbc_btnShowJobOffered.insets = new Insets(0, 0, 5, 5);
 		gbc_btnShowJobOffered.gridx = 6;
 		gbc_btnShowJobOffered.gridy = 1;
 		add(btnShowJobOffered, gbc_btnShowJobOffered);
 		btnShowBoth.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnShowBoth = new GridBagConstraints();
-		gbc_btnShowBoth.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnShowBoth.fill = GridBagConstraints.BOTH;
 		gbc_btnShowBoth.insets = new Insets(0, 0, 5, 5);
 		gbc_btnShowBoth.gridx = 5;
 		gbc_btnShowBoth.gridy = 2;
@@ -215,7 +215,7 @@ public class ManagerPanel extends JPanel{
 		});
 		btnRefresh.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_btnRefresh = new GridBagConstraints();
-		gbc_btnRefresh.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnRefresh.fill = GridBagConstraints.BOTH;
 		gbc_btnRefresh.insets = new Insets(0, 0, 5, 5);
 		gbc_btnRefresh.gridx = 6;
 		gbc_btnRefresh.gridy = 2;

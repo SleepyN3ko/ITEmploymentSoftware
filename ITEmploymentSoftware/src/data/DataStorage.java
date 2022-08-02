@@ -106,6 +106,9 @@ public class DataStorage {
 	}
 	public void addApplicant(Applicant newApplicant){
 		//add applicant to vector and data storage
+		if (newApplicant.getImage().equals("")){
+			newApplicant.setImage("noImage.png");
+		}
 		this.applicantVector.add(newApplicant);
 		try {
 			BufferedWriter fw = new BufferedWriter(new FileWriter("applicantProfiles.csv",true));
@@ -209,8 +212,10 @@ public class DataStorage {
 		//remove specific applicant from vector
 		for (int index=0;index<applicantVector.size();index++){
 			if (applicantVector.get(index).getApplicantID().equals(selectedApplicantID)){
-				File applicantImage = new File(applicantVector.get(index).getImage());
-				applicantImage.delete();
+				if (!applicantVector.get(index).getImage().equals("null")){
+					File applicantImage = new File(applicantVector.get(index).getImage());
+					applicantImage.delete();
+				}
 				applicantVector.remove(index);
 				break;
 			}

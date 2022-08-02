@@ -58,7 +58,7 @@ public class StaffPanel extends JPanel{
 	private JComboBox shortlistFilter;
 	
 	public StaffPanel(MainFrame main){
-		setBackground(Color.WHITE);
+		setBackground(new Color(135, 206, 250));
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20, 0,20, 0,20, 0, 20, 20, 20, 0,20,20};
