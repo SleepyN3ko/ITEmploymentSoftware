@@ -66,6 +66,7 @@ public class InfoStaffPanel extends JPanel{
 		});
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBackground(Color.WHITE);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridheight = 6;
 		gbc_scrollPane.gridwidth = 7;
@@ -76,6 +77,7 @@ public class InfoStaffPanel extends JPanel{
 		add(scrollPane, gbc_scrollPane);
 		
 		this.table = new JTable();
+		table.setFillsViewportHeight(true);
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table.setBackground(Color.WHITE);
 		table.setRowHeight(table.getRowHeight()+30);

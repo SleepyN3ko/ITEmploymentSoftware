@@ -80,8 +80,9 @@ public class StaffPanel extends JPanel{
 		btnBack.setBackground(Color.RED);
 		btnBack.setFont(new Font("Tahoma", Font.BOLD, 30));
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.anchor = GridBagConstraints.EAST;
 		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
-		gbc_btnBack.gridx = 10;
+		gbc_btnBack.gridx = 13;
 		gbc_btnBack.gridy = 0;
 		add(btnBack, gbc_btnBack);
 		btnBack.addActionListener(new ActionListener() {
@@ -179,9 +180,9 @@ public class StaffPanel extends JPanel{
 		});
 		addApplicantButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_addApplicantButton = new GridBagConstraints();
-		gbc_addApplicantButton.gridwidth = 4;
-		gbc_addApplicantButton.insets = new Insets(0, 0, 5, 5);
-		gbc_addApplicantButton.gridx = 7;
+		gbc_addApplicantButton.anchor = GridBagConstraints.EAST;
+		gbc_addApplicantButton.insets = new Insets(0, 0, 5, 0);
+		gbc_addApplicantButton.gridx = 13;
 		gbc_addApplicantButton.gridy = 2;
 		add(addApplicantButton, gbc_addApplicantButton);
 		

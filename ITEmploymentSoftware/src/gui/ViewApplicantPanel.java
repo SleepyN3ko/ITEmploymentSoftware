@@ -35,8 +35,8 @@ public class ViewApplicantPanel extends JPanel{
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20, 0, 0,20};
 		gridBagLayout.rowHeights = new int[]{20, 20, 0, 20, 20, 0, 0,20, 0, 0, 0, 0, 0, 0, 0, 0, 0,20};
-		gridBagLayout.columnWeights = new double[]{1,1.0,1.0,1,1.0, 1.0, 0.0,1};
-		gridBagLayout.rowWeights = new double[]{1,1.0, 0.0,1.0,1.0, 0.0, 0.0,0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,1};
+		gridBagLayout.columnWeights = new double[]{1,1.0,1.0,1,0.0, 1.0, 0.0,1};
+		gridBagLayout.rowWeights = new double[]{1,1.0, 0.0,0.0,1.0, 0.0, 0.0,0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,0.0};
 		setLayout(gridBagLayout);
 		
 		currentApplicant = this.main.getController().getApplicant(ApplicantID);
@@ -62,29 +62,9 @@ public class ViewApplicantPanel extends JPanel{
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
-		
-		JLabel lblImage = new JLabel("Profile Picture");
-		lblImage.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_lblImage = new GridBagConstraints();
-		gbc_lblImage.gridwidth = 3;
-		gbc_lblImage.insets = new Insets(0, 0, 5, 5);
-		gbc_lblImage.gridx = 4;
-		gbc_lblImage.gridy = 2;
-		add(lblImage, gbc_lblImage);
-		this.imagePanel = new BackgroundPanel(profilePicture);
-		GridBagConstraints gbc_imagePanel = new GridBagConstraints();
-		gbc_imagePanel.fill = GridBagConstraints.BOTH;
-		gbc_imagePanel.gridheight = 9;
-		gbc_imagePanel.gridwidth = 3;
-		gbc_imagePanel.insets = new Insets(0, 0, 5, 5);
-		gbc_imagePanel.gridx = 4;
-		gbc_imagePanel.gridy = 3;
-		add(imagePanel, gbc_imagePanel);
 		try {
 			String imagePath = currentApplicant.getImage();
 			profilePicture = this.main.getController().getImage(imagePath);
-			//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
-			imagePanel.setImage(profilePicture);
 		}
 		catch (Exception e){
 			try {
@@ -104,14 +84,8 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_btnupdate.gridwidth = 2;
 		gbc_btnupdate.insets = new Insets(0, 0, 5, 5);
 		gbc_btnupdate.gridx = 1;
-		gbc_btnupdate.gridy = 4;
+		gbc_btnupdate.gridy = 6;
 		add(btnupdate, gbc_btnupdate);
-		if (parentPanelName=="manager"){
-			btnupdate.setVisible(false);
-		}
-		else if (parentPanelName=="staff"){
-			btnupdate.setVisible(true);
-		}
 		btnupdate.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e)
 	    {
@@ -119,6 +93,32 @@ public class ViewApplicantPanel extends JPanel{
 	    }
 		
 		});
+		
+		JLabel lblImage = new JLabel("Profile Picture");
+		lblImage.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_lblImage = new GridBagConstraints();
+		gbc_lblImage.gridwidth = 3;
+		gbc_lblImage.insets = new Insets(0, 0, 5, 5);
+		gbc_lblImage.gridx = 4;
+		gbc_lblImage.gridy = 6;
+		add(lblImage, gbc_lblImage);
+		this.imagePanel = new BackgroundPanel(profilePicture);
+		GridBagConstraints gbc_imagePanel = new GridBagConstraints();
+		gbc_imagePanel.fill = GridBagConstraints.BOTH;
+		gbc_imagePanel.gridheight = 10;
+		gbc_imagePanel.gridwidth = 3;
+		gbc_imagePanel.insets = new Insets(0, 0, 5, 5);
+		gbc_imagePanel.gridx = 4;
+		gbc_imagePanel.gridy = 7;
+		add(imagePanel, gbc_imagePanel);
+		//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
+		imagePanel.setImage(profilePicture);
+		if (parentPanelName=="manager"){
+			btnupdate.setVisible(false);
+		}
+		else if (parentPanelName=="staff"){
+			btnupdate.setVisible(true);
+		}
 		
 		
 		
@@ -255,26 +255,6 @@ public class ViewApplicantPanel extends JPanel{
 		add(qualificationPane, gbc_qualificationPane);
 		qualificationPane.setText(currentApplicant.getQualification());
 		
-		JLabel lblShortlisted = new JLabel("Shortlisted:");
-		lblShortlisted.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_lblShortlisted = new GridBagConstraints();
-		gbc_lblShortlisted.insets = new Insets(0, 0, 5, 5);
-		gbc_lblShortlisted.gridx = 4;
-		gbc_lblShortlisted.gridy = 13;
-		add(lblShortlisted, gbc_lblShortlisted);
-		
-		
-		JTextPane shortlistPane = new JTextPane();
-		shortlistPane.setEditable(false);
-		shortlistPane.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_shortlistPane = new GridBagConstraints();
-		gbc_shortlistPane.insets = new Insets(0, 0, 5, 5);
-		gbc_shortlistPane.fill = GridBagConstraints.HORIZONTAL;
-		gbc_shortlistPane.gridx = 5;
-		gbc_shortlistPane.gridy = 13;
-		add(shortlistPane, gbc_shortlistPane);
-		shortlistPane.setText(Boolean.toString(currentApplicant.getShortlistStatus()));
-		
 		JLabel lblAchievements = new JLabel("Achievements:");
 		lblAchievements.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_lblAchievements = new GridBagConstraints();
@@ -294,12 +274,32 @@ public class ViewApplicantPanel extends JPanel{
 		add(achievementsPane, gbc_achievementsPane);
 		achievementsPane.setText(currentApplicant.getAchievement());
 		
+		JLabel lblShortlisted = new JLabel("Shortlisted:");
+		lblShortlisted.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_lblShortlisted = new GridBagConstraints();
+		gbc_lblShortlisted.insets = new Insets(0, 0, 5, 5);
+		gbc_lblShortlisted.gridx = 1;
+		gbc_lblShortlisted.gridy = 15;
+		add(lblShortlisted, gbc_lblShortlisted);
+		
+		
+		JTextPane shortlistPane = new JTextPane();
+		shortlistPane.setEditable(false);
+		shortlistPane.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_shortlistPane = new GridBagConstraints();
+		gbc_shortlistPane.insets = new Insets(0, 0, 5, 5);
+		gbc_shortlistPane.fill = GridBagConstraints.HORIZONTAL;
+		gbc_shortlistPane.gridx = 2;
+		gbc_shortlistPane.gridy = 15;
+		add(shortlistPane, gbc_shortlistPane);
+		shortlistPane.setText(Boolean.toString(currentApplicant.getShortlistStatus()));
+		
 		JLabel lblJobOffered = new JLabel("Job Offered:");
 		lblJobOffered.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_lblJobOffered = new GridBagConstraints();
 		gbc_lblJobOffered.insets = new Insets(0, 0, 5, 5);
-		gbc_lblJobOffered.gridx = 4;
-		gbc_lblJobOffered.gridy = 14;
+		gbc_lblJobOffered.gridx = 1;
+		gbc_lblJobOffered.gridy = 16;
 		add(lblJobOffered, gbc_lblJobOffered);
 		
 		JTextPane jobOfferedPane = new JTextPane();
@@ -308,8 +308,8 @@ public class ViewApplicantPanel extends JPanel{
 		GridBagConstraints gbc_jobOfferedPane = new GridBagConstraints();
 		gbc_jobOfferedPane.insets = new Insets(0, 0, 5, 5);
 		gbc_jobOfferedPane.fill = GridBagConstraints.HORIZONTAL;
-		gbc_jobOfferedPane.gridx = 5;
-		gbc_jobOfferedPane.gridy = 14;
+		gbc_jobOfferedPane.gridx = 2;
+		gbc_jobOfferedPane.gridy = 16;
 		add(jobOfferedPane, gbc_jobOfferedPane);
 		jobOfferedPane.setText(Boolean.toString(currentApplicant.getReceivedJobOffer()));
 		
@@ -317,9 +317,9 @@ public class ViewApplicantPanel extends JPanel{
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		btnBack.setBackground(new Color(255,204,203));
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
-		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
+		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
 		gbc_btnBack.gridx = 6;
-		gbc_btnBack.gridy = 16;
+		gbc_btnBack.gridy = 17;
 		add(btnBack, gbc_btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
