@@ -58,7 +58,7 @@ public class StaffPanel extends JPanel{
 	private JComboBox shortlistFilter;
 	
 	public StaffPanel(MainFrame main){
-		setBackground(Color.WHITE);
+		setBackground(new Color(135, 206, 250));
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20, 0,20, 0,20, 0, 20, 20, 20, 0,20,20};
@@ -80,8 +80,9 @@ public class StaffPanel extends JPanel{
 		btnBack.setBackground(Color.RED);
 		btnBack.setFont(new Font("Tahoma", Font.BOLD, 30));
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.anchor = GridBagConstraints.EAST;
 		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
-		gbc_btnBack.gridx = 10;
+		gbc_btnBack.gridx = 13;
 		gbc_btnBack.gridy = 0;
 		add(btnBack, gbc_btnBack);
 		btnBack.addActionListener(new ActionListener() {
@@ -179,9 +180,9 @@ public class StaffPanel extends JPanel{
 		});
 		addApplicantButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_addApplicantButton = new GridBagConstraints();
-		gbc_addApplicantButton.gridwidth = 4;
-		gbc_addApplicantButton.insets = new Insets(0, 0, 5, 5);
-		gbc_addApplicantButton.gridx = 7;
+		gbc_addApplicantButton.anchor = GridBagConstraints.EAST;
+		gbc_addApplicantButton.insets = new Insets(0, 0, 5, 0);
+		gbc_addApplicantButton.gridx = 13;
 		gbc_addApplicantButton.gridy = 2;
 		add(addApplicantButton, gbc_addApplicantButton);
 		
@@ -246,8 +247,8 @@ public class StaffPanel extends JPanel{
 		    	}
 		    }
 		};
-		ButtonColumn viewColumn = new ButtonColumn(this.table,view,2);
-		ButtonColumn updateColumn = new ButtonColumn(this.table,update,3);
+		ButtonColumn viewColumn = new ButtonColumn(this.table,view,2,Color.YELLOW,"background");
+		ButtonColumn updateColumn = new ButtonColumn(this.table,update,3,Color.GREEN,"background");
 		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,4,Color.RED,"background");
 		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -317,8 +318,8 @@ public class StaffPanel extends JPanel{
 			    	}
 			    }
 			};
-			ButtonColumn viewColumn = new ButtonColumn(table,view,2);
-			ButtonColumn updateColumn = new ButtonColumn(table,update,3);
+			ButtonColumn viewColumn = new ButtonColumn(table,view,2,Color.YELLOW,"background");
+			ButtonColumn updateColumn = new ButtonColumn(table,update,3,Color.GREEN,"background");
 			ButtonColumn deleteColumn = new ButtonColumn(table,delete,4,Color.RED,"background");
 		}
 	}

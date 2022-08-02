@@ -116,6 +116,21 @@ public class DataStorage {
 		} catch (IOException e){
 			e.printStackTrace();
 		}
+		applicantVector = new Vector<Applicant>();
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader("applicantProfiles.csv"));
+			String line = "";
+			while ((line=br.readLine())!=null){
+				String[] currentApplicantData = line.split(",");
+				Applicant currentApplicant = new Applicant(currentApplicantData);
+				this.applicantVector.add(currentApplicant);
+			}
+			br.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public Vector<Applicant> getApplicants() {
@@ -209,8 +224,10 @@ public class DataStorage {
 		//remove specific applicant from vector
 		for (int index=0;index<applicantVector.size();index++){
 			if (applicantVector.get(index).getApplicantID().equals(selectedApplicantID)){
-				File applicantImage = new File(applicantVector.get(index).getImage());
-				applicantImage.delete();
+				if (!applicantVector.get(index).getImage().equals("null")){
+					File applicantImage = new File(applicantVector.get(index).getImage());
+					applicantImage.delete();
+				}
 				applicantVector.remove(index);
 				break;
 			}

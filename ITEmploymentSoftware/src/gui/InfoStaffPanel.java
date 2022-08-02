@@ -34,7 +34,7 @@ public class InfoStaffPanel extends JPanel{
 	private JTable table;
 	
 	public InfoStaffPanel(MainFrame main){
-		setBackground(Color.WHITE);
+		setBackground(new Color(135, 206, 250));
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20, 0,20, 0, 0,20};
@@ -66,6 +66,7 @@ public class InfoStaffPanel extends JPanel{
 		});
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBackground(Color.WHITE);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridheight = 6;
 		gbc_scrollPane.gridwidth = 7;
@@ -76,6 +77,7 @@ public class InfoStaffPanel extends JPanel{
 		add(scrollPane, gbc_scrollPane);
 		
 		this.table = new JTable();
+		table.setFillsViewportHeight(true);
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table.setBackground(Color.WHITE);
 		table.setRowHeight(table.getRowHeight()+30);
@@ -104,7 +106,7 @@ public class InfoStaffPanel extends JPanel{
 		        }
 		    }
 		};
-		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,2);
+		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,2, Color.RED,"background");
 		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		JButton btnRegisterStaffmanager = new JButton("Add Staff/Manager");

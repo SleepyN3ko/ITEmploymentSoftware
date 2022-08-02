@@ -43,7 +43,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 	private Image emptyImage;
 	protected JFileChooser fileChooser;
 	public AddUpdateApplicantPanel(MainFrame main,String ApplicantID){
-		setBackground(Color.WHITE);
+		setBackground(new Color(135, 206, 250));
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20,20,20,20};
@@ -51,6 +51,8 @@ public class AddUpdateApplicantPanel extends JPanel{
 		gridBagLayout.columnWeights = new double[]{1,1,1,1,1,1,1.0,1};
 		gridBagLayout.rowWeights = new double[]{1,1.0,1,1,1,1,1,1};
 		setLayout(gridBagLayout);
+		
+		
 		this.panelTitle = new JLabel("");
 		panelTitle.setFont(new Font("Tahoma", Font.BOLD, 35));
 		GridBagConstraints gbc_panelTitle = new GridBagConstraints();
@@ -152,7 +154,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 		gbc_technicalSkillCombo.gridy = 2;
 		add(technicalSkillCombo, gbc_technicalSkillCombo);
 		
-		JLabel genderLabel = new JLabel("Gender");
+		JLabel genderLabel = new JLabel("Gender: ");
 		genderLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_genderLabel = new GridBagConstraints();
 		gbc_genderLabel.anchor = GridBagConstraints.EAST;
@@ -190,7 +192,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 		gbc_qualificationsCombo.gridy = 3;
 		add(qualificationsCombo, gbc_qualificationsCombo);
 		
-		JLabel workExperienceLabel = new JLabel("Work Experience");
+		JLabel workExperienceLabel = new JLabel("Work Experience: ");
 		workExperienceLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_workExperienceLabel = new GridBagConstraints();
 		gbc_workExperienceLabel.anchor = GridBagConstraints.EAST;
@@ -255,6 +257,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 			}
 		});
 		GridBagConstraints gbc_selectImageButton = new GridBagConstraints();
+		gbc_selectImageButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_selectImageButton.gridwidth = 3;
 		gbc_selectImageButton.insets = new Insets(0, 0, 5, 0);
 		gbc_selectImageButton.gridx = 5;
@@ -306,9 +309,9 @@ public class AddUpdateApplicantPanel extends JPanel{
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		backButton.setBackground(new Color(255,204,203));
 		GridBagConstraints gbc_backButton = new GridBagConstraints();
-		gbc_backButton.gridwidth = 4;
+		gbc_backButton.gridwidth = 3;
 		gbc_backButton.insets = new Insets(0, 0, 5, 0);
-		gbc_backButton.gridx = 4;
+		gbc_backButton.gridx = 5;
 		gbc_backButton.gridy = 5;
 		add(backButton, gbc_backButton);
 		//read from file to update existing applicant and some different settings for new applicant
@@ -333,6 +336,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 			this.panelTitle.setText("Staff Update Applicant");
 			try {
 				String imagePath = currentApplicant.getImage();
+				
 				BufferedImage profilePicture = this.main.getController().getImage(imagePath);
 				//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
 				imagePanel.setImage(profilePicture);

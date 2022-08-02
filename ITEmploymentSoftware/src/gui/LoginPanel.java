@@ -13,7 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 
-
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ButtonGroup;
@@ -32,45 +33,45 @@ public class LoginPanel extends JPanel{
 	private JButton loginButton;
 	private JButton registerButton;
 	private JLabel panelTitle;
-	private JLabel usernameLabel;
-	private JLabel passwordLabel;
 	private JLabel lblPosition;
 	private JLabel lblNewLabel;
 	private JRadioButton rdbtnManager;
 	private JRadioButton rdbtnStaff;
 	private Image loginImage;
+	private int passFlag = 0;
 	
 	public LoginPanel(MainFrame main) {
 		setForeground(Color.WHITE);
-		setBackground(Color.WHITE);
+		setBackground(new Color(135, 206, 250));
 		
 		
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{20, 0, 0, 0, 0, 0, 20, 20, 20, 0,20,20};
-		gridBagLayout.rowHeights = new int[]{20, 0, 20, 20, 0, 20,20, 0,20};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0,1,1.0,1, 0.0,1,1};
-		gridBagLayout.rowWeights = new double[]{1, 0.0,1,1, 0.0,1,1, 0.0,1};
+		gridBagLayout.columnWidths = new int[]{20, 0, 0, 0, 0, 0, 20, 0, 20, 20, 0,20,20};
+		gridBagLayout.rowHeights = new int[]{0, 20, 0, 0, 30, 30, 0, 30,30, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0,1, 0.0,1.0,1, 1.0,0.0,1};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0,0.0,0.0, 0.0,0.0,0.0, 0.0, 0.0, 0.0};
 		setLayout(gridBagLayout);
 		
 		lblItEmployment = new JLabel("IT EMPLOYMENT SOFTWARE");
 		lblItEmployment.setForeground(Color.BLACK);
-		lblItEmployment.setFont(new Font("Yu Gothic", Font.BOLD, 30));
+		lblItEmployment.setFont(new Font("Algerian", Font.BOLD, 45));
 		GridBagConstraints gbc_lblItEmployment = new GridBagConstraints();
-		gbc_lblItEmployment.gridwidth = 12;
-		gbc_lblItEmployment.insets = new Insets(0, 0, 5, 5);
+		gbc_lblItEmployment.fill = GridBagConstraints.VERTICAL;
+		gbc_lblItEmployment.gridwidth = 13;
+		gbc_lblItEmployment.insets = new Insets(0, 0, 5, 0);
 		gbc_lblItEmployment.gridx = 0;
 		gbc_lblItEmployment.gridy = 0;
 		add(lblItEmployment, gbc_lblItEmployment);
 		
-		this.panelTitle = new JLabel("Login Page");
-		panelTitle.setForeground(Color.BLACK);
-		panelTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		this.panelTitle = new JLabel("SIGN IN");
+		panelTitle.setForeground(Color.WHITE);
+		panelTitle.setFont(new Font("Yu Gothic", Font.BOLD, 50));
 		GridBagConstraints gbc_panelTitle = new GridBagConstraints();
 		gbc_panelTitle.gridwidth = 5;
 		gbc_panelTitle.insets = new Insets(0, 0, 5, 5);
-		gbc_panelTitle.gridx = 6;
-		gbc_panelTitle.gridy = 1;
+		gbc_panelTitle.gridx = 7;
+		gbc_panelTitle.gridy = 2;
 		add(panelTitle, gbc_panelTitle);
 		
 		
@@ -84,54 +85,13 @@ public class LoginPanel extends JPanel{
 		BackgroundPanel imagePanel = new BackgroundPanel(loginImage);
 		GridBagConstraints gbc_imagePanel = new GridBagConstraints();
 		gbc_imagePanel.gridwidth = 6;
-		gbc_imagePanel.gridheight = 5;
+		gbc_imagePanel.gridheight = 11;
 		gbc_imagePanel.fill = GridBagConstraints.BOTH;
-		gbc_imagePanel.insets = new Insets(0, 0, 5, 5);
+		gbc_imagePanel.insets = new Insets(0, 0, 0, 5);
 		gbc_imagePanel.gridx = 0;
 		gbc_imagePanel.gridy = 1;
 		add(imagePanel, gbc_imagePanel);
-		
-		this.usernameLabel = new JLabel("Username: ");
-		usernameLabel.setForeground(Color.BLACK);
-		usernameLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_usernameLabel = new GridBagConstraints();
-		gbc_usernameLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_usernameLabel.gridx = 6;
-		gbc_usernameLabel.gridy = 2;
-		add(usernameLabel, gbc_usernameLabel);
-		
-		this.usernameField = new JTextField();
-		usernameField.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_usernameField = new GridBagConstraints();
-		gbc_usernameField.gridwidth = 4;
-		gbc_usernameField.insets = new Insets(0, 0, 5, 5);
-		gbc_usernameField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_usernameField.gridx = 7;
-		gbc_usernameField.gridy = 2;
-		add(usernameField, gbc_usernameField);
-		usernameField.setColumns(10);
-		
-		this.passwordLabel = new JLabel("Password: ");
-		passwordLabel.setForeground(Color.BLACK);
-		passwordLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_passwordLabel = new GridBagConstraints();
-		gbc_passwordLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_passwordLabel.gridx = 6;
-		gbc_passwordLabel.gridy = 3;
-		add(passwordLabel, gbc_passwordLabel);
-		
-		
-		this.passwordField = new JPasswordField();
-		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_passwordField = new GridBagConstraints();
-		gbc_passwordField.gridwidth = 4;
-		gbc_passwordField.insets = new Insets(0, 0, 5, 5);
-		gbc_passwordField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_passwordField.gridx = 7;
-		gbc_passwordField.gridy = 3;
-		add(passwordField, gbc_passwordField);
-		passwordField.setColumns(10);
-		passwordField.setEchoChar('*');
+		ButtonGroup btnRoleGroup = new ButtonGroup();
 		
 		this.registerButton = new JButton("Register");
 		registerButton.addActionListener(new ActionListener() {
@@ -140,20 +100,115 @@ public class LoginPanel extends JPanel{
 			}
 		});
 		
-		btnShow = new JButton("Show");
-		btnShow.setBackground(Color.LIGHT_GRAY);
-		btnShow.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-					passwordField.setEchoChar((char)0);
-				
-		}});
-		btnShow.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		GridBagConstraints gbc_btnShow = new GridBagConstraints();
-		gbc_btnShow.insets = new Insets(0, 0, 5, 5);
-		gbc_btnShow.gridx = 9;
-		gbc_btnShow.gridy = 4;
-		add(btnShow, gbc_btnShow);
+
+		lblPosition = new JLabel("Login as:");
+		lblPosition.setForeground(Color.BLACK);
+		lblPosition.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		GridBagConstraints gbc_lblPosition = new GridBagConstraints();
+		gbc_lblPosition.anchor = GridBagConstraints.WEST;
+		gbc_lblPosition.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPosition.gridx = 7;
+		gbc_lblPosition.gridy = 4;
+		add(lblPosition, gbc_lblPosition);
+		rdbtnManager = new JRadioButton("Manager");
 		
+		rdbtnManager.setForeground(Color.BLACK);
+		rdbtnManager.setBackground(new Color(135, 206, 235));
+		rdbtnManager.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		GridBagConstraints gbc_rdbtnManager = new GridBagConstraints();
+		gbc_rdbtnManager.fill = GridBagConstraints.VERTICAL;
+		gbc_rdbtnManager.gridwidth = 2;
+		gbc_rdbtnManager.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnManager.gridx = 8;
+		gbc_rdbtnManager.gridy = 4;
+		add(rdbtnManager, gbc_rdbtnManager);
+		btnRoleGroup.add(rdbtnManager);
+		this.rdbtnManager.addActionListener(new RadioButtonListener());
+		
+		
+		rdbtnStaff = new JRadioButton("HR Staff");
+		rdbtnStaff.setForeground(Color.BLACK);
+		rdbtnStaff.setBackground(new Color(135, 206, 235));
+		rdbtnStaff.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		GridBagConstraints gbc_rdbtnStaff = new GridBagConstraints();
+		gbc_rdbtnStaff.fill = GridBagConstraints.VERTICAL;
+		gbc_rdbtnStaff.gridwidth = 2;
+		gbc_rdbtnStaff.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnStaff.gridx = 10;
+		gbc_rdbtnStaff.gridy = 4;
+		add(rdbtnStaff, gbc_rdbtnStaff);
+		btnRoleGroup.add(rdbtnStaff);
+		this.rdbtnStaff.addActionListener(new RadioButtonListener());
+		
+		this.usernameField = new JTextField();
+		usernameField.setForeground(Color.LIGHT_GRAY);
+		usernameField.setText("Username:");
+		usernameField.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		GridBagConstraints gbc_usernameField = new GridBagConstraints();
+		gbc_usernameField.gridwidth = 5;
+		gbc_usernameField.insets = new Insets(0, 0, 5, 5);
+		gbc_usernameField.fill = GridBagConstraints.BOTH;
+		gbc_usernameField.gridx = 7;
+		gbc_usernameField.gridy = 6;
+		add(usernameField, gbc_usernameField);
+		usernameField.setColumns(10);
+		usernameField.addFocusListener( new FocusListener(){
+            @Override
+            public void focusGained(FocusEvent e){
+            	if (usernameField.getText().equals("Username:")){
+                    usernameField.setText("");
+                    usernameField.setForeground(Color.BLACK);
+            	}
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (usernameField.getText().isEmpty()){
+                	usernameField.setText("Username:");
+            		usernameField.setForeground(Color.LIGHT_GRAY);
+                }
+
+            }
+        });
+		
+		
+		this.passwordField = new JPasswordField("Password:");
+		passwordField.setForeground(Color.LIGHT_GRAY);
+		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		GridBagConstraints gbc_passwordField = new GridBagConstraints();
+		gbc_passwordField.gridwidth = 5;
+		gbc_passwordField.insets = new Insets(0, 0, 5, 5);
+		gbc_passwordField.fill = GridBagConstraints.BOTH;
+		gbc_passwordField.gridx = 7;
+		gbc_passwordField.gridy = 8;
+		add(passwordField, gbc_passwordField);
+		passwordField.setColumns(10);
+		passwordField.setEchoChar((char)0);
+		passwordField.addFocusListener( new FocusListener(){
+            @Override
+            public void focusGained(FocusEvent e){
+            	if (passwordField.getText().equals("Password:")){
+                    passwordField.setText("");
+                    passwordField.setForeground(Color.BLACK);
+                    passwordField.setEchoChar('*');
+            	}
+                
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                // TODO Auto-generated method stub
+                if (passwordField.getText().isEmpty()){
+                	passwordField.setText("Password:");
+                	passwordField.setForeground(Color.LIGHT_GRAY);
+                	passwordField.setEchoChar((char)0);
+                }
+
+            }
+        });
+		
+		
+		/*
 		btnHide = new JButton("Hide");
 		btnHide.setBackground(Color.LIGHT_GRAY);
 		btnHide.addActionListener(new ActionListener() {
@@ -164,49 +219,17 @@ public class LoginPanel extends JPanel{
 		btnHide.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		GridBagConstraints gbc_btnHide = new GridBagConstraints();
 		gbc_btnHide.insets = new Insets(0, 0, 5, 5);
-		gbc_btnHide.gridx = 10;
-		gbc_btnHide.gridy = 4;
+		gbc_btnHide.gridx = 11;
+		gbc_btnHide.gridy = 9;
 		add(btnHide, gbc_btnHide);
+		*/
 		
 
-		lblPosition = new JLabel("Login as:");
-		lblPosition.setForeground(Color.BLACK);
-		lblPosition.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_lblPosition = new GridBagConstraints();
-		gbc_lblPosition.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPosition.gridx = 6;
-		gbc_lblPosition.gridy = 5;
-		add(lblPosition, gbc_lblPosition);
-		
-		ButtonGroup btnRoleGroup = new ButtonGroup();
-		rdbtnManager = new JRadioButton("Manager");
-		rdbtnManager.setForeground(Color.BLACK);
-		rdbtnManager.setBackground(Color.WHITE);
-		rdbtnManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_rdbtnManager = new GridBagConstraints();
-		gbc_rdbtnManager.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnManager.gridx = 7;
-		gbc_rdbtnManager.gridy = 5;
-		add(rdbtnManager, gbc_rdbtnManager);
-		btnRoleGroup.add(rdbtnManager);
-		this.rdbtnManager.addActionListener(new RadioButtonListener());
-		
-		rdbtnStaff = new JRadioButton("HR Staff");
-		rdbtnStaff.setForeground(Color.BLACK);
-		rdbtnStaff.setBackground(Color.WHITE);
-		rdbtnStaff.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_rdbtnStaff = new GridBagConstraints();
-		gbc_rdbtnStaff.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnStaff.gridx = 8;
-		gbc_rdbtnStaff.gridy = 5;
-		add(rdbtnStaff, gbc_rdbtnStaff);
-		btnRoleGroup.add(rdbtnStaff);
-		this.rdbtnStaff.addActionListener(new RadioButtonListener());
 		
 		
 		this.loginButton = new JButton("Login");
-		loginButton.setForeground(Color.BLACK);
-		loginButton.setBackground(Color.GREEN);
+		loginButton.setForeground(Color.WHITE);
+		loginButton.setBackground(new Color(0, 250, 154));
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username = usernameField.getText();
@@ -238,12 +261,40 @@ public class LoginPanel extends JPanel{
 			}
 
 		});
-		loginButton.setFont(new Font("Tahoma", Font.BOLD, 35));
+		
+		
+		btnShow = new JButton("Show");
+		btnShow.setBackground(Color.LIGHT_GRAY);
+		btnShow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (!passwordField.getText().equals("Password:")){
+					if (passFlag == 0){
+						passwordField.setEchoChar((char)0);
+						passFlag = 1;
+						btnShow.setText("Hide");
+					}
+					else if (passFlag == 1){
+						passwordField.setEchoChar('*');
+						passFlag = 0;
+						btnShow.setText("Show");
+					}
+				}
+
+				
+		}});
+		btnShow.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		GridBagConstraints gbc_btnShow = new GridBagConstraints();
+		gbc_btnShow.insets = new Insets(0, 0, 5, 5);
+		gbc_btnShow.gridx = 11;
+		gbc_btnShow.gridy = 9;
+		add(btnShow, gbc_btnShow);
+		loginButton.setFont(new Font("Tahoma", Font.BOLD, 40));
 		GridBagConstraints gbc_loginButton = new GridBagConstraints();
-		gbc_loginButton.gridwidth = 2;
-		gbc_loginButton.insets = new Insets(0, 0, 5, 5);
+		gbc_loginButton.insets = new Insets(0, 0, 0, 5);
+		gbc_loginButton.fill = GridBagConstraints.BOTH;
+		gbc_loginButton.gridwidth = 5;
 		gbc_loginButton.gridx = 7;
-		gbc_loginButton.gridy = 6;
+		gbc_loginButton.gridy = 11;
 		add(loginButton, gbc_loginButton);
 		
 
@@ -262,10 +313,15 @@ public class LoginPanel extends JPanel{
 			if(f.getSource() ==  rdbtnManager)
 			{
 				RoleButton = "Manager";
+				rdbtnManager.setBackground(new Color(0, 191, 255));
+				rdbtnStaff.setBackground(new Color(135, 206, 235));
+				
 			}
 			else if (f.getSource() ==  rdbtnStaff)
 			{
 				RoleButton = "Staff";
+				rdbtnManager.setBackground(new Color(135, 206, 235));
+				rdbtnStaff.setBackground(new Color(0, 191, 255));
 			}
 		}			
 	}
