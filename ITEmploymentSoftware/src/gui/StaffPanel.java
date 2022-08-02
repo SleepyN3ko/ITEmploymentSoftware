@@ -317,8 +317,8 @@ public class StaffPanel extends JPanel{
 			    	}
 			    }
 			};
-			ButtonColumn viewColumn = new ButtonColumn(table,view,2);
-			ButtonColumn updateColumn = new ButtonColumn(table,update,3);
+			ButtonColumn viewColumn = new ButtonColumn(table,view,2,Color.YELLOW,"background");
+			ButtonColumn updateColumn = new ButtonColumn(table,update,3,Color.GREEN,"background");
 			ButtonColumn deleteColumn = new ButtonColumn(table,delete,4,Color.RED,"background");
 		}
 	}

@@ -37,9 +37,9 @@ public class ManagerPanel extends JPanel{
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 0, 0, 0, 20, 20, 20, 0,20,20};
-		gridBagLayout.rowHeights = new int[]{20, 0, 0, 20, 0, 20, 20,20,20};
-		gridBagLayout.columnWeights = new double[]{1, 0.0, 0.0, 0.0,1.0,1.0,1, 0.0,1,1};
-		gridBagLayout.rowWeights = new double[]{1, 0.0, 0.0,1.0, 0.0,1,1,1,1};
+		gridBagLayout.rowHeights = new int[]{20, 0, 0, 20, 0, 20, 20, 0,20,20};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0,1.0,1.0,1, 0.0,1,1};
+		gridBagLayout.rowWeights = new double[]{1, 0.0, 0.0,0.0, 0.0,0.0,0.0, 0.0,0.0,1};
 		setLayout(gridBagLayout);
 		
 		JLabel lblWelcome = new JLabel("Manager Main Panel");
@@ -94,7 +94,7 @@ public class ManagerPanel extends JPanel{
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 8;
-		gbc_scrollPane.gridheight = 5;
+		gbc_scrollPane.gridheight = 6;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 1;

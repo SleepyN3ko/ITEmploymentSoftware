@@ -36,7 +36,7 @@ public class ViewApplicantPanel extends JPanel{
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20, 0, 0,20};
 		gridBagLayout.rowHeights = new int[]{20, 20, 0, 20, 20, 0, 0,20, 0, 0, 0, 0, 0, 0, 0, 0, 0,20};
 		gridBagLayout.columnWeights = new double[]{1,1.0,1.0,1,1.0, 1.0, 0.0,1};
-		gridBagLayout.rowWeights = new double[]{1,1.0, 0.0,1.0,1.0, 0.0, 0.0,1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0,1};
+		gridBagLayout.rowWeights = new double[]{1,1.0, 0.0,1.0,1.0, 0.0, 0.0,0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,1};
 		setLayout(gridBagLayout);
 		
 		currentApplicant = this.main.getController().getApplicant(ApplicantID);
@@ -56,6 +56,12 @@ public class ViewApplicantPanel extends JPanel{
 		else if (parentPanelName=="staff"){
 			lblRole.setText("Staff's Applicant Details View");
 		}
+		try {
+			profilePicture = this.main.getController().getImage("noImage.png");
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		
 		JLabel lblImage = new JLabel("Profile Picture");
 		lblImage.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -63,41 +69,16 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_lblImage.gridwidth = 3;
 		gbc_lblImage.insets = new Insets(0, 0, 5, 5);
 		gbc_lblImage.gridx = 4;
-		gbc_lblImage.gridy = 5;
+		gbc_lblImage.gridy = 2;
 		add(lblImage, gbc_lblImage);
-		
-		JLabel lblName = new JLabel("Name:");
-		lblName.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_lblName = new GridBagConstraints();
-		gbc_lblName.insets = new Insets(0, 0, 5, 5);
-		gbc_lblName.gridx = 1;
-		gbc_lblName.gridy = 6;
-		add(lblName, gbc_lblName);
-		
-		JTextPane namePane = new JTextPane();
-		namePane.setEditable(false);
-		namePane.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_namePane = new GridBagConstraints();
-		gbc_namePane.insets = new Insets(0, 0, 5, 5);
-		gbc_namePane.fill = GridBagConstraints.HORIZONTAL;
-		gbc_namePane.gridx = 2;
-		gbc_namePane.gridy = 6;
-		add(namePane, gbc_namePane);
-		namePane.setText(currentApplicant.getName());
-		try {
-			profilePicture = this.main.getController().getImage("noImage.png");
-		} catch (IOException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
 		this.imagePanel = new BackgroundPanel(profilePicture);
 		GridBagConstraints gbc_imagePanel = new GridBagConstraints();
 		gbc_imagePanel.fill = GridBagConstraints.BOTH;
-		gbc_imagePanel.gridheight = 6;
+		gbc_imagePanel.gridheight = 9;
 		gbc_imagePanel.gridwidth = 3;
 		gbc_imagePanel.insets = new Insets(0, 0, 5, 5);
 		gbc_imagePanel.gridx = 4;
-		gbc_imagePanel.gridy = 6;
+		gbc_imagePanel.gridy = 3;
 		add(imagePanel, gbc_imagePanel);
 		try {
 			String imagePath = currentApplicant.getImage();
@@ -115,6 +96,50 @@ public class ViewApplicantPanel extends JPanel{
 				e1.printStackTrace();
 			}
 		}
+		
+		JButton btnupdate = new JButton("Update Applicant");
+		btnupdate.setBackground(Color.GREEN);
+		btnupdate.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_btnupdate = new GridBagConstraints();
+		gbc_btnupdate.gridwidth = 2;
+		gbc_btnupdate.insets = new Insets(0, 0, 5, 5);
+		gbc_btnupdate.gridx = 1;
+		gbc_btnupdate.gridy = 4;
+		add(btnupdate, gbc_btnupdate);
+		if (parentPanelName=="manager"){
+			btnupdate.setVisible(false);
+		}
+		else if (parentPanelName=="staff"){
+			btnupdate.setVisible(true);
+		}
+		btnupdate.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e)
+	    {
+	        main.showAddUpdateApplicantPanel(currentApplicant.getApplicantID());
+	    }
+		
+		});
+		
+		
+		
+		JLabel lblName = new JLabel("Name:");
+		lblName.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_lblName = new GridBagConstraints();
+		gbc_lblName.insets = new Insets(0, 0, 5, 5);
+		gbc_lblName.gridx = 1;
+		gbc_lblName.gridy = 7;
+		add(lblName, gbc_lblName);
+		
+		JTextPane namePane = new JTextPane();
+		namePane.setEditable(false);
+		namePane.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_namePane = new GridBagConstraints();
+		gbc_namePane.insets = new Insets(0, 0, 5, 5);
+		gbc_namePane.fill = GridBagConstraints.HORIZONTAL;
+		gbc_namePane.gridx = 2;
+		gbc_namePane.gridy = 7;
+		add(namePane, gbc_namePane);
+		namePane.setText(currentApplicant.getName());
 		
 		JLabel lblPhoneNumber = new JLabel("Phone Number:");
 		lblPhoneNumber.setFont(new Font("Tahoma", Font.PLAIN, 30));
