@@ -56,27 +56,6 @@ public class ViewApplicantPanel extends JPanel{
 		else if (parentPanelName=="staff"){
 			lblRole.setText("Staff's Applicant Details View");
 		}
-		try {
-			profilePicture = this.main.getController().getImage("noImage.png");
-		} catch (IOException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-		try {
-			String imagePath = currentApplicant.getImage();
-			profilePicture = this.main.getController().getImage(imagePath);
-		}
-		catch (Exception e){
-			try {
-				profilePicture = this.main.getController().getImage("noImage.png");
-				//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
-				imagePanel.setImage(profilePicture);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-		
 		JButton btnupdate = new JButton("Update Applicant");
 		btnupdate.setBackground(Color.GREEN);
 		btnupdate.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -111,8 +90,26 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_imagePanel.gridx = 4;
 		gbc_imagePanel.gridy = 7;
 		add(imagePanel, gbc_imagePanel);
-		//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
-		imagePanel.setImage(profilePicture);
+
+		try {
+			String imagePath = currentApplicant.getImage();
+			
+			BufferedImage profilePicture = this.main.getController().getImage(imagePath);
+			//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
+			imagePanel.setImage(profilePicture);
+		}
+		catch (Exception e){
+			try {
+				BufferedImage profilePicture;
+				profilePicture = this.main.getController().getImage("noImage.png");
+				//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
+				imagePanel.setImage(profilePicture);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		
 		if (parentPanelName=="manager"){
 			btnupdate.setVisible(false);
 		}

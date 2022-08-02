@@ -106,9 +106,6 @@ public class DataStorage {
 	}
 	public void addApplicant(Applicant newApplicant){
 		//add applicant to vector and data storage
-		if (newApplicant.getImage().equals("")){
-			newApplicant.setImage("noImage.png");
-		}
 		this.applicantVector.add(newApplicant);
 		try {
 			BufferedWriter fw = new BufferedWriter(new FileWriter("applicantProfiles.csv",true));
@@ -117,6 +114,21 @@ public class DataStorage {
 			fw.newLine();
 			fw.close();
 		} catch (IOException e){
+			e.printStackTrace();
+		}
+		applicantVector = new Vector<Applicant>();
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader("applicantProfiles.csv"));
+			String line = "";
+			while ((line=br.readLine())!=null){
+				String[] currentApplicantData = line.split(",");
+				Applicant currentApplicant = new Applicant(currentApplicantData);
+				this.applicantVector.add(currentApplicant);
+			}
+			br.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
