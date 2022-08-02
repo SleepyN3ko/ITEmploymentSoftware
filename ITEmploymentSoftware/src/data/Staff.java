@@ -1,49 +1,44 @@
 package data;
 
 import java.util.List;
+/*
+ * This class is the class for Staff
+ */
+ 
 
 public class Staff {
 
 
 	private String username;
 
-	public List<Applicant> applicant;
-
 	private String password;
 	public Staff(String name, String password){
+		//Constructor for staff
 		this.username = name;
 		this.password = password;
 	}
 	
 	public String getUsername() {
+		//Getter for username
 	 	 return username; 
 	}
 
-	public void setUsername(String username) { 
+	public void setUsername(String username) {
+		 //Setter for username 
 		 this.username = username; 
 	}
 
-	public List<Applicant> getApplicant() {
-	 	 return applicant; 
-	}
-
-	public void setApplicant(List<Applicant> applicant) { 
-		 this.applicant = applicant; 
-	}
-
 	public String getPassword() {
+		//Getter for password
 	 	 return password; 
 	}
 
 	public void setPassword(String password) { 
+		 //Setter for password
 		 this.password = password; 
 	}
-
-	public void login() { 
-		// TODO Auto-generated method
-	 } 
 	public String staffAsCSV(){
-
+		//Return a string of the staff in CSV format
 		String line = "";
 		line+=this.getUsername()+",";
 		line+=this.getPassword();

@@ -36,7 +36,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
-
+/*
+ * This class is used to display the information of the applicants
+ * This panel will be used by employees who are staff.
+ */
 public class StaffPanel extends JPanel{
 	private MainFrame main;
 	private JLabel welcomeLabel;
@@ -201,15 +204,15 @@ public class StaffPanel extends JPanel{
 		this.table = new JTable();
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table.setRowHeight(table.getRowHeight()+30);
-		
-		Object[][] rows = this.main.getController().getApplicants();
+		Object[][] rows = this.main.getController().getApplicants(); //get all the applicants from the database
 		String[] columns = {
 				"ApplicantID", "Name","View Applicant","Update Applicant","Delete Applicant"
-		};
+		}; //column names
 		
 		this.table.setModel(new DefaultTableModel(rows,columns) {
 			@Override
 			public boolean isCellEditable(int row,int column){
+				//make button Columns Editable
 				if (column==2 || column==3 || column==4){
 					return true;
 				}
@@ -220,6 +223,10 @@ public class StaffPanel extends JPanel{
 		{
 		    public void actionPerformed(ActionEvent e)
 		    {
+				/*
+				 * Get the selected row and get the applicantID from the table
+				 * Show viewApplicantPanel with the selectedApplicantID
+				 */
 		        int modelRow = Integer.valueOf(e.getActionCommand());
 		        String selectedApplicantID = rows[modelRow][0].toString();
 		        main.showViewApplicantPanel(selectedApplicantID,"staff");
@@ -229,6 +236,11 @@ public class StaffPanel extends JPanel{
 		{
 		    public void actionPerformed(ActionEvent e)
 		    {
+				/*
+				 * Get the selected row and get the applicantID from the table
+				 * Show updateApplicantPanel with the selectedApplicantID
+				 * and set the mode to "update"
+				 */
 		        int modelRow = Integer.valueOf(e.getActionCommand());
 		        String selectedApplicantID = rows[modelRow][0].toString();
 		        main.showAddUpdateApplicantPanel(selectedApplicantID);
@@ -238,6 +250,10 @@ public class StaffPanel extends JPanel{
 		{
 		    public void actionPerformed(ActionEvent e)
 		    {
+				/*
+				 * Get the selected row and get the applicantID from the table
+				 * After confirmation of deletion, the applicant in the row of the delete button will be removed from database
+				 */
 		    	int result = JOptionPane.showConfirmDialog(null, "Confirm to delete applicant?", "Confirmation", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 		    	if (result==0){
 			    	int modelRow = Integer.valueOf(e.getActionCommand());
@@ -259,6 +275,13 @@ public class StaffPanel extends JPanel{
 	private class filterSelection implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			/*
+			 * Custom filter for the table
+			 * This filter does not search through the JTable but instead requests the controller to help search through the database
+			 * This improves security as the user will not have direct access to the database
+			 * The controller will return a list of applicants that match the search criteria
+			 * This filtered list will be displayed in the table
+			 */
 			List<String> filters = new ArrayList<String>();
 			filters.add("gender,"+genderFilter.getSelectedItem());//add selected gender filter to filters
 			filters.add("tskill,"+techSkillFilter.getSelectedItem()); //add selected technical skill filter to filters

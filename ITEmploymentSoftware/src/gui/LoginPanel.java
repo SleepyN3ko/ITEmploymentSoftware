@@ -25,13 +25,14 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JRadioButton;
 import java.awt.Color;
-
+/*
+ * This class is used generate the panel for the login.
+ */
 public class LoginPanel extends JPanel{
 	private MainFrame main;
 	private JTextField usernameField;
 	private JPasswordField passwordField;
 	private JButton loginButton;
-	private JButton registerButton;
 	private JLabel panelTitle;
 	private JLabel lblPosition;
 	private JLabel lblNewLabel;
@@ -74,7 +75,7 @@ public class LoginPanel extends JPanel{
 		gbc_panelTitle.gridy = 2;
 		add(panelTitle, gbc_panelTitle);
 		
-		
+		//logo image
 		try {
 			loginImage = this.main.getController().getImage("images/loginIcon.png");
 		} catch (IOException e1) {
@@ -92,13 +93,6 @@ public class LoginPanel extends JPanel{
 		gbc_imagePanel.gridy = 1;
 		add(imagePanel, gbc_imagePanel);
 		ButtonGroup btnRoleGroup = new ButtonGroup();
-		
-		this.registerButton = new JButton("Register");
-		registerButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				main.showRegisterPanel();
-			}
-		});
 		
 
 		lblPosition = new JLabel("Login as:");
@@ -153,6 +147,10 @@ public class LoginPanel extends JPanel{
 		add(usernameField, gbc_usernameField);
 		usernameField.setColumns(10);
 		usernameField.addFocusListener( new FocusListener(){
+			/*
+			 * Change color when focused and out of focus for better design
+			 * Contains placeholder text
+			 */
             @Override
             public void focusGained(FocusEvent e){
             	if (usernameField.getText().equals("Username:")){
@@ -185,6 +183,10 @@ public class LoginPanel extends JPanel{
 		passwordField.setColumns(10);
 		passwordField.setEchoChar((char)0);
 		passwordField.addFocusListener( new FocusListener(){
+			/*
+			 * Change color when focused and out of focus for better design
+			 * Contains place holder text
+			 */
             @Override
             public void focusGained(FocusEvent e){
             	if (passwordField.getText().equals("Password:")){
@@ -197,7 +199,6 @@ public class LoginPanel extends JPanel{
 
             @Override
             public void focusLost(FocusEvent e) {
-                // TODO Auto-generated method stub
                 if (passwordField.getText().isEmpty()){
                 	passwordField.setText("Password:");
                 	passwordField.setForeground(Color.LIGHT_GRAY);
@@ -206,32 +207,16 @@ public class LoginPanel extends JPanel{
 
             }
         });
-		
-		
-		/*
-		btnHide = new JButton("Hide");
-		btnHide.setBackground(Color.LIGHT_GRAY);
-		btnHide.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-					passwordField.setEchoChar('*');
-				
-		}});
-		btnHide.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		GridBagConstraints gbc_btnHide = new GridBagConstraints();
-		gbc_btnHide.insets = new Insets(0, 0, 5, 5);
-		gbc_btnHide.gridx = 11;
-		gbc_btnHide.gridy = 9;
-		add(btnHide, gbc_btnHide);
-		*/
-		
-
-		
-		
 		this.loginButton = new JButton("Login");
 		loginButton.setForeground(Color.WHITE);
 		loginButton.setBackground(new Color(0, 250, 154));
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/*
+				 * Check if a role is seleceted. If not, display error message.
+				 * If yes, check if username and password are correct. If yes, login into corresponding panels.
+				 * If no, display error message dialog.
+				 */
 				String username = usernameField.getText();
 				String password = passwordField.getText();
 				if (RoleButton == "")
@@ -267,6 +252,9 @@ public class LoginPanel extends JPanel{
 		btnShow.setBackground(Color.LIGHT_GRAY);
 		btnShow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				/*
+				 * Togglable button to show or hide password.
+				 */
 				if (!passwordField.getText().equals("Password:")){
 					if (passFlag == 0){
 						passwordField.setEchoChar((char)0);
@@ -309,7 +297,12 @@ public class LoginPanel extends JPanel{
 	private class RadioButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent f)
 		{
-			
+			/*
+			 * Radio button listener to select role.
+			 * If manager is selected, set the role button to manager.
+			 * If staff is selected, set the role button to staff.
+			 * Color of selected role is changed to improve user experience
+			 */
 			if(f.getSource() ==  rdbtnManager)
 			{
 				RoleButton = "Manager";

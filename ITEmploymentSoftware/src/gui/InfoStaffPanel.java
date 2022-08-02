@@ -28,7 +28,10 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
-
+/*
+ * This class is used to display the information of the staff.
+ * It is a JPanel which is used to display the information of the staff.
+ */
 public class InfoStaffPanel extends JPanel{
 	private MainFrame main;
 	private JTable table;
@@ -97,6 +100,10 @@ public class InfoStaffPanel extends JPanel{
 		{
 		    public void actionPerformed(ActionEvent e)
 		    {
+				/*
+				 * This method is used to delete the staff.
+				 * It asks for confirmation before deleting the staff
+				 */
 		    	int result = JOptionPane.showConfirmDialog(null, "Confirm to delete Staff?", "Confirmation", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 		        if (result==0){
 			    	int modelRow = Integer.valueOf(e.getActionCommand());
@@ -106,7 +113,8 @@ public class InfoStaffPanel extends JPanel{
 		        }
 		    }
 		};
-		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,2, Color.RED,"background");
+		// sets up the deleteColumn
+		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,2, Color.RED,"background"); 
 		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		JButton btnRegisterStaffmanager = new JButton("Add Staff/Manager");

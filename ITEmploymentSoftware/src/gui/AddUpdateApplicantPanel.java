@@ -28,6 +28,11 @@ import java.awt.event.ActionEvent;
 import java.awt.Button;
 import java.awt.Color;
 
+/*
+ * This class is used to display the information of the staff.
+ * It is a JPanel which is used to display the information of the staff.
+ */
+
 public class AddUpdateApplicantPanel extends JPanel{
 	private MainFrame main;
 	private Applicant currentApplicant;
@@ -43,8 +48,13 @@ public class AddUpdateApplicantPanel extends JPanel{
 	private Image emptyImage;
 	protected JFileChooser fileChooser;
 	public AddUpdateApplicantPanel(MainFrame main,String ApplicantID){
+		/*
+		 * This constructor is used to create a new AddUpdateApplicantPanel
+		 */
 		setBackground(new Color(135, 206, 250));
 		this.main = main;
+		//GridBagLayout was used for this panel
+		//The grid has the size of 8x10
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20,20,20,20};
 		gridBagLayout.rowHeights = new int[]{20, 20, 20, 20,20,20,20,20};
@@ -103,9 +113,9 @@ public class AddUpdateApplicantPanel extends JPanel{
 		try {
 			emptyImage = this.main.getController().getImage("noImage.png");
 		} catch (IOException e2) {
-			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
+		//This is the image that will be displayed when no image is selected
 		BackgroundPanel imagePanel = new BackgroundPanel(emptyImage);
 		GridBagConstraints gbc_imagePanel = new GridBagConstraints();
 		gbc_imagePanel.gridwidth = 3;
@@ -231,6 +241,7 @@ public class AddUpdateApplicantPanel extends JPanel{
 		achievementsField.setColumns(10);
 		
 		JFileChooser selectImageFile = new JFileChooser();
+		//The following code is used to select the image file to be uploaded
         selectImageFile.setAcceptAllFileFilterUsed(false);
 		selectImageFile.addChoosableFileFilter(new FileNameExtensionFilter("Image","png","jpg","jpeg","bmp"));
 		JButton selectImageButton = new JButton("Select Image");
@@ -243,11 +254,10 @@ public class AddUpdateApplicantPanel extends JPanel{
 		            File file = selectImageFile.getSelectedFile();
 		            try {
 						newImage = ImageIO.read(file);
-						imagePanel.setImage(newImage);
-						imageUpdated = true;
+						imagePanel.setImage(newImage); //sets the image to the image panel
+						imageUpdated = true; //sets the image updated flag to true
 					} catch (IOException e1) {
-						System.out.println("problem accessing file"+file.getAbsolutePath());
-	              		// TODO Auto-generated catch block
+						System.out.println("problem accessing file"+file.getAbsolutePath()); //if the file is not found, print the error message
 						e1.printStackTrace();
 					}
 		        } 
@@ -279,13 +289,19 @@ public class AddUpdateApplicantPanel extends JPanel{
 				currentApplicant.setQualification((String)qualificationsCombo.getSelectedItem());
 				currentApplicant.setAchievement(achievementsField.getText());
 				if (imageUpdated){
+					/*
+					 * if the image is updated, the image path is stored in the current applicant
+					 * and the image is stored in the image folder
+					 */
 					currentApplicant.setImage("./applicantImages/"+currentApplicant.getApplicantID()+".png");
 					main.getController().saveImage(newImage,"./applicantImages/"+currentApplicant.getApplicantID()+".png");
 				}
 				if (ApplicantID.equals("new")){
+					//if the applicant is new, add the applicant to the datastorage
 					main.getController().addApplicant(currentApplicant);
 				}
 				else {
+					//if the applicant is not new, update the applicant in the datastorage
 					main.getController().updateApplicant(currentApplicant);
 				}
 				main.showStaffPanel();
@@ -335,14 +351,18 @@ public class AddUpdateApplicantPanel extends JPanel{
 			technicalSkillCombo.setSelectedItem(currentApplicant.getTechnicalSkill());
 			this.panelTitle.setText("Staff Update Applicant");
 			try {
+				/*
+				 * if the image is not null, the image is read from the image folder and set to the image panel
+				 */
 				String imagePath = currentApplicant.getImage();
-				
 				BufferedImage profilePicture = this.main.getController().getImage(imagePath);
-				//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
 				imagePanel.setImage(profilePicture);
 			}
 			catch (Exception e){
 				try {
+					/*
+					 * if the image is null, the default noImage error Image is set to the image panel
+					 */
 					BufferedImage profilePicture;
 					profilePicture = this.main.getController().getImage("noImage.png");
 					//TODO Autoresize if possible now cannot get width and prefered width of label for some reason

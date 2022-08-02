@@ -26,7 +26,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
-
+/*
+ * This class is used to display the information of applicant from a manager's perspective.
+ */
 public class ManagerPanel extends JPanel{
 	private MainFrame main;
 	private JTable table;
@@ -87,6 +89,7 @@ public class ManagerPanel extends JPanel{
 		btnShowShortlisted.setBackground(new Color(72, 209, 204));
 		btnShowShortlisted.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//gets shortlisted applicants to display in table
 				Object[][] rows = main.getController().getShortlistApplicants();
 				lblCount.setText("Number of Applicants: "+rows.length);
 				String[] columns = {
@@ -105,6 +108,9 @@ public class ManagerPanel extends JPanel{
 				{
 				    public void actionPerformed(ActionEvent e)
 				    {
+						/*
+						 * This method is used to view the applicant's profile.
+						 */
 				        int modelRow = Integer.valueOf(e.getActionCommand());
 				        String selectedApplicantID = rows[modelRow][0].toString();
 				        main.showViewApplicantPanel(selectedApplicantID,"manager");
@@ -130,6 +136,9 @@ public class ManagerPanel extends JPanel{
 		btnShowBoth.setBackground(Color.CYAN);
 		btnShowBoth.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/*
+				 * gets shortlisted applicants to display in table
+				 */
 				Object[][] rows = main.getController().getBothApplicants();
 				lblCount.setText("Number of Applicants: "+rows.length);
 				String[] columns = {
@@ -148,6 +157,9 @@ public class ManagerPanel extends JPanel{
 				{
 				    public void actionPerformed(ActionEvent e)
 				    {
+						/*
+						 * This method is used to view the applicant's profile.
+						*/
 				        int modelRow = Integer.valueOf(e.getActionCommand());
 				        String selectedApplicantID = rows[modelRow][0].toString();
 				        main.showViewApplicantPanel(selectedApplicantID,"manager");
@@ -255,6 +267,7 @@ public class ManagerPanel extends JPanel{
 		this.table.setModel(new DefaultTableModel(rows,columns) {
 			@Override
 			public boolean isCellEditable(int row,int column){
+				//makes sure certain columns can be clicked/edited
 				if (column==2||column==3||column==4){
 					return true;
 				}
@@ -282,6 +295,7 @@ public class ManagerPanel extends JPanel{
 		comboBoxShort.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!(table.getSelectedRow()==-1)){
+					//updates the short-listed column in the database
 					if (comboBoxShort.getSelectedIndex()==0){
 						String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
 						Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);
@@ -308,6 +322,7 @@ public class ManagerPanel extends JPanel{
 		comboBoxJob.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!(table.getSelectedRow()==-1)){
+					//updates the job offer column in the database
 					if (comboBoxJob.getSelectedIndex()==0){
 						String selectedApplicantID = rows[table.getSelectedRow()][0].toString();
 						Applicant selectedApplicant = main.getController().getApplicant(selectedApplicantID);

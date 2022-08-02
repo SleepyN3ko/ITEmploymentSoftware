@@ -19,7 +19,13 @@ import java.net.URL;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
-
+/*
+ * Model part of the MVC pattern
+ * This class is responsible for storing and retrieving data from the database
+ * It is also responsible for reading and writing data to the database
+ * It is also responsible for creating and deleting objects from the database
+ */
+ 
 public class DataStorage {
 	private Vector<Staff> staffVector = new Vector<Staff>();
 	private Vector<Manager> managerVector = new Vector<Manager>();

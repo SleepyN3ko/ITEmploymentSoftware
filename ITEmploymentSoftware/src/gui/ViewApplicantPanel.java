@@ -21,7 +21,9 @@ import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
-
+/*
+ * This class is used to display the information of the Applicant
+ */
 public class ViewApplicantPanel extends JPanel{
 	private MainFrame main;
 	private JTable table;
@@ -50,6 +52,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_lblRole.gridx = 1;
 		gbc_lblRole.gridy = 1;
 		add(lblRole, gbc_lblRole);
+		//see what role the user has and set the label accordingly
 		if (parentPanelName=="manager"){
 			lblRole.setText("Manager's Applicant Details View");
 		}
@@ -109,7 +112,7 @@ public class ViewApplicantPanel extends JPanel{
 				e1.printStackTrace();
 			}
 		}
-		
+		//makes update button invisible if the user is a staff
 		if (parentPanelName=="manager"){
 			btnupdate.setVisible(false);
 		}
@@ -331,6 +334,7 @@ public class ViewApplicantPanel extends JPanel{
 		add(btnBack, gbc_btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//returns user back to the correct panel
 				if (parentPanelName=="manager"){
 					main.showManagerPanel();
 				}

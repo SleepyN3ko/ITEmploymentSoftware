@@ -17,6 +17,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+/*
+ * This class is used to display the register page for manager only
+ */
 public class RegisterPanel extends JPanel {
 	private MainFrame main;
 	
@@ -110,6 +113,9 @@ public class RegisterPanel extends JPanel {
 		registerButton.setBackground(Color.GREEN);
 		registerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/*
+				 * This method is used to add the staff or managers to the database
+				 */
 				String username = usernameField.getText();
 				String password = passwordField.getText();
 				if (roleCombo.getSelectedIndex()==0){

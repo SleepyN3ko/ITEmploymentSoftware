@@ -44,6 +44,9 @@ public class ButtonColumn extends AbstractCellEditor
 	 */
 	public ButtonColumn(JTable table, Action action, int column)
 	{
+		/*
+		 * Constructor for creating a buttonColumn which can listen to mouse events in the button column
+		 */
 		this.table = table;
 		this.action = action;
 
@@ -62,6 +65,10 @@ public class ButtonColumn extends AbstractCellEditor
 	}
 	public ButtonColumn(JTable table, Action action, int column, Color color, String backorfore)
 	{
+		/*
+		 * Constructor for creating a buttonColumn which can listen to mouse events in the button column
+		 * and can be customized with the foreground or background of the button
+		 */
 		this.table = table;
 		this.action = action;
 		
@@ -89,6 +96,10 @@ public class ButtonColumn extends AbstractCellEditor
 	}
 	public ButtonColumn(JTable table, Action action, int column, Color foregroundcolor, Color backgroundcolor)
 	{
+		/*
+		 * Constructor for creating a buttonColumn which can listen to mouse events in the button column
+		 * and can be customized with the foreground and background of the button
+		 */
 		this.table = table;
 		this.action = action;
 
@@ -184,6 +195,9 @@ public class ButtonColumn extends AbstractCellEditor
 	public Component getTableCellRendererComponent(
 		JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
+		/*
+		 * Ensures that buttons in button column are rendered properly with the correct foreground and background colors
+		 */
 		if (isSelected)
 		{
 			renderButton.setForeground(renderButton.getForeground());

@@ -2,6 +2,9 @@ package data;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+/* 
+ * This class is the class for Applicant
+*/
 public class Applicant {
 
 
@@ -22,11 +25,20 @@ public class Applicant {
 	private boolean shortlisted;
 	private boolean receivedJobOffer;
 	public Applicant(){
+		/*
+		 * Generate a random UUID for the applicantID
+		 * and set it to the applicantID variable
+		 * and set the shortlisted and receivedJobOffer variables to false
+		 */
 		this.applicantID = UUID.randomUUID().toString();
 		this.shortlisted = false;
 		this.receivedJobOffer = false;
 	}
 	public Applicant(String[] dataFromCSV){
+		/*
+		 * Set corresponding variables to the data from the CSV file
+		 * Parse shortlisted and job offer into booleans as data stored is a string
+		 */
 		this.applicantID = dataFromCSV[0];
 		this.name = dataFromCSV[1];
 		this.phoneNumber = dataFromCSV[2];
@@ -58,31 +70,12 @@ public class Applicant {
 	public void setShortlistStatus(boolean shortlistStatus) { 
 		 this.shortlisted = shortlistStatus; 
 	}
-
-	public void addNewApplicant() { 
-		// TODO Auto-generated method
-	 }
-
-	public void shortlistApplicant() { 
-		// TODO Auto-generated method
-	 }
-
-	public void saveDetailsDS() { 
-		// TODO Auto-generated method
-	 }
-
-	public void viewApplicantProfile() { 
-		// TODO Auto-generated method
-	 }
-
-	public void viewShortlistApplicants() { 
-		// TODO Auto-generated method
-	 } 
 	public String getImage(){
+		// gets iamge path of current applicant
 		return this.applicantImagePath;
 	}
 	public void setImage(String imagePath){
-		//TODO add overwrite previousImage function
+		// sets the image path to the applicantImagePath variable
 		this.applicantImagePath = imagePath;
 	}
 
@@ -157,28 +150,11 @@ public class Applicant {
 	public void setphoneNumber(String phoneNumber) { 
 		 this.phoneNumber = phoneNumber; 
 	} 
-
-
-
-	
-	
-	public void updateProfile(String n, String ph, String g,String we, String gskill, String tskill, String a, String q) {
-		this.setName(n);
-		this.setphoneNumber(ph);
-		this.setGender(g);
-		this.setWorkExperience(we);
-		this.setGenericSkill(gskill);
-		this.setTechnicalSkill(tskill);
-		this.setAchievement(a);
-		this.setQualification(q);
-		// TODO Auto-generated method
-	 }
-
-	public void saveProfile(String n, int ph, String g,String we, String gskill, String tskill, String a, String q) { 
-		// TODO Auto-generated method
-	 }
 	public String applicantAsCSV(){
-
+		/*
+		 * Return a string containing the data of the applicant
+		 * in the format of a CSV file
+		 */
 		String line = "";
 		line+=this.getApplicantID()+",";
 		line+=this.getName()+",";
