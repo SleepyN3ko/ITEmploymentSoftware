@@ -21,6 +21,7 @@ import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
+import javax.swing.JScrollPane;
 /*
  * This class is used to display the information of the Applicant
  */
@@ -38,7 +39,7 @@ public class ViewApplicantPanel extends JPanel{
 		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20, 20, 20,20};
 		gridBagLayout.rowHeights = new int[]{20, 20, 20, 20,20, 20, 20,20,20, 20, 20, 20,20, 20, 20,20,20, 20, 20,20};
 		gridBagLayout.columnWeights = new double[]{1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0};
-		gridBagLayout.rowWeights = new double[]{1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0, 1.0, 1.0,1.0};
+		gridBagLayout.rowWeights = new double[]{1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.0,1.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0, 1.0, 1.0,1.0};
 		setLayout(gridBagLayout);
 		
 		currentApplicant = this.main.getController().getApplicant(ApplicantID);
@@ -66,7 +67,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_btnupdate.gridwidth = 2;
 		gbc_btnupdate.insets = new Insets(0, 0, 5, 5);
 		gbc_btnupdate.gridx = 1;
-		gbc_btnupdate.gridy = 6;
+		gbc_btnupdate.gridy = 4;
 		add(btnupdate, gbc_btnupdate);
 		btnupdate.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e)
@@ -76,50 +77,6 @@ public class ViewApplicantPanel extends JPanel{
 		
 		});
 		
-		JLabel lblImage = new JLabel("Profile Picture");
-		lblImage.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_lblImage = new GridBagConstraints();
-		gbc_lblImage.gridwidth = 3;
-		gbc_lblImage.insets = new Insets(0, 0, 5, 5);
-		gbc_lblImage.gridx = 4;
-		gbc_lblImage.gridy = 6;
-		add(lblImage, gbc_lblImage);
-		this.imagePanel = new BackgroundPanel(profilePicture);
-		GridBagConstraints gbc_imagePanel = new GridBagConstraints();
-		gbc_imagePanel.fill = GridBagConstraints.BOTH;
-		gbc_imagePanel.gridheight = 10;
-		gbc_imagePanel.gridwidth = 3;
-		gbc_imagePanel.insets = new Insets(0, 0, 5, 5);
-		gbc_imagePanel.gridx = 4;
-		gbc_imagePanel.gridy = 7;
-		add(imagePanel, gbc_imagePanel);
-
-		try {
-			String imagePath = currentApplicant.getImage();
-			
-			BufferedImage profilePicture = this.main.getController().getImage(imagePath);
-			//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
-			imagePanel.setImage(profilePicture);
-		}
-		catch (Exception e){
-			try {
-				BufferedImage profilePicture;
-				profilePicture = this.main.getController().getImage("noImage.png");
-				//TODO Autoresize if possible now cannot get width and prefered width of label for some reason
-				imagePanel.setImage(profilePicture);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-		//makes update button invisible if the user is a staff
-		if (parentPanelName=="manager"){
-			btnupdate.setVisible(false);
-		}
-		else if (parentPanelName=="staff"){
-			btnupdate.setVisible(true);
-		}
-		
 		
 		
 		JLabel lblName = new JLabel("Name:");
@@ -128,7 +85,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_lblName.anchor = GridBagConstraints.WEST;
 		gbc_lblName.insets = new Insets(0, 0, 5, 5);
 		gbc_lblName.gridx = 1;
-		gbc_lblName.gridy = 7;
+		gbc_lblName.gridy = 5;
 		add(lblName, gbc_lblName);
 		
 		JTextPane namePane = new JTextPane();
@@ -138,9 +95,18 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_namePane.insets = new Insets(0, 0, 5, 5);
 		gbc_namePane.fill = GridBagConstraints.HORIZONTAL;
 		gbc_namePane.gridx = 2;
-		gbc_namePane.gridy = 7;
+		gbc_namePane.gridy = 5;
 		add(namePane, gbc_namePane);
 		namePane.setText(currentApplicant.getName());
+		
+		JLabel lblImage = new JLabel("Profile Picture");
+		lblImage.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		GridBagConstraints gbc_lblImage = new GridBagConstraints();
+		gbc_lblImage.gridwidth = 3;
+		gbc_lblImage.insets = new Insets(0, 0, 5, 5);
+		gbc_lblImage.gridx = 4;
+		gbc_lblImage.gridy = 5;
+		add(lblImage, gbc_lblImage);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone Number:");
 		lblPhoneNumber.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -148,7 +114,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_lblPhoneNumber.anchor = GridBagConstraints.WEST;
 		gbc_lblPhoneNumber.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPhoneNumber.gridx = 1;
-		gbc_lblPhoneNumber.gridy = 8;
+		gbc_lblPhoneNumber.gridy = 6;
 		add(lblPhoneNumber, gbc_lblPhoneNumber);
 		
 		JTextPane phonePane = new JTextPane();
@@ -158,7 +124,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_phonePane.insets = new Insets(0, 0, 5, 5);
 		gbc_phonePane.fill = GridBagConstraints.HORIZONTAL;
 		gbc_phonePane.gridx = 2;
-		gbc_phonePane.gridy = 8;
+		gbc_phonePane.gridy = 6;
 		add(phonePane, gbc_phonePane);
 		phonePane.setText(currentApplicant.getphoneNumber());
 		
@@ -168,7 +134,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_lblGender.anchor = GridBagConstraints.WEST;
 		gbc_lblGender.insets = new Insets(0, 0, 5, 5);
 		gbc_lblGender.gridx = 1;
-		gbc_lblGender.gridy = 9;
+		gbc_lblGender.gridy = 7;
 		add(lblGender, gbc_lblGender);
 		
 		JTextPane genderPane = new JTextPane();
@@ -178,9 +144,38 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_genderPane.insets = new Insets(0, 0, 5, 5);
 		gbc_genderPane.fill = GridBagConstraints.HORIZONTAL;
 		gbc_genderPane.gridx = 2;
-		gbc_genderPane.gridy = 9;
+		gbc_genderPane.gridy = 7;
 		add(genderPane, gbc_genderPane);
 		genderPane.setText(currentApplicant.getGender());
+
+		try {
+			String imagePath = currentApplicant.getImage();
+			profilePicture = this.main.getController().getImage(imagePath);
+		}
+		catch (Exception e){
+			try {
+				profilePicture = this.main.getController().getImage("noImage.png");
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		this.imagePanel = new BackgroundPanel(profilePicture);
+		GridBagConstraints gbc_imagePanel = new GridBagConstraints();
+		gbc_imagePanel.fill = GridBagConstraints.BOTH;
+		gbc_imagePanel.gridheight = 10;
+		gbc_imagePanel.gridwidth = 3;
+		gbc_imagePanel.insets = new Insets(0, 0, 5, 5);
+		gbc_imagePanel.gridx = 4;
+		gbc_imagePanel.gridy = 6;
+		add(imagePanel, gbc_imagePanel);
+		
+		//makes update button invisible if the user is a staff
+		if (parentPanelName=="manager"){
+			btnupdate.setVisible(false);
+		}
+		else if (parentPanelName=="staff"){
+			btnupdate.setVisible(true);
+		}
 		
 		JLabel lblWorkExperience = new JLabel("Work Experience:");
 		lblWorkExperience.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -188,18 +183,22 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_lblWorkExperience.anchor = GridBagConstraints.WEST;
 		gbc_lblWorkExperience.insets = new Insets(0, 0, 5, 5);
 		gbc_lblWorkExperience.gridx = 1;
-		gbc_lblWorkExperience.gridy = 10;
+		gbc_lblWorkExperience.gridy = 8;
 		add(lblWorkExperience, gbc_lblWorkExperience);
 		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		GridBagConstraints gbc_scrollPane_2 = new GridBagConstraints();
+		gbc_scrollPane_2.gridheight = 2;
+		gbc_scrollPane_2.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPane_2.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane_2.gridx = 2;
+		gbc_scrollPane_2.gridy = 8;
+		add(scrollPane_2, gbc_scrollPane_2);
+		
 		JTextPane wEPane = new JTextPane();
+		scrollPane_2.setViewportView(wEPane);
 		wEPane.setEditable(false);
 		wEPane.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_wEPane = new GridBagConstraints();
-		gbc_wEPane.insets = new Insets(0, 0, 5, 5);
-		gbc_wEPane.fill = GridBagConstraints.HORIZONTAL;
-		gbc_wEPane.gridx = 2;
-		gbc_wEPane.gridy = 10;
-		add(wEPane, gbc_wEPane);
 		wEPane.setText(currentApplicant.getWorkExperience());
 		
 		JLabel lblGenericSkill = new JLabel("Generic Skill:");
@@ -208,7 +207,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_lblGenericSkill.anchor = GridBagConstraints.WEST;
 		gbc_lblGenericSkill.insets = new Insets(0, 0, 5, 5);
 		gbc_lblGenericSkill.gridx = 1;
-		gbc_lblGenericSkill.gridy = 11;
+		gbc_lblGenericSkill.gridy = 10;
 		add(lblGenericSkill, gbc_lblGenericSkill);
 		
 		JTextPane gSkillPane = new JTextPane();
@@ -218,7 +217,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_gSkillPane.insets = new Insets(0, 0, 5, 5);
 		gbc_gSkillPane.fill = GridBagConstraints.HORIZONTAL;
 		gbc_gSkillPane.gridx = 2;
-		gbc_gSkillPane.gridy = 11;
+		gbc_gSkillPane.gridy = 10;
 		add(gSkillPane, gbc_gSkillPane);
 		gSkillPane.setText(currentApplicant.getGenericSkill());
 		
@@ -228,7 +227,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_lblTechnicalSkill.anchor = GridBagConstraints.WEST;
 		gbc_lblTechnicalSkill.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTechnicalSkill.gridx = 1;
-		gbc_lblTechnicalSkill.gridy = 12;
+		gbc_lblTechnicalSkill.gridy = 11;
 		add(lblTechnicalSkill, gbc_lblTechnicalSkill);
 		
 		JTextPane tSkillPane = new JTextPane();
@@ -238,7 +237,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_tSkillPane.insets = new Insets(0, 0, 5, 5);
 		gbc_tSkillPane.fill = GridBagConstraints.HORIZONTAL;
 		gbc_tSkillPane.gridx = 2;
-		gbc_tSkillPane.gridy = 12;
+		gbc_tSkillPane.gridy = 11;
 		add(tSkillPane, gbc_tSkillPane);
 		tSkillPane.setText(currentApplicant.getTechnicalSkill());
 		
@@ -248,18 +247,22 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_lblQualifications.anchor = GridBagConstraints.WEST;
 		gbc_lblQualifications.insets = new Insets(0, 0, 5, 5);
 		gbc_lblQualifications.gridx = 1;
-		gbc_lblQualifications.gridy = 13;
+		gbc_lblQualifications.gridy = 12;
 		add(lblQualifications, gbc_lblQualifications);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.gridheight = 2;
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 2;
+		gbc_scrollPane.gridy = 12;
+		add(scrollPane, gbc_scrollPane);
+		
 		JTextPane qualificationPane = new JTextPane();
+		scrollPane.setViewportView(qualificationPane);
 		qualificationPane.setEditable(false);
 		qualificationPane.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_qualificationPane = new GridBagConstraints();
-		gbc_qualificationPane.insets = new Insets(0, 0, 5, 5);
-		gbc_qualificationPane.fill = GridBagConstraints.HORIZONTAL;
-		gbc_qualificationPane.gridx = 2;
-		gbc_qualificationPane.gridy = 13;
-		add(qualificationPane, gbc_qualificationPane);
 		qualificationPane.setText(currentApplicant.getQualification());
 		
 		JLabel lblAchievements = new JLabel("Achievements:");
@@ -271,15 +274,19 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_lblAchievements.gridy = 14;
 		add(lblAchievements, gbc_lblAchievements);
 		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
+		gbc_scrollPane_1.gridheight = 2;
+		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane_1.gridx = 2;
+		gbc_scrollPane_1.gridy = 14;
+		add(scrollPane_1, gbc_scrollPane_1);
+		
 		JTextPane achievementsPane = new JTextPane();
+		scrollPane_1.setViewportView(achievementsPane);
 		achievementsPane.setEditable(false);
 		achievementsPane.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		GridBagConstraints gbc_achievementsPane = new GridBagConstraints();
-		gbc_achievementsPane.insets = new Insets(0, 0, 5, 5);
-		gbc_achievementsPane.fill = GridBagConstraints.HORIZONTAL;
-		gbc_achievementsPane.gridx = 2;
-		gbc_achievementsPane.gridy = 14;
-		add(achievementsPane, gbc_achievementsPane);
 		achievementsPane.setText(currentApplicant.getAchievement());
 		
 		JLabel lblShortlisted = new JLabel("Shortlisted:");
@@ -288,7 +295,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_lblShortlisted.anchor = GridBagConstraints.WEST;
 		gbc_lblShortlisted.insets = new Insets(0, 0, 5, 5);
 		gbc_lblShortlisted.gridx = 1;
-		gbc_lblShortlisted.gridy = 15;
+		gbc_lblShortlisted.gridy = 16;
 		add(lblShortlisted, gbc_lblShortlisted);
 		
 		
@@ -299,7 +306,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_shortlistPane.insets = new Insets(0, 0, 5, 5);
 		gbc_shortlistPane.fill = GridBagConstraints.HORIZONTAL;
 		gbc_shortlistPane.gridx = 2;
-		gbc_shortlistPane.gridy = 15;
+		gbc_shortlistPane.gridy = 16;
 		add(shortlistPane, gbc_shortlistPane);
 		shortlistPane.setText(Boolean.toString(currentApplicant.getShortlistStatus()));
 		
@@ -309,7 +316,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_lblJobOffered.anchor = GridBagConstraints.WEST;
 		gbc_lblJobOffered.insets = new Insets(0, 0, 5, 5);
 		gbc_lblJobOffered.gridx = 1;
-		gbc_lblJobOffered.gridy = 16;
+		gbc_lblJobOffered.gridy = 17;
 		add(lblJobOffered, gbc_lblJobOffered);
 		
 		JTextPane jobOfferedPane = new JTextPane();
@@ -319,7 +326,7 @@ public class ViewApplicantPanel extends JPanel{
 		gbc_jobOfferedPane.insets = new Insets(0, 0, 5, 5);
 		gbc_jobOfferedPane.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jobOfferedPane.gridx = 2;
-		gbc_jobOfferedPane.gridy = 16;
+		gbc_jobOfferedPane.gridy = 17;
 		add(jobOfferedPane, gbc_jobOfferedPane);
 		jobOfferedPane.setText(Boolean.toString(currentApplicant.getReceivedJobOffer()));
 		

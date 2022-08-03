@@ -41,10 +41,8 @@ public class DataStorage {
 				Staff currentStaff = new Staff(currentStaffData[0],currentStaffData[1]);
 				this.staffVector.add(currentStaff);
 				if (staffDataFlag == 0){
-					System.out.println("Staffs");
 					staffDataFlag = 1;
 				}
-				System.out.println("Username: " + currentStaffData[0] + "   Password: " + currentStaffData[1]);	
 			}
 			br.close();
 			//read from managerAccounts.csv file storage
@@ -55,20 +53,18 @@ public class DataStorage {
 				Manager currentManager = new Manager(currentManagerData[0],currentManagerData[1]);
 				this.managerVector.add(currentManager);
 				if (managerDataFlag == 0){
-					System.out.println("Manager");
 					managerDataFlag = 1;
 				}
-				System.out.println("Username: " + currentManagerData[0] + "   Password: " + currentManagerData[1]);	
 			}
 			
 			br.close();
 			br = new BufferedReader(new FileReader("applicantProfiles.csv"));
 			while ((line=br.readLine())!=null){
 				String[] currentApplicantData = line.split(",");
-				for (int i=0;i<currentApplicantData.length;i++){
+				/*for (int i=0;i<currentApplicantData.length;i++){
 					System.out.print(currentApplicantData[i]+",");
-				}
-				System.out.println("");
+				}*/
+				//System.out.println("");
 				Applicant currentApplicant = new Applicant(currentApplicantData);
 				this.applicantVector.add(currentApplicant);
 			}
