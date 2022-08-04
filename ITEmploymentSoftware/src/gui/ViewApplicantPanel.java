@@ -180,6 +180,7 @@ public class ViewApplicantPanel extends JPanel{
 		JLabel lblWorkExperience = new JLabel("Work Experience:");
 		lblWorkExperience.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_lblWorkExperience = new GridBagConstraints();
+		gbc_lblWorkExperience.gridheight = 2;
 		gbc_lblWorkExperience.anchor = GridBagConstraints.WEST;
 		gbc_lblWorkExperience.insets = new Insets(0, 0, 5, 5);
 		gbc_lblWorkExperience.gridx = 1;
@@ -244,6 +245,7 @@ public class ViewApplicantPanel extends JPanel{
 		JLabel lblQualifications = new JLabel("Qualifications:");
 		lblQualifications.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_lblQualifications = new GridBagConstraints();
+		gbc_lblQualifications.gridheight = 2;
 		gbc_lblQualifications.anchor = GridBagConstraints.WEST;
 		gbc_lblQualifications.insets = new Insets(0, 0, 5, 5);
 		gbc_lblQualifications.gridx = 1;
@@ -268,6 +270,7 @@ public class ViewApplicantPanel extends JPanel{
 		JLabel lblAchievements = new JLabel("Achievements:");
 		lblAchievements.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_lblAchievements = new GridBagConstraints();
+		gbc_lblAchievements.gridheight = 2;
 		gbc_lblAchievements.anchor = GridBagConstraints.WEST;
 		gbc_lblAchievements.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAchievements.gridx = 1;

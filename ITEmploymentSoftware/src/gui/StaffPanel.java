@@ -64,17 +64,17 @@ public class StaffPanel extends JPanel{
 		setBackground(new Color(135, 206, 250));
 		this.main = main;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20, 0,20, 0,20, 0, 20, 20, 20, 0,20,20};
+		gridBagLayout.columnWidths = new int[]{20, 20, 20, 20,20, 0,20, 0,20, 0, 20, 0, 20, 0,20,20};
 		gridBagLayout.rowHeights = new int[]{20, 20, 20, 20,20,20,20, 20, 20, 20,20,20};
 		gridBagLayout.columnWeights = new double[]{1.0,1.0,1.0, 1.0,1.0, 1.0,1.0, 0.0, 1.0, 0.0,1.0,1.0, 1.0, 0.0,1.0,1.0};
-		gridBagLayout.rowWeights = new double[]{1.0,1.0,1.0, 1.0,1.0,1.0, 1.0,1.0,1.0, 1.0,1.0,1.0};
+		gridBagLayout.rowWeights = new double[]{1.0,1.0,1.0, 1.0,1.0,1.0, 1.0,0.0,1.0, 1.0,1.0,1.0};
 		setLayout(gridBagLayout);
 		
 		this.welcomeLabel = new JLabel("Staff's Applicant Control Panel");
 		welcomeLabel.setBackground(Color.WHITE);
 		welcomeLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		GridBagConstraints gbc_welcomeLabel = new GridBagConstraints();
-		gbc_welcomeLabel.gridwidth = 9;
+		gbc_welcomeLabel.gridwidth = 12;
 		gbc_welcomeLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_welcomeLabel.gridx = 1;
 		gbc_welcomeLabel.gridy = 0;
