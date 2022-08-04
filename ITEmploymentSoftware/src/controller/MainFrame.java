@@ -12,10 +12,14 @@ import gui.LoginPanel;
 import gui.RegisterPanel;
 
 /*
- * MainFrame is the main frame of the application. It is responsible for creating the main frame and initializing the application.
+ * MainFrame is the main frame of the application. 
+ * It is responsible for creating the main frame and initializing the application.
+ * It is responsible for displaying screens.
  */
 
 public class MainFrame extends JFrame{
+	
+
 	
 	private CardLayout card;
 	private Controller cont;
