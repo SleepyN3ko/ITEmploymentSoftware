@@ -20,5 +20,44 @@ public class Interview {
 		this.InterviewDate = InterviewDate;
 		this.Time = Time;
 	}
+    //create and setter for all private variables
+    public String getInterviewID() {
+        return this.InterviewID;
+    }
+    public void setInterviewID(String InterviewID) {
+        this.InterviewID = InterviewID;
+    }
+    public String getIntervieweeID() {
+        return this.IntervieweeID;
+    }
+    public void setIntervieweeID(String IntervieweeID) {
+        this.IntervieweeID = IntervieweeID;
+    }
+    public String getStaffName() {
+        return this.StaffName;
+    }
+    public void setStaffName(String StaffName) {
+        this.StaffName = StaffName;
+    }
+    public String getPosition() {
+        return this.Position;
+    }
+    public void setPosition(String Position) {
+        this.Position = Position;
+    }
+    public Date getInterviewDate() {
+        return this.InterviewDate;
+    }
+    public void setInterviewDate(Date InterviewDate) {
+        this.InterviewDate = InterviewDate;
+    }
+    public String getTime() {
+        return this.Time;
+    }
+    public void setTime(String Time) {
+        this.Time = Time;
+    }
+    
+
 	
 }
