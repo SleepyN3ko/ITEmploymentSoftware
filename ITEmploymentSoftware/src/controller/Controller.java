@@ -4,6 +4,7 @@ package controller;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import java.util.stream.Collectors;
@@ -42,6 +43,68 @@ public class Controller {
 		}
 		else if (staffLoginFailed(username,password) && (flag == 1)){
 			errorMsg = "Login failed as HR staff, please try again";
+		}
+		return errorMsg;
+	}
+	//create a function to add a new interview to data base
+	public String addInterview(String IntervieweeID,String StaffName,String Position, Date InterviewDate,String Time){
+		String errorMsg = "";
+		if (IntervieweeID.isEmpty() && StaffName.isEmpty() && Position.isEmpty() && InterviewDate.toString().isEmpty() && Time.isEmpty()){
+			errorMsg = "Please enter all the fields";
+		}
+		else if (IntervieweeID.isEmpty()){
+			errorMsg = "Please enter IntervieweeID";
+		}
+		else if (StaffName.isEmpty()){
+			errorMsg = "Please enter StaffName";
+		}
+		else if (Position.isEmpty()){
+			errorMsg = "Please enter Position";
+		}
+		else if (InterviewDate.toString().isEmpty()){
+			errorMsg = "Please enter InterviewDate";
+		}
+		else if (Time.isEmpty()){
+			errorMsg = "Please enter Time";
+		}
+		else if (ds.interviewExists(StaffName,InterviewDate,Time)){
+			errorMsg = "An interview with the same Staff, InterviewDate and Time already exists";
+		}
+		else{
+			//create a new interview object and add it to the data base
+			Interview interview = new Interview(IntervieweeID,StaffName,Position,InterviewDate,Time);
+			ds.addInterview(interview);
+		}
+		return errorMsg;
+	}
+	//create a function to update an existing interview in the data base
+	public String updateInterview(String InterviewID,String IntervieweeID,String StaffName,String Position, Date InterviewDate,String Time){
+		String errorMsg = "";
+		if (IntervieweeID.isEmpty() && StaffName.isEmpty() && Position.isEmpty() && InterviewDate.toString().isEmpty() && Time.isEmpty()){
+			errorMsg = "Please enter all the fields";
+		}
+		else if (IntervieweeID.isEmpty()){
+			errorMsg = "Please enter IntervieweeID";
+		}
+		else if (StaffName.isEmpty()){
+			errorMsg = "Please enter StaffName";
+		}
+		else if (Position.isEmpty()){
+			errorMsg = "Please enter Position";
+		}
+		else if (InterviewDate.toString().isEmpty()){
+			errorMsg = "Please enter InterviewDate";
+		}
+		else if (Time.isEmpty()){
+			errorMsg = "Please enter Time";
+		}
+		else if (ds.interviewExists(StaffName,InterviewDate,Time)){
+			errorMsg = "An interview with the same Staff, Interview Date and Time already exists";
+		}
+		else{
+			//create a new interview object and update it in the data base
+			Interview interview = new Interview(InterviewID,IntervieweeID,StaffName,Position,InterviewDate,Time);
+			ds.updateInterview(interview);
 		}
 		return errorMsg;
 	}
