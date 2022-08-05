@@ -85,7 +85,4 @@ public class Interview {
     public void setTime(String Time) {
         this.Time = Time;
     }
-    
-
-	
 }

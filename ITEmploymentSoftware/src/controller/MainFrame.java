@@ -30,7 +30,7 @@ public class MainFrame extends JFrame{
 		getContentPane().setLayout(this.card);
 		
 		this.cont = new Controller();
-		this.showLoginPanel();
+		this.showInterviewPanel();
 		
     this.setVisible(true);
 	}
@@ -95,6 +95,15 @@ public class MainFrame extends JFrame{
 		InfoStaffPanel panel = new InfoStaffPanel(this);
 		getContentPane().add(panel,"InfoStaffPanel");
 		this.card.show(this.getContentPane(), "InfoStaffPanel");
+		
+	}
+	public void showInterviewPanel(){
+		/*
+		 * Create a new InfoStaffPanel and add it to the content pane
+		 */
+		InterviewPanel panel = new InterviewPanel(this);
+		getContentPane().add(panel,"InterviewPanel");
+		this.card.show(this.getContentPane(), "InterviewPanel");
 		
 	}
 	public static void main(String[] args) {
