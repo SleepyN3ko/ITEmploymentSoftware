@@ -2,7 +2,7 @@ package gui;
 import java.awt.*;
 import java.awt.image.*;
 import javax.swing.*;
-
+//parts of the code are retrieved from this site: https://tips4java.wordpress.com/2008/10/12/background-panel/
 /*
  *  Support custom painting on a panel in the form of
  *
