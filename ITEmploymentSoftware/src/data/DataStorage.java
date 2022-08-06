@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 /*
@@ -30,6 +32,7 @@ public class DataStorage {
 	private Vector<Staff> staffVector = new Vector<Staff>();
 	private Vector<Manager> managerVector = new Vector<Manager>();
 	private Vector<Applicant> applicantVector = new Vector<Applicant>();
+	private Vector<Interview> interviewVector = new Vector<Interview>();
 	public DataStorage() {
 		try {
 			//read from staffAccounts.csv file storage
@@ -69,12 +72,69 @@ public class DataStorage {
 				this.applicantVector.add(currentApplicant);
 			}
 			br.close();
-			//read from profileAccounts file storage
-			//TODO Implement the reading of file after format is decided
-			
+			//read from "interviews.csv" and store in interviewVector
+			br = new BufferedReader(new FileReader("interviews.csv"));
+			while ((line=br.readLine())!=null){
+				String[] currentInterviewData = line.split(",");
+				Interview currentInterview = new Interview(currentInterviewData);
+				this.interviewVector.add(currentInterview);
+			}
+			br.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}  
+	}
+	//create function to add interview to the database
+	public void addInterview(Interview interview){
+		this.interviewVector.add(interview);
+		//store in "interviews.csv"
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter("interviews.csv",true));
+			bw.append(interview.toCSV());
+			bw.newLine();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	//create function to update a current interview in database using the interviewID
+	public void updateInterview(Interview interview){
+		for (int i=0;i<this.interviewVector.size();i++){
+			if (this.interviewVector.get(i).getInterviewID().equals(interview.getInterviewID())){
+				this.interviewVector.set(i, interview);
+				break;
+			}
+		}
+		//update "interviews.csv"
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter("interviews.csv",false));
+			for (int i=0;i<this.interviewVector.size();i++){
+				bw.append(this.interviewVector.get(i).toCSV());
+				bw.newLine();
+			}
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	//create a function to get a vector of all interviews with the given intervieweeID
+	public Interview getInterview(String intervieweeID) throws Exception{
+		for (int i=0;i<this.interviewVector.size();i++){
+			if (this.interviewVector.get(i).getIntervieweeID().equals(intervieweeID)){
+				return this.interviewVector.get(i);
+			}
+		}
+		//should never happen in theory as it there is another code to prevent it
+		throw new Exception("Interview does not exist");
+	}
+	//create a function to see if an interview with the same StaffName and InterviewDate and InterviewTime already exists in the database
+	public boolean interviewExists(String staffName, LocalDate interviewDate, String interviewTime){
+		for (int i=0;i<this.interviewVector.size();i++){
+			if (this.interviewVector.get(i).getStaffName().equals(staffName) && this.interviewVector.get(i).getInterviewDate().equals(interviewDate) && this.interviewVector.get(i).getTime().equals(interviewTime)){
+				return true;
+			}
+		}
+		return false;
 	}
 	public void addStaff(Staff newStaff) {
 		//add staff to vector and data storage
@@ -266,6 +326,15 @@ public class DataStorage {
 		} catch (IOException e){
 			e.printStackTrace();
 		}
+	}
+	public boolean interviewExists(String intervieweeID) {
+		// TODO Auto-generated method stub
+		for (int i=0;i<interviewVector.size();i++){
+			if (interviewVector.get(i).getIntervieweeID().equals(intervieweeID)){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	

@@ -97,6 +97,15 @@ public class MainFrame extends JFrame{
 		this.card.show(this.getContentPane(), "InfoStaffPanel");
 		
 	}
+	public void showInterviewPanel(String intervieweeID,String parentPanelName){
+		/*
+		 * Create a new InfoStaffPanel and add it to the content pane
+		 */
+		InterviewPanel panel = new InterviewPanel(this,intervieweeID,parentPanelName);
+		getContentPane().add(panel,"InterviewPanel");
+		this.card.show(this.getContentPane(), "InterviewPanel");
+		
+	}
 	public static void main(String[] args) {
 		// Create a new MainFrame to start the program
 		MainFrame main = new MainFrame();

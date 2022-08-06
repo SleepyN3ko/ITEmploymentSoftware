@@ -93,12 +93,12 @@ public class ManagerPanel extends JPanel{
 				Object[][] rows = main.getController().getShortlistApplicants();
 				lblCount.setText("Number of Applicants: "+rows.length);
 				String[] columns = {
-						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
+						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant","Set Interview"
 				};
 				table.setModel(new DefaultTableModel(rows,columns) {
 					@Override
 					public boolean isCellEditable(int row,int column){
-						if (column==4){
+						if (column==4||column==5){
 							return true;
 						}
 						return false;
@@ -116,7 +116,20 @@ public class ManagerPanel extends JPanel{
 				        main.showViewApplicantPanel(selectedApplicantID,"manager");
 				    }
 				};
+				Action set = new AbstractAction()
+				{
+				    public void actionPerformed(ActionEvent e)
+				    {
+						/*
+						 * Set interview
+						 */
+				        int modelRow = Integer.valueOf(e.getActionCommand());
+				        String selectedApplicantID = rows[modelRow][0].toString();
+				        main.showInterviewPanel(selectedApplicantID,"manager");
+				    }
+				};
 				ButtonColumn viewColumn = new ButtonColumn(table,view,4, Color.YELLOW,"background");
+				ButtonColumn setColumn = new ButtonColumn(table,set,5,Color.MAGENTA,"background");
 				TableColumn shortListColumn = table.getColumnModel().getColumn(2);
 				TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
 			}
@@ -142,12 +155,12 @@ public class ManagerPanel extends JPanel{
 				Object[][] rows = main.getController().getBothApplicants();
 				lblCount.setText("Number of Applicants: "+rows.length);
 				String[] columns = {
-						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
+						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant","Set Interview"
 				};
 				table.setModel(new DefaultTableModel(rows,columns) {
 					@Override
 					public boolean isCellEditable(int row,int column){
-						if (column==4){
+						if (column==4||column==5){
 							return true;
 						}
 						return false;
@@ -165,7 +178,20 @@ public class ManagerPanel extends JPanel{
 				        main.showViewApplicantPanel(selectedApplicantID,"manager");
 				    }
 				};
+				Action set = new AbstractAction()
+				{
+				    public void actionPerformed(ActionEvent e)
+				    {
+						/*
+						 * Set interview
+						 */
+				        int modelRow = Integer.valueOf(e.getActionCommand());
+				        String selectedApplicantID = rows[modelRow][0].toString();
+				        main.showInterviewPanel(selectedApplicantID,"manager");
+				    }
+				};
 				ButtonColumn viewColumn = new ButtonColumn(table,view,4, Color.YELLOW,"background");
+				ButtonColumn setColumn = new ButtonColumn(table,set,5,Color.MAGENTA,"background");
 				TableColumn shortListColumn = table.getColumnModel().getColumn(2);
 				TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
 			}
@@ -178,12 +204,12 @@ public class ManagerPanel extends JPanel{
 				Object[][] rows = main.getController().getJobOfferedApplicants();
 				lblCount.setText("Number of Applicants: "+rows.length);
 				String[] columns = {
-						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
+						"ApplicantID", "Name","Short-listed","Job Offer","View Applicant","Set Interview"
 				};
 				table.setModel(new DefaultTableModel(rows,columns) {
 					@Override
 					public boolean isCellEditable(int row,int column){
-						if (column==4){
+						if (column==4||column==5){
 							return true;
 						}
 						return false;
@@ -198,7 +224,20 @@ public class ManagerPanel extends JPanel{
 				        main.showViewApplicantPanel(selectedApplicantID,"manager");
 				    }
 				};
+				Action set = new AbstractAction()
+				{
+				    public void actionPerformed(ActionEvent e)
+				    {
+						/*
+						 * Set interview
+						 */
+				        int modelRow = Integer.valueOf(e.getActionCommand());
+				        String selectedApplicantID = rows[modelRow][0].toString();
+				        main.showInterviewPanel(selectedApplicantID,"manager");
+				    }
+				};
 				ButtonColumn viewColumn = new ButtonColumn(table,view,4, Color.YELLOW,"background");
+				ButtonColumn setColumn = new ButtonColumn(table,set,5,Color.MAGENTA,"background");
 				TableColumn shortListColumn = table.getColumnModel().getColumn(2);
 				TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
 			}
@@ -261,14 +300,14 @@ public class ManagerPanel extends JPanel{
 		Object[][] rows = this.main.getController().getApplicantsManager();
 		lblCount.setText("Number of Applicants: "+rows.length);
 		String[] columns = {
-				"ApplicantID", "Name","Short-listed","Job Offer","View Applicant"
+				"ApplicantID", "Name","Short-listed","Job Offer","View Applicant","Set Interview"
 		};
 		
 		this.table.setModel(new DefaultTableModel(rows,columns) {
 			@Override
 			public boolean isCellEditable(int row,int column){
 				//makes sure certain columns can be clicked/edited
-				if (column==2||column==3||column==4){
+				if (column==2||column==3||column==4||column==5){
 					return true;
 				}
 				return false;
@@ -283,7 +322,20 @@ public class ManagerPanel extends JPanel{
 		        main.showViewApplicantPanel(selectedApplicantID,"manager");
 		    }
 		};
+		Action set = new AbstractAction()
+		{
+		    public void actionPerformed(ActionEvent e)
+		    {
+				/*
+				 * Set interview
+				 */
+		        int modelRow = Integer.valueOf(e.getActionCommand());
+		        String selectedApplicantID = rows[modelRow][0].toString();
+		        main.showInterviewPanel(selectedApplicantID,"manager");
+		    }
+		};
 		ButtonColumn viewColumn = new ButtonColumn(this.table,view,4,Color.YELLOW,"background");
+		ButtonColumn setColumn = new ButtonColumn(this.table,set,5,Color.MAGENTA,"background");
 		TableColumn shortListColumn = table.getColumnModel().getColumn(2);
 		TableColumn jobOfferedColumn = table.getColumnModel().getColumn(3);
 		

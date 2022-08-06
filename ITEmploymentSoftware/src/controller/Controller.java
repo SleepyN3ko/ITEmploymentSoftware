@@ -4,6 +4,9 @@ package controller;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import java.util.stream.Collectors;
@@ -42,6 +45,65 @@ public class Controller {
 		}
 		else if (staffLoginFailed(username,password) && (flag == 1)){
 			errorMsg = "Login failed as HR staff, please try again";
+		}
+		return errorMsg;
+	}
+	//create a function to add a new interview to data base
+	public String addInterview(String IntervieweeID,String StaffName,String Position, LocalDate InterviewDate,String Time){
+		String errorMsg = "";
+		if (IntervieweeID.isEmpty() && StaffName.isEmpty() && Position.isEmpty() && InterviewDate.toString().isEmpty() && Time.isEmpty()){
+			errorMsg = "Please enter all the fields";
+		}
+		else if (IntervieweeID.isEmpty()){
+			errorMsg = "Please enter IntervieweeID";
+		}
+		else if (StaffName.isEmpty()){
+			errorMsg = "Please enter StaffName";
+		}
+		else if (Position.isEmpty()){
+			errorMsg = "Please enter Position";
+		}
+		else if (Time.isEmpty()){
+			errorMsg = "Please enter Time";
+		}
+		else if (ds.interviewExists(StaffName,InterviewDate,Time)){
+			errorMsg = "An interview with the same Staff, InterviewDate and Time already exists";
+		}
+		else{
+			//create a new interview object and add it to the data base
+			Interview interview = new Interview(IntervieweeID,StaffName,Position,InterviewDate,Time);
+			ds.addInterview(interview);
+		}
+		return errorMsg;
+	}
+	//create a function to update an existing interview in the data base
+	public String updateInterview(String InterviewID,String IntervieweeID,String StaffName,String Position, LocalDate InterviewDate,String Time){
+		String errorMsg = "";
+		if (IntervieweeID.isEmpty() && StaffName.isEmpty() && Position.isEmpty() && InterviewDate.toString().isEmpty() && Time.isEmpty()){
+			errorMsg = "Please enter all the fields";
+		}
+		else if (IntervieweeID.isEmpty()){
+			errorMsg = "Please enter IntervieweeID";
+		}
+		else if (StaffName.isEmpty()){
+			errorMsg = "Please enter StaffName";
+		}
+		else if (Position.isEmpty()){
+			errorMsg = "Please enter Position";
+		}
+		else if (InterviewDate.toString().isEmpty()){
+			errorMsg = "Please enter InterviewDate";
+		}
+		else if (Time.isEmpty()){
+			errorMsg = "Please enter Time";
+		}
+		else if (ds.interviewExists(StaffName,InterviewDate,Time)){
+			errorMsg = "An interview with the same Staff, Interview Date and Time already exists";
+		}
+		else{
+			//create a new interview object and update it in the data base
+			Interview interview = new Interview(InterviewID,IntervieweeID,StaffName,Position,InterviewDate,Time);
+			ds.updateInterview(interview);
 		}
 		return errorMsg;
 	}
@@ -169,13 +231,21 @@ public class Controller {
 
 		return data;	
 	}
-	
+	public String[] getStaffForInterview(){
+		Vector<Staff> staffvector = this.ds.getStaffVector();
+		String[] StaffList = new String[staffvector.size()+1];
+		StaffList[0] = "";
+		for (int i=1;i<staffvector.size()+1;i++){
+			StaffList[i] = staffvector.get(i-1).getUsername();
+		}
+		return StaffList;
+	}
 	public Object[][] getApplicants(){
 		/*
 		 * Function is used for getting all the applicants to be used in a JTable
 		 */
 		List<Applicant> applicantList= this.ds.getApplicants();
-		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),"View","Update","Delete"}).toArray(Object[][]::new);
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),"View","Update","Delete","Set"}).toArray(Object[][]::new);
 
 		return data;	
 	}
@@ -184,7 +254,7 @@ public class Controller {
 		 * Function is used for getting all the applicants to be used in a JTable
 		 */
 		List<Applicant> applicantList= this.ds.getApplicants();//Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getphoneNumber(),p.getGender(),p.getWorkExperience(),p.getGenericSkill(),p.getTechnicalSkill(),p.getAchievement(),p.getQualification(),p.getShortlistStatus(),p.getReceivedJobOffer()}).toArray(Object[][]::new);
-		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View"}).toArray(Object[][]::new);
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View","Set"}).toArray(Object[][]::new);
 
 		return data;	
 	}
@@ -227,7 +297,7 @@ public class Controller {
 			}
 		}
 		//convert the list to an array of objects to be used in a JTable
-		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),"View","Update","Delete"}).toArray(Object[][]::new);
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),"View","Update","Delete","Set"}).toArray(Object[][]::new);
 
 		return data;	
 	}
@@ -240,10 +310,16 @@ public class Controller {
 		
 		applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getShortlistStatus() == true).collect(Collectors.toList());
 		
-		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View"}).toArray(Object[][]::new);
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View","Set"}).toArray(Object[][]::new);
 		return data;
 	}
-	
+	public boolean interviewExists(String intervieweeID){
+		//checks if interview exists for the applicant already
+		return this.ds.interviewExists(intervieweeID);
+	}
+	public Interview getInterview(String intervieweeID) throws Exception{
+		return this.ds.getInterview(intervieweeID);
+	}
 	public Object[][] getJobOfferedApplicants(){
 		/*
 		 * Function is used for getting all the applicants who have received a job offer to be used in a JTable
@@ -252,7 +328,7 @@ public class Controller {
 		
 		applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getReceivedJobOffer() == true).collect(Collectors.toList());
 		
-		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View"}).toArray(Object[][]::new);
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View","Set"}).toArray(Object[][]::new);
 		return data;
 	}
 	
@@ -265,7 +341,7 @@ public class Controller {
 		applicantList = (List<Applicant>) applicantList.stream().filter((p->p.getReceivedJobOffer() == true)).collect(Collectors.toList());
 		applicantList = (List<Applicant>) applicantList.stream().filter(p->p.getShortlistStatus() == true).collect(Collectors.toList());
 		
-		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View"}).toArray(Object[][]::new);
+		Object[][] data = applicantList.stream().map(p->new Object[]{p.getApplicantID(),p.getName(),p.getShortlistStatus(),p.getReceivedJobOffer(),"View","Set"}).toArray(Object[][]::new);
 		return data;
 	}
 	

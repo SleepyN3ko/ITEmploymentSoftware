@@ -206,14 +206,14 @@ public class StaffPanel extends JPanel{
 		table.setRowHeight(table.getRowHeight()+30);
 		Object[][] rows = this.main.getController().getApplicants(); //get all the applicants from the database
 		String[] columns = {
-				"ApplicantID", "Name","View Applicant","Update Applicant","Delete Applicant"
+				"ApplicantID", "Name","View Applicant","Update Applicant","Delete Applicant","View Interview"
 		}; //column names
 		
 		this.table.setModel(new DefaultTableModel(rows,columns) {
 			@Override
 			public boolean isCellEditable(int row,int column){
 				//make button Columns Editable
-				if (column==2 || column==3 || column==4){
+				if (column==2 || column==3 || column==4 || column==5){
 					return true;
 				}
 				return false;
@@ -263,9 +263,22 @@ public class StaffPanel extends JPanel{
 		    	}
 		    }
 		};
+		Action set = new AbstractAction()
+		{
+		    public void actionPerformed(ActionEvent e)
+		    {
+				/*
+				 * View Interview
+				 */
+		        int modelRow = Integer.valueOf(e.getActionCommand());
+		        String selectedApplicantID = rows[modelRow][0].toString();
+		        main.showInterviewPanel(selectedApplicantID,"staff");
+		    }
+		};
 		ButtonColumn viewColumn = new ButtonColumn(this.table,view,2,Color.YELLOW,"background");
 		ButtonColumn updateColumn = new ButtonColumn(this.table,update,3,Color.GREEN,"background");
 		ButtonColumn deleteColumn = new ButtonColumn(this.table,delete,4,Color.RED,"background");
+		ButtonColumn setColumn = new ButtonColumn(this.table,set,5,Color.MAGENTA,"background");
 		table.getTableHeader().setFont( new Font( "Tahoma" , Font.PLAIN, 30 ));
 		table.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		this.table.setFillsViewportHeight(true);
@@ -297,7 +310,7 @@ public class StaffPanel extends JPanel{
 			}
 			Object[][] rows = main.getController().getApplicants(filters); //use overloaded method to filter applicant on controller side
 			String[] columns = {
-					"ApplicantID", "Name","View Applicant","Update Applicant","Delete Applicants"
+					"ApplicantID", "Name","View Applicant","Update Applicant","Delete Applicants","View Interview"
 			};
 			//remaking the table model
 			table.setModel(new DefaultTableModel(rows,columns) {
@@ -341,9 +354,23 @@ public class StaffPanel extends JPanel{
 			    	}
 			    }
 			};
+
+			Action set = new AbstractAction()
+			{
+			    public void actionPerformed(ActionEvent e)
+			    {
+					/*
+					 * Set interview
+					 */
+			        int modelRow = Integer.valueOf(e.getActionCommand());
+			        String selectedApplicantID = rows[modelRow][0].toString();
+			        main.showInterviewPanel(selectedApplicantID,"staff");
+			    }
+			};
 			ButtonColumn viewColumn = new ButtonColumn(table,view,2,Color.YELLOW,"background");
 			ButtonColumn updateColumn = new ButtonColumn(table,update,3,Color.GREEN,"background");
 			ButtonColumn deleteColumn = new ButtonColumn(table,delete,4,Color.RED,"background");
+			ButtonColumn setColumn = new ButtonColumn(table,set,5,Color.MAGENTA,"background");
 		}
 	}
 	
