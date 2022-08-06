@@ -111,7 +111,7 @@ public class InterviewPanel extends JPanel{
 		datemodelProperties.put("text.year","Year");
 		todayDate = LocalDate.now().plusDays(1);
 		
-		String[] timeSlots = {"13:00","14:00","15:00","16:00"};
+		String[] timeSlots = {"","13:00","14:00","15:00","16:00"};
 		
 		JButton btnSetInterview = new JButton("Set Interview");
 		btnSetInterview.addActionListener(new ActionListener() {
@@ -213,7 +213,7 @@ public class InterviewPanel extends JPanel{
 		add(lblPosition, gbc_lblPosition);
 		
 		this.comboPosition = new JComboBox();
-		comboPosition.setModel(new DefaultComboBoxModel(new String[] {"Software Engineer", "IT Security", "Project Manager"}));
+		comboPosition.setModel(new DefaultComboBoxModel(new String[] {"","Software Engineer", "IT Security", "Project Manager"}));
 		comboPosition.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		GridBagConstraints gbc_comboPosition = new GridBagConstraints();
 		gbc_comboPosition.gridwidth = 4;
@@ -241,6 +241,14 @@ public class InterviewPanel extends JPanel{
 				textFieldDate.setText(interviewDate.format(dtf));
 				datemodel.setDate(interviewDate.getYear(), interviewDate.getMonthValue()-1, interviewDate.getDayOfMonth());
 				SelectedDate =  LocalDate.parse(textFieldDate.getText(),dtf);
+			}
+			else {
+				if (parentPanelName.equals("manager")){
+					LocalDate interviewDate = LocalDate.now();
+					textFieldDate.setText(interviewDate.format(dtf));
+					datemodel.setDate(interviewDate.getYear(), interviewDate.getMonthValue()-1, interviewDate.getDayOfMonth());
+					SelectedDate =  LocalDate.parse(textFieldDate.getText(),dtf);
+				}
 			}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block

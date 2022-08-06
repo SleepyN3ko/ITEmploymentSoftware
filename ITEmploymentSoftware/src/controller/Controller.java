@@ -63,9 +63,6 @@ public class Controller {
 		else if (Position.isEmpty()){
 			errorMsg = "Please enter Position";
 		}
-		else if (InterviewDate.toString().isEmpty()){
-			errorMsg = "Please enter InterviewDate";
-		}
 		else if (Time.isEmpty()){
 			errorMsg = "Please enter Time";
 		}
@@ -236,9 +233,10 @@ public class Controller {
 	}
 	public String[] getStaffForInterview(){
 		Vector<Staff> staffvector = this.ds.getStaffVector();
-		String[] StaffList = new String[staffvector.size()];
-		for (int i=0;i<staffvector.size();i++){
-			StaffList[i] = staffvector.get(i).getUsername();
+		String[] StaffList = new String[staffvector.size()+1];
+		StaffList[0] = "";
+		for (int i=1;i<staffvector.size()+1;i++){
+			StaffList[i] = staffvector.get(i-1).getUsername();
 		}
 		return StaffList;
 	}
