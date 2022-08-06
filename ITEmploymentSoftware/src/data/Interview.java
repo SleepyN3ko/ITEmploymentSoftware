@@ -4,15 +4,19 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Interview {
 	private String InterviewID;
 	private String IntervieweeID;
 	private String StaffName;
 	private String Position;
-	private Date InterviewDate;
+	private LocalDate InterviewDate;
 	private String Time;
-	public Interview(String IntervieweeID,String StaffName,String Position, Date InterviewDate,String Time){
+    //parse the date into a date object
+	private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");  
+	public Interview(String IntervieweeID,String StaffName,String Position, LocalDate InterviewDate,String Time){
 		this.InterviewID = UUID.randomUUID().toString();
 		this.IntervieweeID = IntervieweeID;
 		this.StaffName = StaffName;
@@ -21,7 +25,7 @@ public class Interview {
 		this.Time = Time;
 	}
     //create constructor with interviewID input
-    public Interview(String InterviewID,String IntervieweeID,String StaffName,String Position, Date InterviewDate,String Time){
+    public Interview(String InterviewID,String IntervieweeID,String StaffName,String Position, LocalDate InterviewDate,String Time){
         this.InterviewID = InterviewID;
         this.IntervieweeID = IntervieweeID;
         this.StaffName = StaffName;
@@ -35,10 +39,8 @@ public class Interview {
     	this.IntervieweeID = dataFromCSV[1];
     	this.StaffName = dataFromCSV[2];
     	this.Position = dataFromCSV[3];
-        //parse the date into a date object
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         try {
-            this.InterviewDate = sdf.parse(dataFromCSV[4]);
+            this.InterviewDate = LocalDate.parse(dataFromCSV[4],dtf);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -46,7 +48,7 @@ public class Interview {
     }
     //return the object parameters in csv format as string
     public String toCSV(){
-    	return this.InterviewID + "," + this.IntervieweeID + "," + this.StaffName + "," + this.Position + "," + this.InterviewDate + "," + this.Time;
+    	return this.InterviewID + "," + this.IntervieweeID + "," + this.StaffName + "," + this.Position + "," + this.InterviewDate.format(dtf) + "," + this.Time;
     }
     //create and setter for all private variables
     public String getInterviewID() {
@@ -73,10 +75,10 @@ public class Interview {
     public void setPosition(String Position) {
         this.Position = Position;
     }
-    public Date getInterviewDate() {
+    public LocalDate getInterviewDate() {
         return this.InterviewDate;
     }
-    public void setInterviewDate(Date InterviewDate) {
+    public void setInterviewDate(LocalDate InterviewDate) {
         this.InterviewDate = InterviewDate;
     }
     public String getTime() {
